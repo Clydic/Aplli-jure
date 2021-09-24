@@ -10,7 +10,7 @@
 CREATE TABLE Coordonnees(
         IDCoordonnee Int  Auto_increment  NOT NULL ,
         Adresse1     Varchar (50) NOT NULL ,
-        Adresse2     Varchar (50) NOT NULL ,
+        Adresse2     Varchar (50) ,
         Code_Postale Int NOT NULL ,
         Ville        Varchar (50) NOT NULL ,
         Telephone    Int NOT NULL ,
@@ -178,6 +178,7 @@ CREATE TABLE Superviser(
 
 	,CONSTRAINT Superviser_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
 	,CONSTRAINT Superviser_Jure0_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
+<<<<<<< HEAD
 )ENGINE=InnoDB;
 
 
@@ -270,3 +271,6 @@ INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `Dat
 INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',19,10,10);
 INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (20,'2022-06-26','2022-12-23',20,10,10);
 
+=======
+)ENGINE=InnoDB;
+>>>>>>> 58f343b061a7a1c84faaa1df3b373ce0bac9c563
