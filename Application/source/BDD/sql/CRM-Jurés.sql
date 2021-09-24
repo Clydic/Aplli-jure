@@ -181,16 +181,10 @@ CREATE TABLE Superviser(
 )ENGINE=InnoDB;
 
 
-
-
-
-
-
-
 -- JEUX D'ESSAIS (à compléter)
 
 -- Table Formation
-
+-- USE CRMJures
 INSERT INTO `formation`(`IDFormation`, `Intitule_de_formation`) VALUES (1,"Developpeur WEB");
 INSERT INTO `formation`(`IDFormation`, `Intitule_de_formation`) VALUES (2,"Technicien Réseaux Informatique");
 INSERT INTO `formation`(`IDFormation`, `Intitule_de_formation`) VALUES (3,"Chaudronnerie");
@@ -219,3 +213,9 @@ INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `Dat
 INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (4,'2020-12-01','2021-08-21',4,3,2);
 INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (5,'2021-01-31','2021-08-15',5,4,3);
 INSERT INTO `session_formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (6,'2021-08-16','2022-03-31',6,4,3);
+
+
+
+
+
+
