@@ -50,7 +50,7 @@ INSERT INTO `Sessionexamen`(`IDSessionExam`, `DateSessionExam`) VALUES (19,'2022
 INSERT INTO `Sessionexamen`(`IDSessionExam`, `DateSessionExam`) VALUES (20,'2022-12-21');
 
 
--- Table Formateur
+-- Table Formateur LOL
 
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (1,'BIN','Damien','F1');
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (2,'BRAY','Vincent','F2');
