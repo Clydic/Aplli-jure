@@ -107,7 +107,7 @@ INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `Dat
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',20,10,10);
 -- INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (20,'2022-06-26','2022-12-23',1,10,10);
 
--- =========================================Table jure========================================
+-- Table jure
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (1,'Martin','Marguerite','true',1,1,11); 
 
@@ -171,25 +171,3 @@ INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Vi
 VALUES (20,'Charrier','Louis','true','true',20,20,30); 
 
 
--- =============================================================ENTREPRISE============================================================
-
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (1,"Pack digital",31)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (2,"CINS",32)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (3,"Inno réseaux",33)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (4,"Socacom",34)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (5,"BST-Normandie",35)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (6,"TCH",36)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (7,"L'atelier des bosses",37)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (8,"2MV Cars",38)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (9,"Macé",39)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (10,"Des Essart",40)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (11,"Kompass",41)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (12,"Réseaux-express",42)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (13,"Alliance TP ",43)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (14,"SAM & CO TP SARL ",44)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (15,"",45)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (16,"",46)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (17,"Juste Chez vous",47)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (18,"Les 3 Brasseurs",48)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (19,"Lsfroid",49)
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (20,"Froid servic Lagille",50)
