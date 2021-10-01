@@ -10,7 +10,7 @@
 CREATE TABLE Coordonnees(
         IDCoordonnee Int  Auto_increment  NOT NULL ,
         Adresse1     Varchar (50) NOT NULL ,
-        Adresse2     Varchar (50) NOT NULL ,
+        Adresse2     Varchar (50) NULL ,
         Code_Postale Int NOT NULL ,
         Ville        Varchar (50) NOT NULL ,
         Telephone    Int NOT NULL ,
@@ -172,4 +172,4 @@ CREATE TABLE Superviser(
 	,CONSTRAINT Superviser_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
 	,CONSTRAINT Superviser_Jure0_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
 )ENGINE=InnoDB;
-libreoffice intégrer code
+-- libreoffice intégrer code
