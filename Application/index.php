@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/CSS/theme/sketchy/bootstrap.min.css">
-    <title>Accueil</title>
-</head>
-<body>
-   Bonjour bienvenue sur le site de gestion de formation.
+<?php // index.php 
+	$action="listExam";
+	$logo="source/index.jpg";
+	require("modele/modele.inc.php");
+	print_r($action);
+	echo "Get : "; print_r($_GET);
 
-</body>
-</html>
+	switch($action)
+	{
+		case'listExam':
+			$tabTitle="Gestion des sessions d'examen";
+			$h1Title="Gestion des sessions d'examen";
+			require("vues/view_header.php");			
+			require("vues/view_list-exam.php");			
+			require("vues/view_footer.php");			
+	}
+
+
+?>
