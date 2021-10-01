@@ -70,6 +70,20 @@ INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (9,'LAROCHE','Susanne',9);
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (10,'MARY','Alex',10);
 
+-- Table Formateur
+
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (1,'BIN','Damien','F1');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (2,'BRAY','Vincent','F2');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (3,'GAUTHIER','Rémy','F3');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (4,'ALBERT','Emile','F4');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (5,'TRAORE','Gérard','F5');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (6,'LABBE','Joseph','F6');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (7,'HUET','Aurélie','F7');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (8,'ANTOINE','Philippe','F8');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (9,'LAROCHE','Susanne','F9');
+INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (10,'MARY','Alex','F10');
+
+
 -- Table Formation
 
 INSERT INTO `Formation`(`IDFormation`, `Intitule_de_formation`, `IDFormateur`) VALUES (1,"Developpeur WEB",1);
