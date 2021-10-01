@@ -10,7 +10,7 @@
 CREATE TABLE Coordonnees(
         IDCoordonnee Int  Auto_increment  NOT NULL ,
         Adresse1     Varchar (50) NOT NULL ,
-        Adresse2     Varchar (50) NULL ,
+        Adresse2     Varchar (50) NOT NULL ,
         Code_Postale Int NOT NULL ,
         Ville        Varchar (50) NOT NULL ,
         Telephone    Int NOT NULL ,
