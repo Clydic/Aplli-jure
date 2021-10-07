@@ -140,8 +140,8 @@ CREATE TABLE Jure(
         IDJure            Int  Auto_increment  NOT NULL ,
         NomJures          Varchar (50) NOT NULL ,
         PrenomJures       Varchar (50) NOT NULL ,
-        Visible_sur_Ceres Bool NOT NULL ,
-        Visible_sur_Valce Bool NOT NULL ,
+        Visible_sur_Ceres Boolean NOT NULL ,
+        Visible_sur_Valce Boolean NOT NULL ,
         IDHabilitation    Int ,
         IDEntreprise      Int ,
         IDCoordonnee      Int
