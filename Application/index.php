@@ -8,6 +8,7 @@
 	switch($action)
 	{
 		case 'accueil':
+
 			break;
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";

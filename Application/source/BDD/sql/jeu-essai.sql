@@ -3,7 +3,7 @@
 -- Table Coordonnées
 
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (1,'21, rue PHP',NULL,14000,'Caen',"0611528496","bin.damien@afpa.fr");
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (2,'15, rue des framework',NULL,14800,'Deauville','0641489575','bray.vincent@afpa.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (2,'15, rue des frameworks',NULL,14800,'Deauville','0641489575','bray.vincent@afpa.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (3,'7, rue de Girard',NULL,14123,'IFS','0614859753','gauthier.remy@afpa.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (4,'698, boulevard Grégoire Thomas',NULL,14200,'Herouville-Saint-Clair','0612596574','albert.emile@afpa.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (5,'16, rue de Pruvost',NULL,14120,'Mondeville','0658748562','traore.gerard@afpa.fr');
@@ -28,7 +28,7 @@ INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (24,'46, allée du Pinceau',NULL,14260,'Bonnemaison',0666988744,'LerouxMargaret@red.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (25,'86, rue du cable','Etage 3, port 6', 14710, 'Colombière', 0633358742, "BergerGrégoire@gmail.com");
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (26,'163, boulevard du Touriste',NULL,14800,'Deauville',0699887744,'BruneauHonoré@free.fr');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (27,'63, boulevard du Maréchal Leclerc',NULL,'Caen',0613214598,'VasseurBenoit@orange.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (27,'63, boulevard du Maréchal Leclerc',NULL,14000,'Caen',0613214598,'VasseurBenoit@orange.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (28,'192, allée de la Taule',NULL, 14840,'Démouville',0658741238,'PelletierRemy@yahoo.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (29,'1, rue du Grand Tableau',NULL,14730,'Giberville',0687489632,'FabreAdélaide@gmail.com');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (30,'41, avenue du pot Peinture', 'Batiment 2, étage 8, porte 5', 14100, 'Glos', 0614852369,'CharrierLouis@free.fr');
@@ -52,12 +52,12 @@ INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (14,'2020
 INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (15,'2021-12-06');
 INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (16,'2022-07-16');
 INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (17,'2021-06-08');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (18,'2022-02-29');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (18,'2022-02-28');
 INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (19,'2022-06-22');
 INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (20,'2022-12-21');
 
 
--- Table Formateur LOL
+-- Table Formateur
 
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (1,'BIN','Damien',1);
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (2,'BRAY','Vincent',2);
@@ -69,20 +69,6 @@ INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (8,'ANTOINE','Philippe',8);
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (9,'LAROCHE','Susanne',9);
 INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (10,'MARY','Alex',10);
-
--- Table Formateur
-
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (1,'BIN','Damien','F1');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (2,'BRAY','Vincent','F2');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (3,'GAUTHIER','Rémy','F3');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (4,'ALBERT','Emile','F4');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (5,'TRAORE','Gérard','F5');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (6,'LABBE','Joseph','F6');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (7,'HUET','Aurélie','F7');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (8,'ANTOINE','Philippe','F8');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (9,'LAROCHE','Susanne','F9');
-INSERT INTO `Formateur`(`IDFormateur`, `Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (10,'MARY','Alex','F10');
-
 
 -- Table Formation
 
@@ -113,23 +99,22 @@ INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `Dat
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (11,'2021-08-16','2022-03-31',12,6,6);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (12,'2021-02-16','2021-08-16',13,6,6);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (13,'2019-05-31','2020-02-18',14,7,7);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (14,'2020-02-31','2020-10-31',15,7,7);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (14,'2020-02-20','2020-10-31',15,7,7);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (15,'2021-04-01','2021-12-05',16,8,8);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (16,'2021-12-15','2022-07-18',17,8,8);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (17,'2020-10-16','2021-06-10',18,9,9);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (18,'2021-06-15','2022-02-28',19,9,9);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',20,10,10);
--- INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (20,'2022-06-26','2022-12-23',1,10,10);
 
 -- =========================================Table jure========================================
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (1,'Martin','Marguerite','true',1,1,11); 
+VALUES (1,'Martin','Marguerite','true','true',1,1,11); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (2,'Thérèse', 'Garcia','true',2,2,12); 
+VALUES (2,'Thérèse', 'Garcia','true','true',2,2,12); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (3,'Riquier','Bruce','true','true'3,3,13); 
+VALUES (3,'Riquier','Bruce','true','true',3,3,13); 
 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
@@ -153,7 +138,7 @@ VALUES (9,'Course','Sydney','true','false',9,9,19);
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (10,'Samson','Thomas','true','false',10,10,20); 
--- Reprendre à partir d'ici.
+
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (11,' Wagner','René','true','false',11,11,21); 
 
