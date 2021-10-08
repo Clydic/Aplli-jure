@@ -174,10 +174,12 @@ VALUES (14,'Leroux','Margaret','true','true',14,14,24);
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (15,'Berger','Grégoire','false','false',15,15,25); 
 
+
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (16,'Bruneau','Honoré','true','false',16,16,26); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) VALUES (17,'Benoit','Vasseur','true','false',17,17,27); 
+
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (18,'Pelletier','Rémy','true','false',18,18,28); 
