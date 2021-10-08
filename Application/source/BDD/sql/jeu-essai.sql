@@ -32,7 +32,27 @@ INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (28,'192, allée de la Taule',NULL, 14840,'Démouville',0658741238,'PelletierRemy@yahoo.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (29,'1, rue du Grand Tableau',NULL,14730,'Giberville',0687489632,'FabreAdélaide@gmail.com');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (30,'41, avenue du pot Peinture', 'Batiment 2, étage 8, porte 5', 14100, 'Glos', 0614852369,'CharrierLouis@free.fr');
-
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (31,'8,Rue Léopold Sédar-Senghor' , NULL, 14460, 'Colombelles', 0650319158,'Pack.Digital@free.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (32,'9, rue Raymonde Bail',NULL,14000,'CAEN',0261100520,'cins@orange.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (33,'17 rue Victor Hugo',NULL,14700, 'Falaise',0231905329',contact@inno-reseaux.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (34,'497 Rue Delamare-Deboutteville ',NULL,76160,'SAINT-MARTIN-DU-VIVIER',0231592828,'contact@saoc.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (35,120 , 'Impasse des Mûriers',NULL,50110,'TOURLAVILLE',0233439146,'bst-normandie@sfr.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (36,'ZI de Montilly',14250 ,NULL,'TILLY-SUR-SEULLES',0231915501,'contact@tch-normandie.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (37,'181 rue de la flammèche',NULL,76450,'OURVILLE EN CAUX',0672145835,'l-atelier-des-bosses@outlook.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (38,'ZA route de Rouen',NULL,76400,'TOUSSAINT','contact@2mv-car.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (39,'8 rue du Canal', NULL, 76380,'Canteleu',76380,'mace-renault@wanadoo.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (40,'route de gace','la ferte fresnel',61550,'LA FERE EN OUCHE',0233344450,'normandie.liftingautomobile@orange.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (41, 'Le Moulin Foulon',NULL,50150,'SOURDEVALE',0233584588,'contact@normandietransport.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (42,'ZAC EST 18 rue Abo Volo',NULL,14120,'MONDEVILLE',0231358545,'contact@normandielogistique.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (43,'5592 AV DE GLATTBACH',NULL,14760,'BRETTVILLE-SUR-ODON',0892976200,'contact@allaincetp.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (44,'1 route de Malto','RD 147',14320,'FEUGUEROLLES BULLY',0663691343,'contact@samandco-tp.com');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (45,NULL,);
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (46,NULL,);
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (47,'90 rue de Geole',NULL,14000,'CAEN','0231152879','ju.stechezmoi@yahoo.com');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (48,"ZA De L'etoile-Mondevill",NULL,14120,'CAEN',0231354949,'les3brasseurs14@les3brasseursmondeville.fr' );
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (49,'ZA Rue des Renards ',NULL,76190,'SAINTE MARIE DES CHAMPS',0235562253,'contact@lsfroid.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (50,'Rue de la Grande Epine',NULL,76800,'SAINT ETIENNE DU ROUVRAY',0235728514,'contact@froidservice-agille.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (,NULL,);
 
 -- Table SessionExamen
 
@@ -156,8 +176,10 @@ VALUES (15,'Berger','Grégoire',0,0,15,15,25);
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (16,'Bruneau','Honoré',1,0,16,16,26); 
 
+
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (17,'Benoit','Vasseur',1,0,17,17,27); 
+
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (18,'Pelletier','Rémy',1,0,18,18,28); 
@@ -180,14 +202,14 @@ INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (7,"L'atelier des bosses",37);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (8,"2MV Cars",38);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (9,"Macé",39);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (10,"Des Essart",40);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (11,"Kompass",41);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (12,"Réseaux-express",42);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (10,"Normandie Lifting Automobiles",40);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (11,"Normandie Transport",41);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (12,"Normandie Logistique",42);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (13,"Alliance TP ",43);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (14,"SAM & CO TP SARL ",44);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (15,"",45);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (16,"",46);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (17,"Juste Chez vous",47);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (17,"JUS'TE CHEZ MOI",47);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (18,"Les 3 Brasseurs",48);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (19,"Lsfroid",49);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (20,"Froid servic Lagille",50);
