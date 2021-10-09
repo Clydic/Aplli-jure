@@ -289,3 +289,8 @@ INSERT INTO `Connaitre`(`IDTechnologie`, `IDJure`) VALUES
 (16,10),
 (1,10),
 (9,10);
+
+-- Table superviser
+
+INSERT INTO `Superviser`(`IDSessionExam`, `IDJure`, `Reponse`) VALUES 
+(2,)
