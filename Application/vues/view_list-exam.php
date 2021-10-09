@@ -7,8 +7,11 @@
 				<td>DWWM08</td>
 				<td>18/02/2023</td>
 				<td>
-					<input class="btn btn-lg btn-info fs-2"type="button" value="info">
-					<input class="btn btn-lg btn-danger fs-2"type="button" value="supprimer">
+					<input class="btn btn-lg btn-info fs-2"
+					type="button" value="info">
+
+					<input class="btn btn-lg btn-danger fs-2"
+					type="button" value="supprimer">
 				</td>
 			</tr>
 			<tr>
