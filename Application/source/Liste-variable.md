@@ -7,3 +7,13 @@
 ## Liste des fonctions
 
 ## Liste des classes
+ SessionExamen
+* propriété
+	* private $id
+	* private $date
+* méthode
+	* `__construct(int $idExam, string $date)`
+	* `getId()`
+	* `getDateExamen()`
+	* `setId()`
+	* setDateExamen()`
