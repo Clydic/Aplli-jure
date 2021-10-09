@@ -34,25 +34,24 @@ INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (30,'41, avenue du pot Peinture', 'Batiment 2, étage 8, porte 5', 14100, 'Glos', 0614852369,'CharrierLouis@free.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (31,'8,Rue Léopold Sédar-Senghor' , NULL, 14460, 'Colombelles', 0650319158,'Pack.Digital@free.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (32,'9, rue Raymonde Bail',NULL,14000,'CAEN',0261100520,'cins@orange.fr');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (33,'17 rue Victor Hugo',NULL,14700, 'Falaise',0231905329',contact@inno-reseaux.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (33,'17 rue Victor Hugo',NULL,14700, 'Falaise',0231905329,'contact@inno-reseaux.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (34,'497 Rue Delamare-Deboutteville ',NULL,76160,'SAINT-MARTIN-DU-VIVIER',0231592828,'contact@saoc.fr');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (35,120 , 'Impasse des Mûriers',NULL,50110,'TOURLAVILLE',0233439146,'bst-normandie@sfr.fr');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (36,'ZI de Montilly',14250 ,NULL,'TILLY-SUR-SEULLES',0231915501,'contact@tch-normandie.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (35,'120 Impasse des Mûriers',NULL,50110,'TOURLAVILLE',0233439146,'bst-normandie@sfr.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (36,'ZI de Montilly',NULL,14250,'TILLY-SUR-SEULLES',0231915501,'contact@tch-normandie.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (37,'181 rue de la flammèche',NULL,76450,'OURVILLE EN CAUX',0672145835,'l-atelier-des-bosses@outlook.fr');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (38,'ZA route de Rouen',NULL,76400,'TOUSSAINT','contact@2mv-car.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (38,'ZA route de Rouen',NULL,76400,'TOUSSAINT',0234022557,'contact@2mv-car.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (39,'8 rue du Canal', NULL, 76380,'Canteleu',76380,'mace-renault@wanadoo.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (40,'route de gace','la ferte fresnel',61550,'LA FERE EN OUCHE',0233344450,'normandie.liftingautomobile@orange.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (41, 'Le Moulin Foulon',NULL,50150,'SOURDEVALE',0233584588,'contact@normandietransport.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (42,'ZAC EST 18 rue Abo Volo',NULL,14120,'MONDEVILLE',0231358545,'contact@normandielogistique.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (43,'5592 AV DE GLATTBACH',NULL,14760,'BRETTVILLE-SUR-ODON',0892976200,'contact@allaincetp.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (44,'1 route de Malto','RD 147',14320,'FEUGUEROLLES BULLY',0663691343,'contact@samandco-tp.com');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (45,NULL,);
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (46,NULL,);
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (45," Rue de l'Homme de Bois",NULL,14600,'HONFLEUR',0231895400,'musee.eugeneboudin@wanadoo.fr');
+INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (46,'BP 9 - LE PONT SUD',NULL,61450,'LA FERRIERE AUX ETANGS',0233366905,'voyage.croupis@wanadoo.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (47,'90 rue de Geole',NULL,14000,'CAEN','0231152879','ju.stechezmoi@yahoo.com');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (48,"ZA De L'etoile-Mondevill",NULL,14120,'CAEN',0231354949,'les3brasseurs14@les3brasseursmondeville.fr' );
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (49,'ZA Rue des Renards ',NULL,76190,'SAINTE MARIE DES CHAMPS',0235562253,'contact@lsfroid.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (50,'Rue de la Grande Epine',NULL,76800,'SAINT ETIENNE DU ROUVRAY',0235728514,'contact@froidservice-agille.fr');
-INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (,NULL,);
 
 -- Table SessionExamen
 
@@ -207,8 +206,8 @@ INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (12,"Normandie Logistique",42);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (13,"Alliance TP ",43);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (14,"SAM & CO TP SARL ",44);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (15,"",45);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (16,"",46);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (15,"Le musée d'Honfleur",45);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (16,"SARL VOYAGES COUPRIS",46);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (17,"JUS'TE CHEZ MOI",47);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (18,"Les 3 Brasseurs",48);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (19,"Lsfroid",49);
@@ -219,3 +218,74 @@ INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES
 
 INSERT INTO `Utilisateur`(`IDUtilisateur`, `Identifiant`, `Mot_de_passe`, `TypeUtilisateur`) VALUES (1,"IronMan","mdp","Administrateur");
 INSERT INTO `Utilisateur`(`IDUtilisateur`, `Identifiant`, `Mot_de_passe`, `TypeUtilisateur`) VALUES (2,"dBIN","mdp","Formateur");
+
+
+--Table Habilitation
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(1, 'DWWM', '2016-10-28', '2021-10-28', 1);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(2, 'DWWM', '2018-08-08', '2023-08-08', 1);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(3, 'TRI', '2015-02-14', '2020-02-14', 2);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(4, 'TRI', '2020-08-15', '2025-08-15', 2);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(6, 'CDR', '2021-03-03', '2026-03-03', 3);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(7, 'CDR', '2017-03-26', '2022-03-26', 3);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(8, 'CaRe', '2020-09-25', '2025-09-25', 4);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(9, 'CaRe', '2017-04-13', '2022-04-13', 4);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(10, 'PeCa', '2019-12-25', '2024-12-25', 5);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(11, 'PeCa', '2014-01-01', '2014-01-01', 5);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(12, 'CHLI', '2014-05-03', '2019-05-03', 6);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(13, 'CHLI', '2021-10-08', '2026-10-08', 6);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(14, 'CEGO', '2021-02-23', '2026-02-23', 7);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(15, 'CEGO', '2018-04-21', '2023-04-21', 7);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(16, 'RETO', '2014-01-06', '2019-01-06', 8);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(17, 'RETO', '2018-04-04', '2023-04-04', 8);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(18, 'SERE', '2018-11-02', '2023-11-02', 9);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(19, 'SERE', '2019-07-14', '2024-07-14', 9);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(20, 'TFC', '2021-11-10', '2026-10-11', 10);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(21, 'TFC', '2017-05-09', '2022-05-09', 10);
+
+-- Table Technologie
+
+INSERT INTO `Technologie`(`IDTechnologie`, `Nom_de_la_Technologie`) VALUES
+(1,"PHP"),
+(2,"Javascript"),
+(3,'MySQL'),
+(4,"Fibre optique"),
+(5,"Wifi"),
+(6,"Soudure"),
+(7,"Cuivre"),
+(8,"Inox"),
+(9,"Pastique de Carroserie"),
+(10,"Transporteur de palette"),
+(11,"Grue"),
+(12,"Tracteur-Pelleteus"),
+(13,"Bureautique"),
+(14,"Galetière"),
+(15,"Four industrielle"),
+(16,"Climatisation à l'Azote");
+
+-- Table connaitre
+INSERT INTO `Connaitre`(`IDTechnologie`, `IDJure`) VALUES
+(1,1),
+(2,1),
+(3,1),
+(1,2),
+(2,2),
+(3,3),
+(1,3),
+(5,4),
+(13,4),
+(16,4),
+(6,5),
+(10,5),
+(1,6),
+(7,6),
+(15,6),
+(16,6),
+(11,7),
+(10,7),
+(12,7),
+(13,8),
+(14,8),
+(15,9),
+(16,10),
+(1,10),
+(9,10);
