@@ -225,7 +225,6 @@ INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidat
 INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(2, 'DWWM', '2018-08-08', '2023-08-08', 1);
 INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(3, 'TRI', '2015-02-14', '2020-02-14', 2);
 INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(4, 'TRI', '2020-08-15', '2025-08-15', 2);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(5, 'DWWM', '2016-06-21', '2021-06-21', 1);
 INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(6, 'CDR', '2021-03-03', '2026-03-03', 3);
 INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(7, 'CDR', '2017-03-26', '2022-03-26', 3);
 INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(8, 'CaRe', '2020-09-25', '2025-09-25', 4);
@@ -262,3 +261,31 @@ INSERT INTO `Technologie`(`IDTechnologie`, `Nom_de_la_Technologie`) VALUES
 (14,"Galetière"),
 (15,"Four industrielle"),
 (16,"Climatisation à l'Azote");
+
+-- Table connaitre
+INSERT INTO `Connaitre`(`IDTechnologie`, `IDJure`) VALUES
+(1,1),
+(2,1),
+(3,1),
+(1,2),
+(2,2),
+(3,3),
+(1,3),
+(5,4),
+(13,4),
+(16,4),
+(6,5),
+(10,5),
+(1,6),
+(7,6),
+(15,6),
+(16,6),
+(11,7),
+(10,7),
+(12,7),
+(13,8),
+(14,8),
+(15,9),
+(16,10),
+(1,10),
+(9,10);
