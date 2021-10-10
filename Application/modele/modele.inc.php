@@ -1,5 +1,4 @@
 <?php // modele/modele.inc.php
-	
 	require("classes/CRMJure.class.php");
 	$connection= CRMJures::getConnection();
 	function getListExam($connect)
@@ -23,4 +22,5 @@ foreach($affiche as $line)
 		$line["IDSessionFormation"]."</td>";
 	$message.="<td>".$line["DateSessionExam"]."</td>"
 }
+
 ?>

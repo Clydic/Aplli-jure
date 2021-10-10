@@ -2,7 +2,9 @@
 ## Liste des variables
 ### index.php
 `$action= "accueil"`
+
 `$tabTitle` Le titre dans l'onglet
+
 `$h1Title` Le titre principale de la page
 `$connection=CRMJures::getConnection()`
 
