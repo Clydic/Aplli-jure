@@ -34,13 +34,13 @@
 
 		/* Get the id
 		 * @return int
-		 */
-		public function getId() return $this->id;
+		 **/
+		public function getId() {return $this->id;}
 
 		/* Get the date of Examen
 		 * @return int
 		 */
-		public function getDateExamen() return $this->date;
+		public function getDateExamen() {return $this->date; }
 
 
 		// --------------------------------------------------------------------------
@@ -61,7 +61,7 @@
 		 *Set the date of SessionExamen it is public
 		 *@param int $dateToSet
 		 * */
-		private function setDateExamen(string $dateToSet)
+		public function setDateExamen(string $dateToSet)
 		{	
 			$exp="/^\d{4}\-\d{2}\-\d{2}$/";
 			if(preg_match($exp))
@@ -78,5 +78,13 @@
 		// --------------------------------------------------------------------------
 		// |                           Other Methods                                |
 		// --------------------------------------------------------------------------
+
+
+		public function __toString() :string
+		{
+			return "L'identifian de cette session d'examen est " . 
+				$this->getId() . " et sa date est le " . $this->getDateExamen() 
+				."<br/>\n"; 
+		}
 	}
 ?>
