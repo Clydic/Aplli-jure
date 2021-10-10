@@ -31,10 +31,8 @@
 					<input class="btn btn-lg btn-danger fs-2"type="button" value="supprimer">
 			</tr>
 		</table> -->
-		<table>
-<?php
-	for($i)
-?>
+		 <table class="container col-12 fs-2 mt-5 table table-striped table-secondary mb-3">
+<?php echo $listExamen;?>
 		</table>
 	</main>
 

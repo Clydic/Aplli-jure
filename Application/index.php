@@ -1,7 +1,10 @@
 <?php // index.php 
-	$action="accueil";
+	require_once("modele/modele.inc.php");
+	require_once("classes/MgrSessionExamen.class.php");
+	require_once("classes/CRMJure.class.php");
+	$connection= CRMJures::getConnection();
+	$action="listExam";//"accueil";
 	$logo="source/index.png";
-	require("modele/modele.inc.php");
 	print_r($action);
 	echo "Get : "; print_r($_GET);
 
@@ -35,6 +38,7 @@
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Gestion des sessions d'examen";
+			$listExamen =getListExam($connection);
 			require("vues/view_header.php");			
 			require("vues/view_list-exam.php");			
 			require("vues/view_footer.php");

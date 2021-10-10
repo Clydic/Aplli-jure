@@ -1,6 +1,4 @@
 <?php // modele/modele.inc.php
-<<<<<<< HEAD
-=======
 	
 	require("classes/CRMJure.class.php");
 	$connection= CRMJures::getConnection();
@@ -15,15 +13,21 @@
 		$cursor = $connect->query($sql);
 		$result = $cursor->fetchAll();
 		
-		return $result;	
+		$message = "";
+		foreach($result as $line)
+		{
+			$message.="<tr><td>".$line["Intitule_de_formation"].
+				$line["IDSessionFormation"]."</td>";
+			$message.="<td>".$line["DateSessionExam"]."</td>".
+				"<td>
+					<input class=\"btn btn-lg btn-info fs-2\"
+					type=\"button\" value=\"info\">
+
+					<input class=\"btn btn-lg btn-danger fs-2\"
+					type=\"button\" value=\"supprimer\">
+				</td>";
+			
+		}
+		return $message;	
 	}
-$affiche =getListExam($connection);
-$message = ""
-foreach($affiche as $line)
-{
-	$message.="<tr><td>".$line["Intitule_de_formation"].
-		$line["IDSessionFormation"]."</td>";
-	$message.="<td>".$line["DateSessionExam"]."</td>"
-}
->>>>>>> Cedric
 ?>
