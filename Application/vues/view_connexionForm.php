@@ -3,7 +3,7 @@
         <h1 class="text-center">Se connecter en tant que Formateur</h1>
     </div>
     <div id="divConnexionFormateur" class="row align-self-center text-center col-md-6">
-        <form action="" method="get">
+        <form action="" method="GET">
             <input type="text" name="user" placeholder="Votre nom d'utilisateur"><br><br>
             <input type="password" name="password" placeholder="Votre mot de passe"><br><br>
             <input type="Submit" value="Se Connecter" class="text-center">
