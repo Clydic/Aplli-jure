@@ -1,7 +1,11 @@
 <?php // index.php 
+	require_once("modele/modele.inc.php");
+	require_once("classes/MgrSessionExamen.php");
+	require_once("classes/CRMJures.class.php");
+	$logo="source/index.jpg";
+	$connection= CRMJures::getConnection();
 	$action="accueil";
 	$logo="source/index.png";
-	require("modele/modele.inc.php");
 	print_r($action);
 	echo "Get : "; print_r($_GET);
 
