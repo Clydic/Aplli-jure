@@ -1,4 +1,5 @@
 <?php // modele/modele.inc.php
+	
 	require("classes/CRMJure.class.php");
 	$connection= CRMJures::getConnection();
 	function getListExam($connect)
