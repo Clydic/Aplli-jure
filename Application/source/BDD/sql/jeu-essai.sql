@@ -125,72 +125,72 @@ INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `Dat
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (18,'2021-06-15','2022-02-28',19,9,9);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',20,10,10);
 
--- =========================================Table jure========================================
-INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (1,'Martin','Marguerite','true','true',1,1,11); 
+-- Table Jure
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (2,'Thérèse', 'Garcia','true','true',2,2,12); 
+VALUES (1,'Martin','Marguerite',1,1,1,1,11); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (3,'Riquier','Bruce','true','true',3,3,13); 
-
-
-INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (4,'Denis','Xavier','true','false',4,4,14); 
+VALUES (2,'Thérèse', 'Garcia',1,1,2,2,12); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (5,'Charlebois','Patricia','true','false',5,5,15); 
+VALUES (3,'Riquier','Bruce',1,1,3,3,13); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (6,'Mainville','Avent','false','true',6,6,16); 
+VALUES (4,'Denis','Xavier',1,0,4,4,14); 
+
+INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
+VALUES (5,'Charlebois','Patricia',1,0,5,5,15); 
+
+INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
+VALUES (6,'Mainville','Avent',0,1,6,6,16); 
   
+INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
+VALUES (7,'Bordeaux','Rosemarie',0,1,7,7,17); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (7,'Bordeaux','Rosemarie','false','true',7,7,17); 
+VALUES (8,'Lamothe','Elodie',1,1,8,8,18); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (8,'Lamothe','Elodie','true','true',8,8,18); 
+VALUES (9,'Course','Sydney',1,0,9,9,19); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (9,'Course','Sydney','true','false',9,9,19); 
+VALUES (10,'Samson','Thomas',1,0,10,10,20); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (10,'Samson','Thomas','true','false',10,10,20); 
+VALUES (11,' Wagner','René',1,0,11,11,21); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (11,' Wagner','René','true','false',11,11,21); 
+VALUES (12,'Lefevre','Nath',1,0,12,12,22); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (12,'Lefevre','Nath','true','false',12,12,22); 
+VALUES (13,'Galler','Valérie',0,1,13,13,23); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (13,'Galler','Valérie','false','true',13,13,23); 
+VALUES (14,'Leroux','Margaret',1,1,14,14,24); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (14,'Leroux','Margaret','true','true',14,14,24); 
+VALUES (15,'Berger','Grégoire',0,0,15,15,25); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (15,'Berger','Grégoire','false','false',15,15,25); 
-
-
-INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (16,'Bruneau','Honoré','true','false',16,16,26); 
-
-INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) VALUES (17,'Benoit','Vasseur','true','false',17,17,27); 
+VALUES (16,'Bruneau','Honoré',1,0,16,16,26); 
 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (18,'Pelletier','Rémy','true','false',18,18,28); 
+VALUES (17,'Benoit','Vasseur',1,0,17,17,27); 
+
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (19,'Fabre','Adélaide','true','false',19,19,29); 
+VALUES (18,'Pelletier','Rémy',1,0,18,18,28); 
 
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
-VALUES (20,'Charrier','Louis','true','true',20,20,30); 
+VALUES (19,'Fabre','Adélaide',1,0,19,19,29); 
+
+INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
+VALUES (20,'Charrier','Louis',1,1,20,20,30); 
 
 
--- =============================================================ENTREPRISE============================================================
+-- Table Entreprise
 
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (1,"Pack digital",31);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (2,"CINS",32);
@@ -212,7 +212,6 @@ INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (18,"Les 3 Brasseurs",48);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (19,"Lsfroid",49);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (20,"Froid servic Lagille",50);
-
 
 
 -- Table Utilisateur
