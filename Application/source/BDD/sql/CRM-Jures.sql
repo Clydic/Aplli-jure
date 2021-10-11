@@ -10,7 +10,7 @@
 CREATE TABLE Coordonnees(
         IDCoordonnee Int  Auto_increment  NOT NULL ,
         Adresse1     Varchar (50) NOT NULL ,
-        Adresse2     Varchar (50)  ,
+        Adresse2     Varchar (50) ,
         Code_Postale Int NOT NULL ,
         Ville        Varchar (50) NOT NULL ,
         Telephone    Int NOT NULL ,
@@ -26,7 +26,7 @@ CREATE TABLE Coordonnees(
 CREATE TABLE Formateur(
         IDFormateur         Int  Auto_increment  NOT NULL ,
         Nom_du_formateur    Varchar (50) NOT NULL ,
-        Prenom_du_Formateur Varchar (5) NOT NULL ,
+        Prenom_du_Formateur Varchar (50) NOT NULL ,
         IDCoordonnee        Int
 	,CONSTRAINT Formateur_PK PRIMARY KEY (IDFormateur)
 
@@ -75,9 +75,10 @@ CREATE TABLE Technologie(
 #------------------------------------------------------------
 
 CREATE TABLE Utilisateur(
-        IDUtilisateur Int  Auto_increment  NOT NULL ,
-        Identifiant   Varchar (50) NOT NULL ,
-        Mot_de_passe  Varchar (50) NOT NULL
+        IDUtilisateur   Int  Auto_increment  NOT NULL ,
+        Identifiant     Varchar (50) NOT NULL ,
+        Mot_de_passe    Varchar (50) NOT NULL ,
+        TypeUtilisateur Varchar (50) NOT NULL
 	,CONSTRAINT Utilisateur_PK PRIMARY KEY (IDUtilisateur)
 )ENGINE=InnoDB;
 
@@ -139,8 +140,8 @@ CREATE TABLE Jure(
         IDJure            Int  Auto_increment  NOT NULL ,
         NomJures          Varchar (50) NOT NULL ,
         PrenomJures       Varchar (50) NOT NULL ,
-        Visible_sur_Ceres Bool NOT NULL ,
-        Visible_sur_Valce Bool NOT NULL ,
+        Visible_sur_Ceres Boolean NOT NULL ,
+        Visible_sur_Valce Boolean NOT NULL ,
         IDHabilitation    Int ,
         IDEntreprise      Int ,
         IDCoordonnee      Int
@@ -179,5 +180,4 @@ CREATE TABLE Superviser(
 	,CONSTRAINT Superviser_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
 	,CONSTRAINT Superviser_Jure0_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
 )ENGINE=InnoDB;
-
 
