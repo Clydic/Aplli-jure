@@ -21,7 +21,7 @@
 	* `getDateExamen()`
 	* `setId()`
 	* setDateExamen()` 
-###CRMJures
+### CRMJures
 * propriétés
 	* `private static $connection`
 * méthode
