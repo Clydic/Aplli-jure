@@ -6,7 +6,8 @@
 `$tabTitle` Le titre dans l'onglet
 
 `$h1Title` Le titre principale de la page
-`$connection=CRMJures::getConnection()`
+
+`$connection=CRMJures::getConnection()` La variable de connection
 
 ## Liste des fonctions
 
