@@ -3,7 +3,7 @@
 	require_once("classes/MgrSessionExamen.class.php");
 	require_once("classes/CRMJure.class.php");
 	$connection= CRMJures::getConnection();
-	$action="listExam";//"accueil";
+	$action="accueil";//"accueil";
 	$logo="source/index.png";
 	print_r($action);
 	echo "Get : "; print_r($_GET);
