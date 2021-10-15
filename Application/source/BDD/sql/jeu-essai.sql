@@ -294,3 +294,4 @@ INSERT INTO `Connaitre`(`IDTechnologie`, `IDJure`) VALUES
 
 -- INSERT INTO `Superviser`(`IDSessionExam`, `IDJure`, `Reponse`) VALUES 
 -- (2,)
+a)TwLCx02]ve$g~"$sLz

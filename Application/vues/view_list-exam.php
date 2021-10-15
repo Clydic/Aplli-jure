@@ -1,38 +1,16 @@
 <!--vues/view_list-exam.php-->
-	<main class=" bg-light  pt-2 h-50 mt-3">
-		<h2 class="text-center">Liste des sessions d'examen</h2>
-		<!-- <table class="container col-12 fs-2 mt-5 table table-striped table-secondary mb-3">
+	<main class=" bg-light  pt-2 mt-3">
+		<h2 class=" text-center">Liste des sessions d'examen</h2>
+		<div class="overflow-auto h-25">
 
-			<tr>
-				<td>DWWM08</td>
-				<td>18/02/2023</td>
-				<td>
-					<input class="btn btn-lg btn-info fs-2"
-					type="button" value="info">
-
-					<input class="btn btn-lg btn-danger fs-2"
-					type="button" value="supprimer">
-				</td>
-			</tr>
-			<tr>
-
-				<td>DWWM09</td>
-				<td>17/06/2023</td>
-				<td>
-					<input class="btn btn-lg btn-info fs-2"type="button" value="info">
-					<input class="btn btn-lg btn-danger fs-2"type="button" value="supprimer">
-			</tr>
-			<tr>
-
-				<td>Chaudr22</td>
-				<td>31/02/-2033</td>
-				<td>
-					<input class="btn btn-lg btn-info fs-2"type="button" value="info">
-					<input class="btn btn-lg btn-danger fs-2"type="button" value="supprimer">
-			</tr>
-		</table> -->
-		 <table class="container col-12 fs-2 mt-5 table table-striped table-secondary mb-3">
+			<table class=" container col-12  mt-5  
+			fs-4 table table-striped table-dark mb-3">
 <?php echo $listExamen;?>
-		</table>
+			</table>
+		</div>
+		<div class="d-flex jusitfy-content-center mt-1">
+
+			<a class="btn btn-info m-auto" href="#" role="button">Ajouter</a>
+		</div>	
 	</main>
 
