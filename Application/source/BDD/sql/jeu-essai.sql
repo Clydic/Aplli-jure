@@ -125,8 +125,60 @@ INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `Dat
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (18,'2021-06-15','2022-02-28',19,9,9);
 INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',20,10,10);
 
--- Table Jure
 
+-- Table Entreprise
+
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (1,"Pack digital",31);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (2,"CINS",32);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (3,"Inno réseaux",33);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (4,"Socacom",34);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (5,"BST-Normandie",35);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (6,"TCH",36);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (7,"L'atelier des bosses",37);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (8,"2MV Cars",38);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (9,"Macé",39);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (10,"Normandie Lifting Automobiles",40);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (11,"Normandie Transport",41);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (12,"Normandie Logistique",42);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (13,"Alliance TP ",43);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (14,"SAM & CO TP SARL ",44);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (15,"Le musée d'Honfleur",45);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (16,"SARL VOYAGES COUPRIS",46);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (17,"JUS'TE CHEZ MOI",47);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (18,"Les 3 Brasseurs",48);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (19,"Lsfroid",49);
+INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (20,"Froid servic Lagille",50);
+
+
+-- Table Utilisateur
+
+INSERT INTO `Utilisateur`(`IDUtilisateur`, `Identifiant`, `Mot_de_passe`, `TypeUtilisateur`) VALUES (1,"IronMan","mdp","Administrateur");
+INSERT INTO `Utilisateur`(`IDUtilisateur`, `Identifiant`, `Mot_de_passe`, `TypeUtilisateur`) VALUES (2,"dBIN","mdp","Formateur");
+
+
+-- Table Habilitation
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(1, 'DWWM', '2016-10-28', '2021-10-28', 1);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(2, 'DWWM', '2018-08-08', '2023-08-08', 1);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(3, 'TRI', '2015-02-14', '2020-02-14', 2);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(4, 'TRI', '2020-08-15', '2025-08-15', 2);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(5, 'TFC', '2017-05-09', '2022-05-09', 10);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(6, 'CDR', '2021-03-03', '2026-03-03', 3);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(7, 'CDR', '2017-03-26', '2022-03-26', 3);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(8, 'CaRe', '2020-09-25', '2025-09-25', 4);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(9, 'CaRe', '2017-04-13', '2022-04-13', 4);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(10, 'PeCa', '2019-12-25', '2024-12-25', 5);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(11, 'PeCa', '2014-01-01', '2014-01-01', 5);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(12, 'CHLI', '2014-05-03', '2019-05-03', 6);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(13, 'CHLI', '2021-10-08', '2026-10-08', 6);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(14, 'CEGO', '2021-02-23', '2026-02-23', 7);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(15, 'CEGO', '2018-04-21', '2023-04-21', 7);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(16, 'RETO', '2014-01-06', '2019-01-06', 8);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(17, 'RETO', '2018-04-04', '2023-04-04', 8);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(18, 'SERE', '2018-11-02', '2023-11-02', 9);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(19, 'SERE', '2019-07-14', '2024-07-14', 9);
+INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(20, 'TFC', '2021-11-10', '2026-10-11', 10);
+
+-- Table Jure
 INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Visible_sur_Valce`, `IDHabilitation`, `IDEntreprise`, `IDCoordonnee`) 
 VALUES (1,'Martin','Marguerite',1,1,1,1,11); 
 
@@ -190,58 +242,6 @@ INSERT INTO `Jure`(`IDJure`, `NomJures`, `PrenomJures`, `Visible_sur_Ceres`, `Vi
 VALUES (20,'Charrier','Louis',1,1,20,20,30); 
 
 
--- Table Entreprise
-
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (1,"Pack digital",31);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (2,"CINS",32);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (3,"Inno réseaux",33);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (4,"Socacom",34);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (5,"BST-Normandie",35);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (6,"TCH",36);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (7,"L'atelier des bosses",37);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (8,"2MV Cars",38);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (9,"Macé",39);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (10,"Normandie Lifting Automobiles",40);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (11,"Normandie Transport",41);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (12,"Normandie Logistique",42);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (13,"Alliance TP ",43);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (14,"SAM & CO TP SARL ",44);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (15,"Le musée d'Honfleur",45);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (16,"SARL VOYAGES COUPRIS",46);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (17,"JUS'TE CHEZ MOI",47);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (18,"Les 3 Brasseurs",48);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (19,"Lsfroid",49);
-INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (20,"Froid servic Lagille",50);
-
-
--- Table Utilisateur
-
-INSERT INTO `Utilisateur`(`IDUtilisateur`, `Identifiant`, `Mot_de_passe`, `TypeUtilisateur`) VALUES (1,"IronMan","mdp","Administrateur");
-INSERT INTO `Utilisateur`(`IDUtilisateur`, `Identifiant`, `Mot_de_passe`, `TypeUtilisateur`) VALUES (2,"dBIN","mdp","Formateur");
-
-
---Table Habilitation
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(1, 'DWWM', '2016-10-28', '2021-10-28', 1);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(2, 'DWWM', '2018-08-08', '2023-08-08', 1);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(3, 'TRI', '2015-02-14', '2020-02-14', 2);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(4, 'TRI', '2020-08-15', '2025-08-15', 2);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(6, 'CDR', '2021-03-03', '2026-03-03', 3);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(7, 'CDR', '2017-03-26', '2022-03-26', 3);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(8, 'CaRe', '2020-09-25', '2025-09-25', 4);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(9, 'CaRe', '2017-04-13', '2022-04-13', 4);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(10, 'PeCa', '2019-12-25', '2024-12-25', 5);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(11, 'PeCa', '2014-01-01', '2014-01-01', 5);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(12, 'CHLI', '2014-05-03', '2019-05-03', 6);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(13, 'CHLI', '2021-10-08', '2026-10-08', 6);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(14, 'CEGO', '2021-02-23', '2026-02-23', 7);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(15, 'CEGO', '2018-04-21', '2023-04-21', 7);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(16, 'RETO', '2014-01-06', '2019-01-06', 8);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(17, 'RETO', '2018-04-04', '2023-04-04', 8);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(18, 'SERE', '2018-11-02', '2023-11-02', 9);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(19, 'SERE', '2019-07-14', '2024-07-14', 9);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(20, 'TFC', '2021-11-10', '2026-10-11', 10);
-INSERT INTO `Habilitation` (`IDHabilitation`, `Titre_Habilitation`, `DateValidation`, `DateExpiration`, `IDFormation`) VALUES(21, 'TFC', '2017-05-09', '2022-05-09', 10);
-
 -- Table Technologie
 
 INSERT INTO `Technologie`(`IDTechnologie`, `Nom_de_la_Technologie`) VALUES
@@ -292,5 +292,5 @@ INSERT INTO `Connaitre`(`IDTechnologie`, `IDJure`) VALUES
 
 -- Table superviser
 
-INSERT INTO `Superviser`(`IDSessionExam`, `IDJure`, `Reponse`) VALUES 
-(2,)
+-- INSERT INTO `Superviser`(`IDSessionExam`, `IDJure`, `Reponse`) VALUES 
+-- (2,)
