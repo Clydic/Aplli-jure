@@ -1,5 +1,7 @@
 <?php // test/test.php 
-	require ("classes/SessionExamen.class.php");
+	require ("../classes/SessionExamen.class.php");
 		$examen1 = new SessionExamen(2,"2019-03-02");
 		echo $examen1;	
+		var_dump($examen1->getId());
+
 ?>

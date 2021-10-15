@@ -9,8 +9,8 @@
 		 *The property $date is the date of SessionExamen
 		 *
 		 * */
-		private int $id;
-		private string $date;
+		private  $id;
+		private $date;
 
 		// --------------------------------------------------------------------------
 		// |                              Constructor                               |
@@ -20,10 +20,11 @@
 		 *@param int $idExamen
 		 *@param int $date
 		 * */
-		public function __consruct(int $idExam, string $date)
+		public function __construct(int $idExam, string $dateExam)
 		{
 			$this->setId($idExam);
-			$this->setDateExamen($date);
+			$this->setDateExamen($dateExam);
+			echo "L'examen est bien créé\n";
 			
 		} 
 
@@ -81,10 +82,11 @@
 
 
 		public function __toString() :string
-		{
-			return "L'identifian de cette session d'examen est " . 
+		{	$msg = "";
+			$msg = "L'identifian de cette session d'examen est " . 
 				$this->getId() . " et sa date est le " . $this->getDateExamen() 
 				."<br/>\n"; 
+			return $msg;
 		}
 	}
 ?>
