@@ -20,10 +20,10 @@
 				$line["IDSessionFormation"]."</td>";
 			$message.="<td>".$line["DateSessionExam"]."</td>".
 				"<td>
-					<input class=\"btn btn-lg btn-info fs-2\"
+					<input class=\"btn btn-sm btn-info \"
 					type=\"button\" value=\"info\">
 
-					<input class=\"btn btn-lg btn-danger fs-2\"
+					<input class=\"btn btn-sm btn-danger \"
 					type=\"button\" value=\"supprimer\">
 				</td>";
 			
