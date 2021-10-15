@@ -10,7 +10,7 @@
 CREATE TABLE Coordonnees(
         IDCoordonnee Int  Auto_increment  NOT NULL ,
         Adresse1     Varchar (50) NOT NULL ,
-        Adresse2     Varchar (50) NOT NULL ,
+        Adresse2     Varchar (50) ,
         Code_Postale Int NOT NULL ,
         Ville        Varchar (50) NOT NULL ,
         Telephone    Int NOT NULL ,
@@ -26,7 +26,7 @@ CREATE TABLE Coordonnees(
 CREATE TABLE Formateur(
         IDFormateur         Int  Auto_increment  NOT NULL ,
         Nom_du_formateur    Varchar (50) NOT NULL ,
-        Prenom_du_Formateur Varchar (5) NOT NULL ,
+        Prenom_du_Formateur Varchar (50) NOT NULL ,
         IDCoordonnee        Int
 	,CONSTRAINT Formateur_PK PRIMARY KEY (IDFormateur)
 
@@ -60,6 +60,63 @@ CREATE TABLE SessionExamen(
 
 
 #------------------------------------------------------------
+# Table: Technologie
+#------------------------------------------------------------
+
+CREATE TABLE Technologie(
+        IDTechnologie         Int  Auto_increment  NOT NULL ,
+        Nom_de_la_Technologie Varchar (50) NOT NULL
+	,CONSTRAINT Technologie_PK PRIMARY KEY (IDTechnologie)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Utilisateur
+#------------------------------------------------------------
+
+CREATE TABLE Utilisateur(
+        IDUtilisateur   Int  Auto_increment  NOT NULL ,
+        Identifiant     Varchar (50) NOT NULL ,
+        Mot_de_passe    Varchar (50) NOT NULL ,
+        TypeUtilisateur Varchar (50) NOT NULL
+	,CONSTRAINT Utilisateur_PK PRIMARY KEY (IDUtilisateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Formation
+#------------------------------------------------------------
+
+CREATE TABLE Formation(
+        IDFormation           Int  Auto_increment  NOT NULL ,
+        Intitule_de_formation Varchar (50) NOT NULL ,
+        IDFormateur           Int
+	,CONSTRAINT Formation_PK PRIMARY KEY (IDFormation)
+
+	,CONSTRAINT Formation_Formateur_FK FOREIGN KEY (IDFormateur) REFERENCES Formateur(IDFormateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Session Formation
+#------------------------------------------------------------
+
+CREATE TABLE Session_Formation(
+        IDSessionFormation Int  Auto_increment  NOT NULL ,
+        DateDebutFormation Date NOT NULL ,
+        DateFinFormation   Date NOT NULL ,
+        IDSessionExam      Int NOT NULL ,
+        IDFormateur        Int ,
+        IDFormation        Int
+	,CONSTRAINT Session_Formation_PK PRIMARY KEY (IDSessionFormation)
+
+	,CONSTRAINT Session_Formation_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
+	,CONSTRAINT Session_Formation_Formateur0_FK FOREIGN KEY (IDFormateur) REFERENCES Formateur(IDFormateur)
+	,CONSTRAINT Session_Formation_Formation1_FK FOREIGN KEY (IDFormation) REFERENCES Formation(IDFormation)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: Habilitation
 #------------------------------------------------------------
 
@@ -67,8 +124,11 @@ CREATE TABLE Habilitation(
         IDHabilitation     Int  Auto_increment  NOT NULL ,
         Titre_Habilitation Varchar (50) NOT NULL ,
         DateValidation     Date NOT NULL ,
-        DateExpiration     Date NOT NULL
+        DateExpiration     Date NOT NULL ,
+        IDFormation        Int NOT NULL
 	,CONSTRAINT Habilitation_PK PRIMARY KEY (IDHabilitation)
+
+	,CONSTRAINT Habilitation_Formation_FK FOREIGN KEY (IDFormation) REFERENCES Formation(IDFormation)
 )ENGINE=InnoDB;
 
 
@@ -94,59 +154,6 @@ CREATE TABLE Jure(
 
 
 #------------------------------------------------------------
-# Table: Technologie
-#------------------------------------------------------------
-
-CREATE TABLE Technologie(
-        IDTechnologie         Int  Auto_increment  NOT NULL ,
-        Nom_de_la_Technologie Varchar (50) NOT NULL
-	,CONSTRAINT Technologie_PK PRIMARY KEY (IDTechnologie)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Utilisateur
-#------------------------------------------------------------
-
-CREATE TABLE Utilisateur(
-        IDUtilisateur Int  Auto_increment  NOT NULL ,
-        Identifiant   Varchar (50) NOT NULL ,
-        Mot_de_passe  Varchar (50) NOT NULL
-	,CONSTRAINT Utilisateur_PK PRIMARY KEY (IDUtilisateur)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Formation
-#------------------------------------------------------------
-
-CREATE TABLE Formation(
-        IDFormation           Int  Auto_increment  NOT NULL ,
-        Intitule_de_formation Varchar (50) NOT NULL
-	,CONSTRAINT Formation_PK PRIMARY KEY (IDFormation)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Session Formation
-#------------------------------------------------------------
-
-CREATE TABLE Session_Formation(
-        IDSessionFormation Int  Auto_increment  NOT NULL ,
-        DateDebutFormation Date NOT NULL ,
-        DateFinFormation   Date NOT NULL ,
-        IDSessionExam      Int NOT NULL ,
-        IDFormateur        Int ,
-        IDFormation        Int
-	,CONSTRAINT Session_Formation_PK PRIMARY KEY (IDSessionFormation)
-
-	,CONSTRAINT Session_Formation_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
-	,CONSTRAINT Session_Formation_Formateur0_FK FOREIGN KEY (IDFormateur) REFERENCES Formateur(IDFormateur)
-	,CONSTRAINT Session_Formation_Formation1_FK FOREIGN KEY (IDFormation) REFERENCES Formation(IDFormation)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Connaitre
 #------------------------------------------------------------
 
@@ -166,10 +173,11 @@ CREATE TABLE Connaitre(
 
 CREATE TABLE Superviser(
         IDSessionExam Int NOT NULL ,
-        IDJure        Int NOT NULL
+        IDJure        Int NOT NULL ,
+        Reponse       Varchar (50) NOT NULL
 	,CONSTRAINT Superviser_PK PRIMARY KEY (IDSessionExam,IDJure)
 
 	,CONSTRAINT Superviser_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
 	,CONSTRAINT Superviser_Jure0_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
 )ENGINE=InnoDB;
--- libreoffice intégrer code
+
