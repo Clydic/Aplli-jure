@@ -5,6 +5,8 @@
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
 	$logo="source/index.png";
+	$logoCRUDFormateur="source/CRUD_Formateur.png";
+	$logoCRUDFormation="source/CRUD_Formation.png";
 	print_r($action);
 	echo "Get : "; print_r($_GET);
 
@@ -41,7 +43,7 @@
 				$tabTitle="Accueil Administrateur";
 				$h1Title="Accueil";
 				require("vues/view_header.php");
-				require("vues/view_navbar.php");				
+				require("vues/view_navbarAdmin.php");				
 				require("vues/view_accueilAdmin.php");			
 				require("vues/view_footer.php");
 			}
@@ -64,6 +66,24 @@
 			{
 				header('Location: index.php?action=connectForm');
 			}
+			break;
+		case 'CRUDFormation':
+			$tabTitle="Gestion Formation";
+			$h1Title="Gestion Formation";
+
+			
+			require("vues/view_header.php");
+			require("vues/view_navbarAdmin.php");				
+			require("vues/view_CRUDFormation.php");			
+			require("vues/view_footer.php");
+			break;
+		case 'CRUDFormateur':
+			$tabTitle="Gestion Formateur";
+			$h1Title="Gestion Formateur";
+			require("vues/view_header.php");
+			require("vues/view_navbarAdmin.php");				
+			require("vues/view_CRUDFormateur.php");			
+			require("vues/view_footer.php");
 			break;
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";
