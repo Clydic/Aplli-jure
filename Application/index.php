@@ -88,7 +88,7 @@
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Gestion des sessions d'examen";
-			$listExamen = getListExam($connection);
+			$listExamen = MgrSessionExamen::getListExam($connection);
 			require("vues/view_header.php");			
 			require("vues/view_navbar.php");
 			require("vues/view_list-exam.php");			
