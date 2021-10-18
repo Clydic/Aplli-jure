@@ -6,6 +6,7 @@
         <form action="" method="GET">
             <input type="text" name="user" placeholder="Votre nom d'utilisateur"><br><br>
             <input type="password" name="password" placeholder="Votre mot de passe"><br><br>
+            <input type="hidden" name="action" value="accueilAdmin">
             <input type="submit" value="Se Connecter" class="text-center">
         </div>
     </div>

@@ -34,11 +34,41 @@
 			require("vues/view_header.php");				
 			require("vues/view_connexionForm.php");			
 			require("vues/view_footer.php");
-			break;			
+			break;		
+		case 'accueilAdmin':
+			if(getConnectAdmin($connection,$_GET['user'],$_GET['password']) == true)
+			{
+				$tabTitle="Accueil Administrateur";
+				$h1Title="Accueil";
+				require("vues/view_header.php");
+				require("vues/view_navbar.php");				
+				require("vues/view_accueilAdmin.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php?action=connectAdmin');
+			}
+			break;
+		case 'accueilForm':
+			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
+			{
+				$tabTitle="Accueil Formateur";
+				$h1Title="Accueil";
+				require("vues/view_header.php");
+				require("vues/view_navbar.php");				
+				require("vues/view_accueilForm.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php?action=connectForm');
+			}
+			break;
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Gestion des sessions d'examen";
-			$listExamen =getListExam($connection);
+			$listExamen = getListExam($connection);
 			require("vues/view_header.php");			
 			require("vues/view_navbar.php");
 			require("vues/view_list-exam.php");			
