@@ -75,9 +75,7 @@
 					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
 				</td>
 				<td>
-					<a href=\"\"><i class=\"fas fa-minus-circle bg-danger\">
-					</i></a>
-				
+					<a href=\"\"><i class=\"fas fa-minus-circle bg-danger\"></i></a>
 				</td>";
 			
 		}
