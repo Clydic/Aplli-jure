@@ -5,8 +5,6 @@
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
 	$logo="source/index.png";
-	$logoCRUDFormateur="source/CRUD_Formateur.png";
-	$logoCRUDFormation="source/CRUD_Formation.png";
 	print_r($action);
 	echo "Get : "; print_r($_GET);
 
@@ -42,6 +40,8 @@
 			{
 				$tabTitle="Accueil Administrateur";
 				$h1Title="Accueil";
+				$logoCRUDFormateur="source/CRUD_Formateur.png";
+				$logoCRUDFormation="source/CRUD_Formation.png";
 				require("vues/view_header.php");
 				require("vues/view_navbarAdmin.php");				
 				require("vues/view_accueilAdmin.php");			
@@ -70,8 +70,7 @@
 		case 'CRUDFormation':
 			$tabTitle="Gestion Formation";
 			$h1Title="Gestion Formation";
-
-			
+			$listFormation = getListFormation($connection);
 			require("vues/view_header.php");
 			require("vues/view_navbarAdmin.php");				
 			require("vues/view_CRUDFormation.php");			
@@ -80,6 +79,7 @@
 		case 'CRUDFormateur':
 			$tabTitle="Gestion Formateur";
 			$h1Title="Gestion Formateur";
+			$listFormateur = getListFormateur($connection);
 			require("vues/view_header.php");
 			require("vues/view_navbarAdmin.php");				
 			require("vues/view_CRUDFormateur.php");			
