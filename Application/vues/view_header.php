@@ -16,6 +16,8 @@
 	<body >
 		<div class="bg-center " id="wrapper">
 			<header class="d-flex  flex-column flex-md-row flex-md-nowrap bg-light mb-1 border border-3">
-				<img class=" img-fluid column-6" src="<?php echo $logo; ?>" alt="Le logo de l'AFPA">
+				<a href="index.php"><img class=" img-fluid column-6" src="<?php echo $logo; ?>" alt="Le logo de l'AFPA"></a>
 				<h1 class="  m-auto  text-center column-6"><?php echo $h1Title; ?> </h1>
 			</header>
+			<hr width="100%">
+		
