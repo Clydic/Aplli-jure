@@ -5,25 +5,28 @@
 		// |                              Properties                                |
 		// --------------------------------------------------------------------------
 		/*
-		 *The property $id is the Id of SessionExamen
-		 *The property $date is the date of SessionExamen
+		 *The property $IDSessionFormation is the Id of SessionExamen
+		 *The property $DateSessionExam is the DateSessionExam of SessionExamen
 		 *
 		 * */
-		private  $id;
-		private $date;
+		private $Intitule_de_formation;
+		private  $IDSessionFormation;
+		private $DateSessionExam;
 
 		// --------------------------------------------------------------------------
 		// |                              Constructor                               |
 		// --------------------------------------------------------------------------
 
 		/*We construct the object SessionExamen
-		 *@param int $idExamen
-		 *@param int $date
+		 *@param int $IDSessionFormationExamen
+		 *@param int $DateSessionExam
 		 * */
-		public function __construct(int $idExam, string $dateExam)
+		public function __construct(string $Intitule_de_formation,  $IDSession, string $DateSession)
 		{
-			$this->setId($idExam);
-			$this->setDateExamen($dateExam);
+			$this->setId($IDSession);
+			$this->setDateExamen($DateSession);
+			$this->setIntiTuleFormation($Intitule_de_formation);
+			
 			echo "L'examen est bien créé\n";
 			
 		} 
@@ -33,15 +36,21 @@
 		// --------------------------------------------------------------------------
 
 
-		/* Get the id
+		/* Get the IDSessionFormation
 		 * @return int
 		 **/
-		public function getId() {return $this->id;}
+		public function getId() {return $this->IDSessionFormation;}
 
-		/* Get the date of Examen
+		/* Get the DateSessionExam of Examen
 		 * @return int
 		 */
-		public function getDateExamen() {return $this->date; }
+		public function getDateExamen() {return $this->DateSessionExam; }
+
+
+		/* Get the intitule of of formation.
+		 * @return int
+		 */
+		public function getIntituleFormation() {return $this->Intitule_de_formation; }
 
 
 		// --------------------------------------------------------------------------
@@ -49,30 +58,38 @@
 		// --------------------------------------------------------------------------
 
 		/*
-		 *Set the id of SessionExamen it is private
-		 *@param int $idToSet
+		 *Set the IDSessionFormation of SessionExamen it is private
+		 *@param int $IDSessionFormationToSet
 		 * */
-		private function setId(int $idToSet)
+		private function setId( $IDSessionFormationToSet)
 		{
-			$this->id=$idToSet;
+			$this->IDSessionFormation=$IDSessionFormationToSet;
 		}
 
 
 		/*
-		 *Set the date of SessionExamen it is public
-		 *@param int $dateToSet
+		 *Set the DateSessionExam of SessionExamen it is public
+		 *@param int $DateSessionExamToSet
 		 * */
-		public function setDateExamen(string $dateToSet)
+		public function setDateExamen(string $DateSessionExamToSet)
 		{	
 			$exp="/^\d{4}\-\d{2}\-\d{2}/";
-			if(preg_match($exp,$dateToSet))
+			if(preg_match($exp,$DateSessionExamToSet))
 			{
-				$this->date=$dateToSet;
+				$this->DateSessionExam=$DateSessionExamToSet;
 			}			
-			return "La date doit être au format aaaa-mm-jj";
+			return "La DateSessionExam doit être au format aaaa-mm-jj";
 		}
 
 		
+		/*
+		 *Set the intitle of Formation of SessionExamen it is private
+		 *@param int $intituleToSet
+		 * */
+		private function setIntituleFormation(string $intituleToSet)
+		{
+			$this->Intitule_de_formation=$intituleToSet;
+		}
 
 
 
@@ -83,8 +100,8 @@
 
 		public function __toString() :string
 		{	$msg = "";
-			$msg = "L'identifian de cette session d'examen est " . 
-				$this->getId() . " et sa date est le " . $this->getDateExamen() 
+			$msg = "L'intitule de la formation est : ". $this->getIntituleFormation()." L'IDSessionFormationentifiant de cette session d'examen est " . 
+				$this->getId() . " et sa DateSessionExam est le " . $this->getDateExamen() 
 				."<br/>\n"; 
 			return $msg;
 		}

@@ -1,7 +1,29 @@
 <?php // modele/modele.inc.php
 	
 	require("classes/CRMJure.class.php");
-
+	require ("classes/MgrSessionExamen.class.php");
+	function getListExam($connect)
+	{
+		$array_of_result = MgrSessionExamen::getListExam($connect);
+		$message="";
+		foreach($array_of_result as $line)
+		{
+			$message.="<tr><td>".$line["Intitule_de_formation"].
+				$line["IDSessionFormation"]."</td>";
+			$message.="<td>".$line["DateSessionExam"]."</td>".
+				"<td>
+					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
+				</td>
+				<td>
+					<a href=\"\"><i class=\"fas fa-minus-circle bg-danger\">
+					</i></a>
+				
+				</td>";
+			
+		}
+		
+		return $message;	
+	}
 
 	function getConnectAdmin($connect,$user,$pass) : bool
 	{	
