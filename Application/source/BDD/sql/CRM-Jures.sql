@@ -49,6 +49,25 @@ CREATE TABLE Entreprise(
 
 
 #------------------------------------------------------------
+# Table: Juré
+#------------------------------------------------------------
+
+CREATE TABLE Jure(
+        IDJure            Int  Auto_increment  NOT NULL ,
+        NomJures          Varchar (50) NOT NULL ,
+        PrenomJures       Varchar (50) NOT NULL ,
+        Visible_sur_Ceres Bool NOT NULL ,
+        Visible_sur_Valce Bool NOT NULL ,
+        IDEntreprise      Int ,
+        IDCoordonnee      Int
+	,CONSTRAINT Jure_PK PRIMARY KEY (IDJure)
+
+	,CONSTRAINT Jure_Entreprise_FK FOREIGN KEY (IDEntreprise) REFERENCES Entreprise(IDEntreprise)
+	,CONSTRAINT Jure_Coordonnees0_FK FOREIGN KEY (IDCoordonnee) REFERENCES Coordonnees(IDCoordonnee)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: SessionExamen
 #------------------------------------------------------------
 
@@ -133,27 +152,6 @@ CREATE TABLE Habilitation(
 
 
 #------------------------------------------------------------
-# Table: Juré
-#------------------------------------------------------------
-
-CREATE TABLE Jure(
-        IDJure            Int  Auto_increment  NOT NULL ,
-        NomJures          Varchar (50) NOT NULL ,
-        PrenomJures       Varchar (50) NOT NULL ,
-        Visible_sur_Ceres Boolean NOT NULL ,
-        Visible_sur_Valce Boolean NOT NULL ,
-        IDHabilitation    Int ,
-        IDEntreprise      Int ,
-        IDCoordonnee      Int
-	,CONSTRAINT Jure_PK PRIMARY KEY (IDJure)
-
-	,CONSTRAINT Jure_Habilitation_FK FOREIGN KEY (IDHabilitation) REFERENCES Habilitation(IDHabilitation)
-	,CONSTRAINT Jure_Entreprise0_FK FOREIGN KEY (IDEntreprise) REFERENCES Entreprise(IDEntreprise)
-	,CONSTRAINT Jure_Coordonnees1_FK FOREIGN KEY (IDCoordonnee) REFERENCES Coordonnees(IDCoordonnee)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Connaitre
 #------------------------------------------------------------
 
@@ -168,6 +166,19 @@ CREATE TABLE Connaitre(
 
 
 #------------------------------------------------------------
+# Table: Posseder
+#------------------------------------------------------------
+
+CREATE TABLE Posseder(
+        IDJure         Int NOT NULL ,
+        IDHabilitation Int NOT NULL
+	,CONSTRAINT Posseder_PK PRIMARY KEY (IDJure,IDHabilitation)
+
+	,CONSTRAINT Posseder_Jure_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
+	,CONSTRAINT Posseder_Habilitation0_FK FOREIGN KEY (IDHabilitation) REFERENCES Habilitation(IDHabilitation)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
 # Table: Superviser
 #------------------------------------------------------------
 
@@ -180,4 +191,3 @@ CREATE TABLE Superviser(
 	,CONSTRAINT Superviser_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
 	,CONSTRAINT Superviser_Jure0_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
 )ENGINE=InnoDB;
-
