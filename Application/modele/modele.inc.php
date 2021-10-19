@@ -133,7 +133,8 @@
 		{	$id=$line['IDSessionFormation'];
 			$intitule=$line['Intitule_de_formation'];
 			// Put the results of request in a select list
-			$message.="<option value=".$id.">".$intitule.$id."</option><br/>";
+			$message.="<option value=".$id.">".$intitule.$id
+			."</option><br/>";
 
 							
 			
