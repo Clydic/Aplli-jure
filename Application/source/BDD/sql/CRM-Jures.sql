@@ -68,17 +68,6 @@ CREATE TABLE Jure(
 
 
 #------------------------------------------------------------
-# Table: SessionExamen
-#------------------------------------------------------------
-
-CREATE TABLE SessionExamen(
-        IDSessionExam   Int  Auto_increment  NOT NULL ,
-        DateSessionExam Date NOT NULL
-	,CONSTRAINT SessionExamen_PK PRIMARY KEY (IDSessionExam)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Technologie
 #------------------------------------------------------------
 
@@ -86,19 +75,6 @@ CREATE TABLE Technologie(
         IDTechnologie         Int  Auto_increment  NOT NULL ,
         Nom_de_la_Technologie Varchar (50) NOT NULL
 	,CONSTRAINT Technologie_PK PRIMARY KEY (IDTechnologie)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Utilisateur
-#------------------------------------------------------------
-
-CREATE TABLE Utilisateur(
-        IDUtilisateur   Int  Auto_increment  NOT NULL ,
-        Identifiant     Varchar (50) NOT NULL ,
-        Mot_de_passe    Varchar (50) NOT NULL ,
-        TypeUtilisateur Varchar (50) NOT NULL
-	,CONSTRAINT Utilisateur_PK PRIMARY KEY (IDUtilisateur)
 )ENGINE=InnoDB;
 
 
@@ -124,14 +100,26 @@ CREATE TABLE Session_Formation(
         IDSessionFormation Int  Auto_increment  NOT NULL ,
         DateDebutFormation Date NOT NULL ,
         DateFinFormation   Date NOT NULL ,
-        IDSessionExam      Int NOT NULL ,
         IDFormateur        Int ,
         IDFormation        Int
 	,CONSTRAINT Session_Formation_PK PRIMARY KEY (IDSessionFormation)
 
-	,CONSTRAINT Session_Formation_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
-	,CONSTRAINT Session_Formation_Formateur0_FK FOREIGN KEY (IDFormateur) REFERENCES Formateur(IDFormateur)
-	,CONSTRAINT Session_Formation_Formation1_FK FOREIGN KEY (IDFormation) REFERENCES Formation(IDFormation)
+	,CONSTRAINT Session_Formation_Formateur_FK FOREIGN KEY (IDFormateur) REFERENCES Formateur(IDFormateur)
+	,CONSTRAINT Session_Formation_Formation0_FK FOREIGN KEY (IDFormation) REFERENCES Formation(IDFormation)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: SessionExamen
+#------------------------------------------------------------
+
+CREATE TABLE SessionExamen(
+        IDSessionExam      Int  Auto_increment  NOT NULL ,
+        DateSessionExam    Date NOT NULL ,
+        IDSessionFormation Int NOT NULL
+	,CONSTRAINT SessionExamen_PK PRIMARY KEY (IDSessionExam)
+
+	,CONSTRAINT SessionExamen_Session_Formation_FK FOREIGN KEY (IDSessionFormation) REFERENCES Session_Formation(IDSessionFormation)
 )ENGINE=InnoDB;
 
 
@@ -148,6 +136,19 @@ CREATE TABLE Habilitation(
 	,CONSTRAINT Habilitation_PK PRIMARY KEY (IDHabilitation)
 
 	,CONSTRAINT Habilitation_Formation_FK FOREIGN KEY (IDFormation) REFERENCES Formation(IDFormation)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: _Utilisateur
+#------------------------------------------------------------
+
+CREATE TABLE _Utilisateur(
+        IDUtilisateur   Int  Auto_increment  NOT NULL ,
+        Identifiant     Varchar (50) NOT NULL ,
+        Mot_de_passe    Varchar (50) NOT NULL ,
+        TypeUtilisateur Varchar (50) NOT NULL
+	,CONSTRAINT _Utilisateur_PK PRIMARY KEY (IDUtilisateur)
 )ENGINE=InnoDB;
 
 
@@ -178,6 +179,7 @@ CREATE TABLE Posseder(
 	,CONSTRAINT Posseder_Habilitation0_FK FOREIGN KEY (IDHabilitation) REFERENCES Habilitation(IDHabilitation)
 )ENGINE=InnoDB;
 
+
 #------------------------------------------------------------
 # Table: Superviser
 #------------------------------------------------------------
@@ -188,6 +190,4 @@ CREATE TABLE Superviser(
         Reponse       Varchar (50) NOT NULL
 	,CONSTRAINT Superviser_PK PRIMARY KEY (IDSessionExam,IDJure)
 
-	,CONSTRAINT Superviser_SessionExamen_FK FOREIGN KEY (IDSessionExam) REFERENCES SessionExamen(IDSessionExam)
-	,CONSTRAINT Superviser_Jure0_FK FOREIGN KEY (IDJure) REFERENCES Jure(IDJure)
 )ENGINE=InnoDB;
