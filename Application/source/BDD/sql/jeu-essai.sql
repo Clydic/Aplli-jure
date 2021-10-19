@@ -53,27 +53,6 @@ INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (49,'ZA Rue des Renards ',NULL,76190,'SAINTE MARIE DES CHAMPS',0235562253,'contact@lsfroid.fr');
 INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (50,'Rue de la Grande Epine',NULL,76800,'SAINT ETIENNE DU ROUVRAY',0235728514,'contact@froidservice-agille.fr');
 
--- Table SessionExamen
-
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (3,'2022-10-12');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (4,'2022-03-26');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (5,'2021-08-19');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (6,'2021-08-13');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (7,'2022-03-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (8,'2021-01-16');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (9,'2021-09-13');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (10,'2022-03-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (11,'2022-12-18');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (12,'2022-03-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (13,'2021-08-14');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (14,'2020-02-16');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (15,'2020-10-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (16,'2021-12-06');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (17,'2022-07-16');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (18,'2021-06-08');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (19,'2022-02-28');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (20,'2022-06-22');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (02,'2022-02-16');
 
 
 -- Table Formateur
@@ -105,29 +84,53 @@ INSERT INTO `Formation`(`IDFormation`, `Intitule_de_formation`, `IDFormateur`) V
 
 -- Table SessionFormation
 
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (1,'2021-05-31','2022-02-18',2,1,1);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (2,'2022-01-05','2022-10-14',3,1,1);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (3,'2021-09-17','2022-03-28',4,2,2);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (4,'2020-12-01','2021-08-21',5,2,2);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (5,'2021-01-31','2021-08-15',6,3,3);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (6,'2021-08-16','2022-03-31',7,3,3);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (7,'2020-05-16','2021-01-18',8,4,4);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (8,'2021-01-25','2021-09-15',9,4,4);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (9,'2021-08-16','2022-03-31',10,5,5);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (10,'2022-04-15','2022-12-20',11,5,5);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (11,'2021-08-16','2022-03-31',12,6,6);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (12,'2021-02-16','2021-08-16',13,6,6);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (13,'2019-05-31','2020-02-18',14,7,7);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (14,'2020-02-20','2020-10-31',15,7,7);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (15,'2021-04-01','2021-12-05',16,8,8);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (16,'2021-12-15','2022-07-18',17,8,8);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (17,'2020-10-16','2021-06-10',18,9,9);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (18,'2021-06-15','2022-02-28',19,9,9);
-INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`, `IDSessionExam`, `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',20,10,10);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (1,'2021-05-31','2022-02-18',1,1);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (2,'2022-01-05','2022-10-14',1,1);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (3,'2021-09-17','2022-03-28',2,2);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (4,'2020-12-01','2021-08-21',2,2);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (5,'2021-01-31','2021-08-15',3,3);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (6,'2021-08-16','2022-03-31',3,3);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (7,'2020-05-16','2021-01-18',4,4);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (8,'2021-01-25','2021-09-15',4,4);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (9,'2021-08-16','2022-03-31',5,5);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (10,'2022-04-15','2022-12-20',5,5);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (11,'2021-08-16','2022-03-31',6,6);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (12,'2021-02-16','2021-08-16',6,6);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (13,'2019-05-31','2020-02-18',7,7);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (14,'2020-02-20','2020-10-31',7,7);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (15,'2021-04-01','2021-12-05',8,8);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (16,'2021-12-15','2022-07-18',8,8);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (17,'2020-10-16','2021-06-10',9,9);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (18,'2021-06-15','2022-02-28',9,9);
+INSERT INTO `Session_Formation`(`IDSessionFormation`, `DateDebutFormation`, `DateFinFormation`,  `IDFormateur`, `IDFormation`) VALUES (19,'2022-01-16','2022-06-24',10,10);
 
 
--- Table Entreprise
+-- Table SessionExamen
 
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`,`IDSessionFormation`) VALUES 
+(3,'2022-10-12',2),
+(4,'2022-03-26',3),
+(5,'2021-08-19',4),
+(6,'2021-08-13',5),
+(7,'2022-03-29',6),
+(8,'2021-01-16',7),
+(9,'2021-09-13',8),
+(10,'2022-03-299',9),
+(11,'2022-12-18',10),
+(12,'2022-03-29',11),
+(13,'2021-08-14',12),
+(14,'2020-02-16',13),
+(15,'2020-10-29',14),
+(16,'2021-12-06',15),
+(17,'2022-07-16',16),
+(18,'2021-06-08',17),
+(19,'2022-02-28',18),
+(20,'2022-06-22',19),
+(2,'2022-02-16',1);
+                 
+                 
+-- Table Entrepri,se
+                 
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (1,"Pack digital",31);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (2,"CINS",32);
 INSERT INTO `Entreprise`(`IDEntreprise`, `NomEntreprise`, `IDCoordonnee`) VALUES (3,"Inno réseaux",33);
