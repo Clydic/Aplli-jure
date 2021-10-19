@@ -1,7 +1,7 @@
 <?php // index.php 
 	require_once("modele/modele.inc.php");
 	require_once("classes/MgrSessionExamen.class.php");
-	require_once("classes/CRMJure.class.php");
+	require_once("classes/CRMJures.class.php");
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
 	$connect=NULL;
@@ -110,11 +110,13 @@
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Gestion des sessions d'examen";
-			$listExamen = getListExam($connection);
+			// $listExamen = getListExam($connection);
+			$list_formation = getListSessionFormation($connection);
 			require("vues/view_header.php");			
 			require("vues/view_navbar.php");
-			require("vues/view_list-exam.php");			
+			require("vues/view_ajout_session_examen.php");			
 			//require("vues/view_info-examen.php");			
+			
 			require("vues/view_footer.php");
 			break;			
 	}

@@ -1,6 +1,6 @@
 <?php // modele/modele.inc.php
 	
-	require("classes/CRMJure.class.php");
+	// require("classes/CRMJures.class.php");
 	require ("classes/MgrSessionExamen.class.php");
 	function getListExam($connect)
 	{
@@ -103,4 +103,26 @@
 		}
 		return $message;
 	}
+
+
+	
+        function getListSessionFormation($connect)
+        {
+			$sql="SELECT formation.Intitule_de_formation , session_formation.IDSessionFormation FROM formation
+				JOIN session_formation ON session_formation.IDFormation=formation.IDFormation";
+            $cursor = $connect->query($sql);
+            $result = $cursor->fetchAll();
+			$message=   "<option selected>Sélectionner une session</option><br>";
+		foreach($result as $line)
+		{	$id=$line['IDSessionFormation'];
+			$intitule=$line['Intitule_de_formation'];
+			$message.="<option value=".$id.">".$intitule.$id."</option><br/>";
+
+							
+			
+		}
+		
+		return $message;	
+	}
+        
 ?>
