@@ -5,6 +5,8 @@
         </table>
     </div>
     <div class="d-flex jusitfy-content-center mt-1">
+
 		<a class="btn btn-info m-auto" href="index.php?action=AjoutFormateur" role="button">Ajouter</a>
 	</div>		
 </main>
+

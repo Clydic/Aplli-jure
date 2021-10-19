@@ -114,6 +114,7 @@
 			require("vues/view_header.php");			
 			require("vues/view_navbar.php");
 			require("vues/view_list-exam.php");			
+			//require("vues/view_info-examen.php");			
 			require("vues/view_footer.php");
 			break;			
 	}
