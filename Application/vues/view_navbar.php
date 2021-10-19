@@ -23,7 +23,7 @@
 		  <a class="nav-link" href="#">Liste des jurés</a>
 		</li>
 		<li class="nav-item active">
-		  <a class="nav-link" href="#">Gestion des sessions d'examen</a>
+		  <a class="nav-link" href="index.php?action=listExam">Gestion des sessions d'examen</a>
 		</li>
 	      </ul>
 	    </div>

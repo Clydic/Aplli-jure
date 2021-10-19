@@ -55,25 +55,25 @@ INSERT INTO `Coordonnees`(`IDCoordonnee`, `Adresse1`, `Adresse2`, `Code_Postale`
 
 -- Table SessionExamen
 
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (2,'2022-10-12');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (3,'2022-03-26');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (4,'2021-08-19');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (5,'2021-08-13');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (6,'2022-03-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (7,'2021-01-16');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (8,'2021-09-13');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (9,'2022-03-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (10,'2022-12-18');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (11,'2022-03-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (12,'2021-08-14');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (13,'2020-02-16');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (14,'2020-10-29');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (15,'2021-12-06');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (16,'2022-07-16');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (17,'2021-06-08');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (18,'2022-02-28');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (19,'2022-06-22');
-INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (20,'2022-12-21');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (3,'2022-10-12');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (4,'2022-03-26');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (5,'2021-08-19');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (6,'2021-08-13');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (7,'2022-03-29');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (8,'2021-01-16');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (9,'2021-09-13');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (10,'2022-03-29');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (11,'2022-12-18');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (12,'2022-03-29');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (13,'2021-08-14');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (14,'2020-02-16');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (15,'2020-10-29');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (16,'2021-12-06');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (17,'2022-07-16');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (18,'2021-06-08');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (19,'2022-02-28');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (20,'2022-06-22');
+INSERT INTO `SessionExamen`(`IDSessionExam`, `DateSessionExam`) VALUES (02,'2022-02-16');
 
 
 -- Table Formateur
