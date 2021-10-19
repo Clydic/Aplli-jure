@@ -4,12 +4,17 @@
 	require_once("classes/CRMJure.class.php");
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
+	$connect=NULL;
 	$logo="source/index.png";
 	print_r($action);
 	echo "Get : "; print_r($_GET);
 
 	if (isset($_GET['action'])) {
         $action = $_GET['action'];
+    }
+
+	if (isset($_GET['connect'])) {
+        $connect = $_GET['connect'];
     }
 
 	switch($action)
@@ -24,6 +29,10 @@
 		case 'connectAdmin':
 			$tabTitle="Connexion Adminstrateur";
 			$h1Title="Connexion";
+			if($connect == false)
+			{
+				echo "<script>alert(\"Utilisateur ou Mot de passe incorrect\");</script>";
+			}
 			require("vues/view_header.php");				
 			require("vues/view_connexionAdmin.php");			
 			require("vues/view_footer.php");
@@ -31,6 +40,10 @@
 		case 'connectForm':
 			$tabTitle="Connexion Formateur";
 			$h1Title="Connexion";
+			if($connect == false)
+			{
+				echo "<script>alert(\"Utilisateur ou Mot de passe incorrect\");</script>";
+			}
 			require("vues/view_header.php");				
 			require("vues/view_connexionForm.php");			
 			require("vues/view_footer.php");
@@ -49,7 +62,7 @@
 			}
 			else
 			{
-				header('Location: index.php?action=connectAdmin');
+				header('Location: index.php?action=connectAdmin&connect=false');
 			}
 			break;
 		case 'accueilForm':
@@ -64,7 +77,7 @@
 			}
 			else
 			{
-				header('Location: index.php?action=connectForm');
+				header('Location: index.php?action=connectForm&connect=false');
 			}
 			break;
 		case 'CRUDFormation':
@@ -85,6 +98,15 @@
 			require("vues/view_CRUDFormateur.php");			
 			require("vues/view_footer.php");
 			break;
+
+		case 'AjoutFormateur':
+			$tabTitle="Gestion Formateur";
+			$h1Title="Gestion Formateur";
+			require("vues/view_header.php");		
+			require("vues/view_AjoutFormateur.php");			
+			require("vues/view_footer.php");
+			break;
+
 		case'listExam':
 			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Gestion des sessions d'examen";
