@@ -7,7 +7,7 @@
 	$connect=NULL;
 	$logo="source/index.png";
 	print_r($action);
-	echo "Get : "; print_r($_GET);
+	echo " Get : "; print_r($_GET);
 
 	if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -17,9 +17,12 @@
         $connect = $_GET['connect'];
     }
 
+	var_dump($_SESSION["role"]);
+
 	switch($action)
 	{
 		case 'accueil':
+			$_SESSION["role"] = "";
 			$tabTitle="Accueil";
 			$h1Title="Accueil";
 			require("vues/view_header.php");				
@@ -29,7 +32,7 @@
 		case 'connectAdmin':
 			$tabTitle="Connexion Adminstrateur";
 			$h1Title="Connexion";
-			if($connect == false)
+			if($connect == "NON")
 			{
 				echo "<script>alert(\"Utilisateur ou Mot de passe incorrect\");</script>";
 			}
@@ -40,7 +43,7 @@
 		case 'connectForm':
 			$tabTitle="Connexion Formateur";
 			$h1Title="Connexion";
-			if($connect == false)
+			if($connect == "NON")
 			{
 				echo "<script>alert(\"Utilisateur ou Mot de passe incorrect\");</script>";
 			}
@@ -62,7 +65,7 @@
 			}
 			else
 			{
-				header('Location: index.php?action=connectAdmin&connect=false');
+				header('Location: index.php?action=connectAdmin&connect=NON');
 			}
 			break;
 		case 'accueilForm':
@@ -77,47 +80,75 @@
 			}
 			else
 			{
-				header('Location: index.php?action=connectForm&connect=false');
+				header('Location: index.php?action=connectForm&connect=NON');
 			}
 			break;
 		case 'CRUDFormation':
-			$tabTitle="Gestion Formation";
-			$h1Title="Gestion Formation";
-			$listFormation = getListFormation($connection);
-			require("vues/view_header.php");
-			require("vues/view_navbarAdmin.php");				
-			require("vues/view_CRUDFormation.php");			
-			require("vues/view_footer.php");
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+			{
+				$tabTitle="Gestion Formation";
+				$h1Title="Gestion Formation";
+				$listFormation = getListFormation($connection);
+				require("vues/view_header.php");
+				require("vues/view_navbarAdmin.php");				
+				require("vues/view_CRUDFormation.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+			
 			break;
 		case 'CRUDFormateur':
-			$tabTitle="Gestion Formateur";
-			$h1Title="Gestion Formateur";
-			$listFormateur = getListFormateur($connection);
-			require("vues/view_header.php");
-			require("vues/view_navbarAdmin.php");				
-			require("vues/view_CRUDFormateur.php");			
-			require("vues/view_footer.php");
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+			{
+				$tabTitle="Gestion Formateur";
+				$h1Title="Gestion Formateur";
+				$listFormateur = getListFormateur($connection);
+				require("vues/view_header.php");
+				require("vues/view_navbarAdmin.php");				
+				require("vues/view_CRUDFormateur.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+			
 			break;
 
 		case 'AjoutFormateur':
-			$tabTitle="Gestion Formateur";
-			$h1Title="Gestion Formateur";
-			require("vues/view_header.php");		
-			require("vues/view_AjoutFormateur.php");			
-			require("vues/view_footer.php");
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+			{
+				$tabTitle="Gestion Formateur";
+				$h1Title="Gestion Formateur";
+				require("vues/view_header.php");		
+				require("vues/view_AjoutFormateur.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php');
+			}
 			break;
 
 		case'listExam':
-			$tabTitle="Gestion des sessions d'examen";
-			$h1Title="Gestion des sessions d'examen";
-			// $listExamen = getListExam($connection);
-			$list_formation = getListSessionFormation($connection);
-			require("vues/view_header.php");			
-			require("vues/view_navbar.php");
-			require("vues/view_ajout_session_examen.php");			
-			//require("vues/view_info-examen.php");			
-			
-			require("vues/view_footer.php");
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Formateur")
+			{
+				$tabTitle="Gestion des sessions d'examen";
+				$h1Title="Gestion des sessions d'examen";
+				$listExamen = getListExam($connection);
+				require("vues/view_header.php");			
+				require("vues/view_navbar.php");
+				require("vues/view_list-exam.php");			
+				//require("vues/view_info-examen.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php');
+			}
 			break;			
 	}
 

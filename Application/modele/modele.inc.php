@@ -2,6 +2,7 @@
 	
 	// require("classes/CRMJures.class.php");
 	require ("classes/MgrSessionExamen.class.php");
+
 	function getListExam($connect)
 	{
 		$array_of_result = MgrSessionExamen::getListExam($connect);
@@ -35,6 +36,7 @@
 		{
 			if($line['identifiant'] == $user && $line['Mot_de_passe'] == $pass)
 			{
+				$_SESSION["role"] = "Admin";
 				return true;
 			}
 		}	
@@ -51,6 +53,7 @@
 		{
 			if($line['identifiant'] == $user && $line['Mot_de_passe'] == $pass)
 			{
+				$_SESSION["role"] = "Formateur";
 				return true;
 			}
 		}	
