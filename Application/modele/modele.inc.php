@@ -3,12 +3,20 @@
 	// require("classes/CRMJures.class.php");
 	require ("classes/MgrSessionExamen.class.php");
 
+	/**
+	 * Get the list of examen in days after the current date
+	 * @param $connect
+	 * @return string $message
+	 */
 	function getListExam($connect)
 	{
+		// Get the list Examen from the MgrsessionExamen
 		$array_of_result = MgrSessionExamen::getListExam($connect);
 		$message="";
+		// Begin the foreach loop on $array_of_result
 		foreach($array_of_result as $line)
 		{
+			// Put the result in a html table
 			$message.="<tr><td>".$line["Intitule_de_formation"].
 				$line["IDSessionFormation"]."</td>";
 			$message.="<td>".$line["DateSessionExam"]."</td>".
@@ -22,7 +30,7 @@
 				</td>";
 			
 		}
-		
+		// return the table with reults	
 		return $message;	
 	}
 
@@ -108,23 +116,29 @@
 	}
 
 
-	
+	/**
+	 * Get the list of Session Formation which are active at the current date
+	 * @param $connect
+	 * @return $message
+	 */
         function getListSessionFormation($connect)
         {
-			$sql="SELECT formation.Intitule_de_formation , session_formation.IDSessionFormation FROM formation
-				JOIN session_formation ON session_formation.IDFormation=formation.IDFormation";
-            $cursor = $connect->query($sql);
+			//Intialisation
+			$sql="CALL prc_LST_listeSessionFormation();";
+			$cursor = $connect->query($sql);
             $result = $cursor->fetchAll();
 			$message=   "<option selected>Sélectionner une session</option><br>";
+		// Traitement 
 		foreach($result as $line)
 		{	$id=$line['IDSessionFormation'];
 			$intitule=$line['Intitule_de_formation'];
+			// Put the results of request in a select list
 			$message.="<option value=".$id.">".$intitule.$id."</option><br/>";
 
 							
 			
 		}
-		
+		// Return the select list
 		return $message;	
 	}
         
