@@ -140,7 +140,7 @@ CREATE TABLE Habilitation(
 
 
 #------------------------------------------------------------
-# Table: _Utilisateur
+# Table: Utilisateur
 #------------------------------------------------------------
 
 CREATE TABLE _Utilisateur(
