@@ -7,7 +7,6 @@
 	$action="accueil";//"accueil";
 	$connect=NULL;
 	$logo="source/index.png";
-	session_start();
 	print_r($action);
 	echo " Get : "; print_r($_GET);
 
