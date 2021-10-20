@@ -187,9 +187,10 @@
 
 		case 'accueilForm':
 			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
-			{
+			{	
 				$tabTitle="Accueil Formateur";
 				$h1Title="Accueil";
+				echo "Je suis dans le case accueilForm";
 				require("vues/view_header.php");
 				require("vues/view_navbar.php");				
 				require("vues/view_accueilForm.php");			

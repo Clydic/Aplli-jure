@@ -29,7 +29,7 @@ DELIMITER $$
 create PROCEDURE `prc_ADD_examen`(date_to_add VARCHAR(10), id_of_session_formation INT(2))
 
 BEGIN
-	INSERT INTO `sessionexamen`( `DateSessionExam`, `IDSessionFormation`) 
+	INSERT INTO `SessionExamen`( `DateSessionExam`, `IDSessionFormation`) 
 	VALUES (date_to_add, id_of_session_formation)
 END 
 DELIMITER ; 
