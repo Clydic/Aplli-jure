@@ -117,6 +117,17 @@
 
 	function addFormateur($connect, $POST)
 	{
+		$sql="SELECT *
+			from Formateur";
+		$cursor = $connect->query($sql);
+		$result = $cursor->fetchAll();
+		foreach($result as $line)
+		{
+			if($line['Nom_du_formateur'] == $POST['Nom'] && $line["Prenom_du_Formateur"] == $POST['Prenom'])
+			{
+				return false;
+			}
+		}
 		try
 		{
 			$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
@@ -124,11 +135,11 @@
         	$result->execute(array(':nom'=>$POST['Nom'],':prenom'=>$POST['Prenom'],':adr1'=>$POST['Adresse1'],
 							   	':adr2'=>$POST['Adresse2'],':postal'=>$POST['CodePostale'],':ville'=>$POST['Ville'],
 							   ':phone'=>$POST['Telephone'],':mail'=>$POST['Mail']));
-			echo 'YOUPI';
+			return true;
 		}
 		catch(Exception $e)
 		{
-			echo "lol";
+			return 'Erreur de Requete SQL';
 		}
 	}
 

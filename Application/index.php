@@ -111,17 +111,33 @@
 			
 			break;
 		case 'FctAjoutFormateur':
-			addFormateur($connection, $_POST);
+			if(addFormateur($connection, $_POST))
+			{
+				$tabTitle="Ajout Formateur";
+				$h1Title="Gestion Formateur";
+				require("vues/view_header.php");		
+				require("vues/view_AjoutReussi.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php?action=AjoutFormateur&msg=doublon');
+			}
 			break;
 
 		case 'AjoutFormateur':
 			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
 			{
+				
 				$tabTitle="Gestion Formateur";
 				$h1Title="Gestion Formateur";
 				require("vues/view_header.php");		
 				require("vues/view_AjoutFormateur.php");			
 				require("vues/view_footer.php");
+				if(isset($_GET['msg']) && $_GET['msg'] == "doublon")
+				{
+					echo "<script>alert(\"Formateur en doublon...\");</script>";
+				}
 			}
 			else
 			{
