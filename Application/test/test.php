@@ -10,7 +10,7 @@
 	// var_dump( MgrSessionExamen::getListExam($connection));
 	$list= getListSessionFormation($connection);
 	// var_dump($list);
-	addExamen($connection,  11, 23/07/2022);
-	addExamen($connection,  12, 2003-02-13);
+	addExamen($connection,  11, '23/07/2022');
+	addExamen($connection,  12, '2003-02-13');
 	
 ?>
