@@ -172,8 +172,9 @@
 			break;			
 
 		case'ajoutExamen':
-			$tabTitle="Ajouter une session d'examen";
+			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Ajouter une session d'examen";
+			$date= "25/06/2021";
 			$list_formation = getListSessionFormation($connection);
 			require("vues/view_header.php");			
 			require("vues/view_navbar.php");
