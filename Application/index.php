@@ -1,12 +1,12 @@
 <?php // index.php 
 	require_once("modele/modele.inc.php");
 	require_once("classes/MgrSessionExamen.class.php");
-	require_once("classes/CRMJure.class.php");
+	require_once("classes/CRMJures.class.php");
 	session_start();
-	$connection = CRMJures::getConnection();
-	$action = "accueil";//"accueil";
-	$connect = "";
-	$logo = "source/index.png";
+	$connection= CRMJures::getConnection();
+	$action="accueil";//"accueil";
+	$connect=NULL;
+	$logo="source/index.png";
 	print_r($action);
 	echo " Get : "; print_r($_GET);
 
@@ -69,21 +69,7 @@
 				header('Location: index.php?action=connectAdmin&connect=NON');
 			}
 			break;
-		case 'accueilForm':
-			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
-			{
-				$tabTitle="Accueil Formateur";
-				$h1Title="Accueil";
-				require("vues/view_header.php");
-				require("vues/view_navbar.php");				
-				require("vues/view_accueilForm.php");			
-				require("vues/view_footer.php");
-			}
-			else
-			{
-				header('Location: index.php?action=connectForm&connect=NON');
-			}
-			break;
+		
 		case 'CRUDFormation':
 			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
 			{
@@ -134,22 +120,39 @@
 			}
 			break;
 
-		case'listExam':
-			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Formateur")
+		case 'accueilForm':
+			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
 			{
-				$tabTitle="Gestion des sessions d'examen";
-				$h1Title="Gestion des sessions d'examen";
-				$listExamen = getListExam($connection);
-				require("vues/view_header.php");			
-				require("vues/view_navbar.php");
-				require("vues/view_list-exam.php");			
-				//require("vues/view_info-examen.php");			
+				$tabTitle="Accueil Formateur";
+				$h1Title="Accueil";
+				require("vues/view_header.php");
+				require("vues/view_navbar.php");				
+				require("vues/view_accueilForm.php");			
 				require("vues/view_footer.php");
 			}
 			else
 			{
-				header('Location: index.php');
+				header('Location: index.php?action=connectForm&connect=false');
 			}
+			break;
+			
+			case'listExam':
+			$tabTitle="Gestion des sessions d'examen";
+			$h1Title="Gestion des sessions d'examen";
+			$listExamen = getListExam($connection);
+			require("vues/view_header.php");			
+			require("vues/view_navbar.php");
+			require("vues/view_list-exam.php");			
+			require("vues/view_footer.php");
+			break;			
+		case'ajoutExamen':
+			$tabTitle="Ajouter une session d'examen";
+			$h1Title="Ajouter une session d'examen";
+			$list_formation = getListSessionFormation($connection);
+			require("vues/view_header.php");			
+			require("vues/view_navbar.php");
+			require("vues/view_ajout_session_examen.php");			
+			require("vues/view_footer.php");
 			break;			
 	}
 
