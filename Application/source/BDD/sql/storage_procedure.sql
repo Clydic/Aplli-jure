@@ -21,7 +21,7 @@ DELIMITER ;
 DELIMITER $$ 
 
 -- We create de procedure which list the examen which arrive
-create PROCEDURE `prc_ADD_examen`(date_to_add DATE, id_of_session_foramtion INT(2))
+create PROCEDURE `prc_ADD_examen`(date_to_add DATE, id_of_session_formation INT(2))
 
 BEGIN
 	INSERT INTO `sessionexamen`( `DateSessionExam`, `IDSessionFormation`) 

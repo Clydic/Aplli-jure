@@ -1,5 +1,5 @@
 <?php // test/test.php 
-	// require("classes/CRMJures.class.php");
+	require("classes/CRMJures.class.php");
 	// require ("classes/SessionExamen.class.php");
 	// require ("classes/MgrSessionExamen.class.php");
 	require ("modele/modele.inc.php");
@@ -9,5 +9,8 @@
 	// var_dump($examen1->getIntituleFormation());
 	// var_dump( MgrSessionExamen::getListExam($connection));
 	$list= getListSessionFormation($connection);
-	var_dump($list);
+	// var_dump($list);
+	addExamen($connection,  11, 23/07/2022);
+	addExamen($connection,  12, 2003-02-13);
+	
 ?>
