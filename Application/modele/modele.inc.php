@@ -83,10 +83,19 @@
 				"<td>
 					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
 				</td>
-				<td>
-					<a href=\"index.php?action=DELFormateur&id=".$line["IDFormateur"]."\"><i class=\"fas fa-minus-circle bg-danger\">
-					</i></a>
-				</td>";
+				<td>";
+
+			$sql="SELECT COUNT(*)
+				from session_formation
+				WHERE IDFormateur = " .$line['IDFormateur'];
+			$cursor = $connect->query($sql); 
+			$result = $cursor->fetchAll();
+
+			if($result[0][0] == 0 || $result[0][0] == NULL)
+			{
+				$message.="<a href=\"index.php?action=DELFormateur&id=".$line["IDFormateur"]."\"><i class=\"fas fa-minus-circle bg-danger\"></i></a>";
+			}
+			$message.= "</td>";
 			
 		}
 		return $message;
