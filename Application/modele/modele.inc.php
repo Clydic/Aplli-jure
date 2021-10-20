@@ -210,31 +210,6 @@
 				// We call the class method of MgrSessionExamen class
 				MgrSessionExamen::addExamen($connect, $idSessionFormation,$dateSessionFormation);
 				$message = "L'ajout est réussis \n<br/>";
-// '<!-- Button trigger modal -->
-// <button type="button" class="btn btn-primary" >
-//   Launch demo modal
-// </button>
-
-// '<!-- Modal -->
-// <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-//   <div class="modal-dialog">
-//     <div class="modal-content">
-//       <div class="modal-header">
-//         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//       </div>
-//       <div class="modal-body">
-// 				Ajout réussis
-//       </div>
-//       <div class="modal-footer">
-//         <button type="button" class="btn btn-primary"></button>
-// 		<a class="btn btn-primary" href="index.php?action=ajoutExamenEffectué" role="button">Save changes</a>
-//       </div>
-//     </div>
-//   </div>
-// </div>';
-
-				// return a message.
 				return $message;
 				
 			}catch(Exception $e) // Display a message if there is an error.
