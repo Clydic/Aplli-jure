@@ -52,7 +52,23 @@ DELIMITER ;
 -- call prc_ADD_examen(12,'2003-02-13');
 
 
+DELIMITER $$
+CREATE PROCEDURE `prc_DEL_Formateur`(id INT)
+BEGIN
+	DELETE FROM `formateur` WHERE IDFormateur = id;
+END$$
+DELIMITER ;
+
 
 -------------------------------------------------------------------------------------------------
 -------------------------------------------TRIGGER-----------------------------------------------
 -------------------------------------------------------------------------------------------------
+
+DELIMITER $$
+CREATE TRIGGER trig_DEL_FORMATEUR
+	AFTER DELETE on formateur
+	FOR EACH ROW
+BEGIN
+	DELETE FROM `coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
+END &&
+DELIMITER ;

@@ -145,6 +145,44 @@
 			}
 			break;
 
+		case 'DELFormateur':
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+			{
+					
+				$tabTitle="Gestion Formateur";
+				$h1Title="Gestion Formateur";
+				$FormSupp = getFormateurByID($connection, $_GET['id']);
+				require("vues/view_header.php");		
+				require("vues/view_DELFormateur.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+			break;
+
+		case 'FctDELFormateur':
+			delFormateur($connection, $_GET['idForm']);
+			header('Location: index.php?action=DELFormateurReussi');
+			break;
+
+		case 'DELFormateurReussi':
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+			{
+					
+				$tabTitle="Gestion Formateur";
+				$h1Title="Gestion Formateur";
+				require("vues/view_header.php");		
+				require("vues/view_DeleteReussi.php");			
+				require("vues/view_footer.php");
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+			break;
+
 		case 'accueilForm':
 			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
 			{
