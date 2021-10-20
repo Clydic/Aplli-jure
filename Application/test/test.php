@@ -1,7 +1,7 @@
 <?php // test/test.php 
 	require("classes/CRMJures.class.php");
 	// require ("classes/SessionExamen.class.php");
-	// require ("classes/MgrSessionExamen.class.php");
+	require ("classes/MgrSessionExamen.class.php");
 	require ("modele/modele.inc.php");
 	// // $examen1 = new SessionExamen("DWWM",2,"2019-03-02");
 	$connection = CRMJures::getConnection();
@@ -10,7 +10,7 @@
 	// var_dump( MgrSessionExamen::getListExam($connection));
 	$list= getListSessionFormation($connection);
 	// var_dump($list);
-	addExamen($connection,  11, '23/07/2022');
-	addExamen($connection,  12, '2003-02-13');
+	// addExamen($connection,  11, '23/07/2022');
+	addExamen($connection,  12, '2023-02-13');
 	
 ?>
