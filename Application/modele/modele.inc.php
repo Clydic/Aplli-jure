@@ -158,6 +158,19 @@
 		}
 		// Return the select list
 		return $message;	
+
 	}
-        
+        function addExamen($connect, $idSessionFormation, $dateSessionFormation)
+		{
+			try{
+				
+				MgrSessionExamen::addExamen($connect, $idSessionFormation,$dateSessionFormation);
+				$message = "L'ajout est réussis \n<br/>";
+				return $message;
+				
+			}catch(Exception $e)
+			{
+				echo "Il y eu un soucis : ".$e->getMessage()."\n<br/>";
+			}
+		}
 ?>

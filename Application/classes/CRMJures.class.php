@@ -25,7 +25,7 @@ class CRMJures {
 		}
 		
 		CRMJures::$connection = $mysqlPDO;
-		echo "Connection établi";
+		echo "Connection établi \n <br/>";
 		
 		return CRMJures::$connection;
 	}
