@@ -72,3 +72,20 @@ BEGIN
 	DELETE FROM `coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
 END &&
 DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `trigVerifExamen` BEFORE INSERT ON `sessionexamen`
+ FOR EACH ROW BEGIN
+	DECLARE doublonExam CONDITION FOR SQLSTATE '45000';
+
+    IF (NEW.IdSessionFormation,NEW.DateSessionExam) 
+		IN (SELECT DateSessionExam ,IdSessionFormation 
+			from sessionexamen ) 
+			THEN 
+        SIGNAL doublonExam
+            SET MESSAGE_TEXT = 'Il ne peut y avoir 2 examens pour une mêm session le même jour', 
+			    MYSQL_ERRNO = 2001;
+    END IF;
+
+END$$
+DELIMITER ;
