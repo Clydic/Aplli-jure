@@ -37,13 +37,13 @@
          */
         public static function addExamen($connect, $idOfSessionFormation, $dateOfSessionExamen)
         {	
-        
+       
             // $sql="CALL prc_ADD_examen();";
             // Initialisation
                 //Get the results of the procedure called prc_ADD_examen
            $connect->query("CALL prc_ADD_examen(
                 $idOfSessionFormation, 
-                $dateOfSessionExamen
+                '$dateOfSessionExamen'
             );");
             return true;
 
