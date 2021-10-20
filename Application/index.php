@@ -5,7 +5,7 @@
 	session_start();
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
-	$connect=NULL;
+	$connect = NULL;
 	$logo="source/index.png";
 	print_r($action);
 	echo " Get : "; print_r($_GET);
@@ -18,7 +18,9 @@
         $connect = $_GET['connect'];
     }
 
-	var_dump($_SESSION["role"]);
+	if (isset($_SESSION["role"])) {
+        var_dump($_SESSION["role"]);
+    }
 
 	switch($action)
 	{
@@ -132,7 +134,7 @@
 			}
 			else
 			{
-				header('Location: index.php?action=connectForm&connect=false');
+				header('Location: index.php?action=connectForm&connect=NON');
 			}
 			break;
 			
@@ -145,6 +147,7 @@
 			require("vues/view_list-exam.php");			
 			require("vues/view_footer.php");
 			break;			
+
 		case'ajoutExamen':
 			$tabTitle="Ajouter une session d'examen";
 			$h1Title="Ajouter une session d'examen";
