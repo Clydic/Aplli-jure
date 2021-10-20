@@ -14,6 +14,10 @@
         $action = $_GET['action'];
     }
 
+	if (isset($_POST['action'])) {
+        $action = $_POST['action'];
+    }
+
 	if (isset($_GET['connect'])) {
         $connect = $_GET['connect'];
     }
@@ -105,6 +109,9 @@
 				header('Location: index.php');
 			}
 			
+			break;
+		case 'FctAjoutFormateur':
+			addFormateur($connection, $_POST);
 			break;
 
 		case 'AjoutFormateur':

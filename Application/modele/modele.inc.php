@@ -115,6 +115,23 @@
 		return $message;
 	}
 
+	function addFormateur($connect, $POST)
+	{
+		try
+		{
+			$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
+			$result = $connect->prepare($sql);
+        	$result->execute(array(':nom'=>$POST['Nom'],':prenom'=>$POST['Prenom'],':adr1'=>$POST['Adresse1'],
+							   	':adr2'=>$POST['Adresse2'],':postal'=>$POST['CodePostale'],':ville'=>$POST['Ville'],
+							   ':phone'=>$POST['Telephone'],':mail'=>$POST['Mail']));
+			echo 'YOUPI';
+		}
+		catch(Exception $e)
+		{
+			echo "lol";
+		}
+	}
+
 
 	/**
 	 * Get the list of Session Formation which are active at the current date

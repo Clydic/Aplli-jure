@@ -13,7 +13,7 @@ CREATE TABLE Coordonnees(
         Adresse2     Varchar (50) ,
         Code_Postale Int NOT NULL ,
         Ville        Varchar (50) NOT NULL ,
-        Telephone    Int NOT NULL ,
+        Telephone    Varchar (10) NOT NULL ,
         Mail         Varchar (50) NOT NULL
 	,CONSTRAINT Coordonnees_PK PRIMARY KEY (IDCoordonnee)
 )ENGINE=InnoDB;
