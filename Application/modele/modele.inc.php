@@ -84,13 +84,30 @@
 					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
 				</td>
 				<td>
-					<a href=\"\"><i class=\"fas fa-minus-circle bg-danger\">
+					<a href=\"index.php?action=DELFormateur&id=".$line["IDFormateur"]."\"><i class=\"fas fa-minus-circle bg-danger\">
 					</i></a>
-				
 				</td>";
 			
 		}
 		return $message;
+	}
+
+	function getFormateurByID($connection, $id)
+	{	
+		$sql="SELECT *
+			from Formateur
+			WHERE IDFormateur = $id";
+		$cursor = $connection->query($sql);
+		$result = $cursor->fetch();
+
+		return $result;
+	}
+
+	function delFormateur($connection, $id)
+	{
+		$sql="CALL prc_DEL_Formateur($id)";
+		$connection->query($sql);
+		return true;
 	}
 
 	function getListFormation($connect)

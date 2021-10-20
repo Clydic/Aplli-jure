@@ -15,7 +15,7 @@
         </div>
         <div class="col-12">
             <input type="hidden" name="action" value="FctAjoutFormateur">
-            <input type="button" value="Retour">
+            <a href="index.php?action=CRUDFormateur"><input type="button" value="Retour"></a>
             <input type="submit" value="Ajouter">
         </div>
     </form>
