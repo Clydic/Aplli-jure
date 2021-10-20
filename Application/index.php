@@ -1,7 +1,7 @@
 <?php // index.php 
-	require_once("modele/modele.inc.php");
-	require_once("classes/MgrSessionExamen.class.php");
-	require_once("classes/CRMJures.class.php");
+	require("modele/modele.inc.php");
+	require("classes/MgrSessionExamen.class.php");
+	require("classes/CRMJures.class.php");
 	session_start();
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
@@ -115,6 +115,8 @@
 			{
 				$tabTitle="Ajout Formateur";
 				$h1Title="Gestion Formateur";
+				$href = "index.php?action=CRUDFormateur";
+				$textLink ="Retour à la liste de formateur";
 				require("vues/view_header.php");		
 				require("vues/view_AjoutReussi.php");			
 				require("vues/view_footer.php");
@@ -200,25 +202,49 @@
 			break;
 			
 			case'listExam':
-			$tabTitle="Gestion des sessions d'examen";
-			$h1Title="Gestion des sessions d'examen";
-			$listExamen = getListExam($connection);
-			require("vues/view_header.php");			
-			require("vues/view_navbar.php");
-			require("vues/view_list-exam.php");			
-			require("vues/view_footer.php");
-			break;			
+			// if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+			// {
+				$tabTitle="Gestion des sessions d'examen";
+				$h1Title="Gestion des sessions d'examen";
+				$listExamen = getListExam($connection);
+				require("vues/view_header.php");			
+				require("vues/view_navbar.php");
+				require("vues/view_list-exam.php");			
+				require("vues/view_footer.php");
+				break;			
+
+			// }else
+			// {
+			// 	header('Location : index.php');
+			// }
 
 		case'ajoutExamen':
+			// if(isset($_session["role"])&&$_session["role"]=="Formateur")
+			// {
+
+			
 			$tabTitle="Gestion des sessions d'examen";
 			$h1Title="Ajouter une session d'examen";
-			$date= "25/06/2021";
 			$list_formation = getListSessionFormation($connection);
 			require("vues/view_header.php");			
 			require("vues/view_navbar.php");
 			require("vues/view_ajout_session_examen.php");			
 			require("vues/view_footer.php");
 			break;			
+			// }else
+			// {			
+			// 	header('Location: index.php');
+			// }
+		
+			case 'ajoutExamenEffectue':
+				$examenAdded = addExamen($connection,$_GET['IdSessionFormation'] ,$_GET['date']);
+				$tabTitle="Ajout Session examen";
+				$h1Title="Gestion Session Examen";
+				$href = "index.php?action=listExam";
+				$textLink ="Retour à la liste des examens";
+				require("vues/view_header.php");		
+				require("vues/view_AjoutReussi.php");			
+				require("vues/view_footer.php");
 	}
 
 
