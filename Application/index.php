@@ -1,7 +1,7 @@
 <?php // index.php 
-	require_once("modele/modele.inc.php");
-	require_once("classes/MgrSessionExamen.class.php");
-	require_once("classes/CRMJures.class.php");
+	require("modele/modele.inc.php");
+	require("classes/MgrSessionExamen.class.php");
+	require("classes/CRMJures.class.php");
 	session_start();
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";

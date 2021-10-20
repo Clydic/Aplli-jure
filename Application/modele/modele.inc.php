@@ -160,17 +160,26 @@
 		return $message;	
 
 	}
+	/**
+	 * add a Session of an examen.
+	 * @param $connect / connection with a DB 
+	 * @param $idSessionFormation
+	 * @param $dateSessionFormation
+	 */
         function addExamen($connect, $idSessionFormation, $dateSessionFormation)
 		{
+			// We check if there is no error.
 			try{
-				
+				// We call the class method of MgrSessionExamen class
 				MgrSessionExamen::addExamen($connect, $idSessionFormation,$dateSessionFormation);
 				$message = "L'ajout est réussis \n<br/>";
+				// return a message.
 				return $message;
 				
-			}catch(Exception $e)
+			}catch(Exception $e) // Display a message if there is an error.
 			{
-				echo "Il y eu un soucis : ".$e->getMessage()."\n<br/>";
+				$message ="Il y eu un soucis : ".$e->getMessage()."\n<br/>"; 
+				return $message;
 			}
 		}
 ?>
