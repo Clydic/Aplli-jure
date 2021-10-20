@@ -26,7 +26,28 @@
             $result = $cursor->fetchAll();
             return $result;    
         }
+
+        /**
+         * Call a procedure name prc_LST_examen() which is a 
+         * request whic list all from since the current date
+         * @param $connect a connection to a DB
+         * @param $idOfSessionFormation
+         * @param $$dateOfSessionExamen 
+         * @return array
+         */
+        public static function addExamen($connect, $idOfSessionFormation, $dateOfSessionExamen)
+        {	
         
+            // $sql="CALL prc_ADD_examen();";
+            // Initialisation
+                //Get the results of the procedure called prc_ADD_examen
+           $connect->query("CALL prc_ADD_examen(
+                $idOfSessionFormation, 
+                $dateOfSessionExamen
+            );");
+            return true;
+
+        } 
         
         
     } 
