@@ -143,7 +143,7 @@ CREATE TABLE Habilitation(
 # Table: Utilisateur
 #------------------------------------------------------------
 
-CREATE TABLE _Utilisateur(
+CREATE TABLE Utilisateur(
         IDUtilisateur   Int  Auto_increment  NOT NULL ,
         Identifiant     Varchar (50) NOT NULL ,
         Mot_de_passe    Varchar (50) NOT NULL ,

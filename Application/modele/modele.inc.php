@@ -81,7 +81,7 @@
 			$message.="<tr><td>".$line["Nom_du_formateur"]." ".
 				$line["Prenom_du_Formateur"]."</td>".
 				"<td>
-					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
+					<a href=\"index.php?action=InfoFormateur&id=".$line["IDFormateur"]."\"><i class=\"fas fa-info-circle\"></i></a>
 				</td>
 				<td>";
 
@@ -114,9 +114,16 @@
 
 	function delFormateur($connection, $id)
 	{
-		$sql="CALL prc_DEL_Formateur($id)";
-		$connection->query($sql);
-		return true;
+		try
+		{
+			$sql="CALL prc_DEL_Formateur($id)";
+			$connection->query($sql);
+			return true;
+		}
+		catch (Exception $e)
+		{
+			echo 'Erreur SQL';
+		}
 	}
 
 	function getListFormation($connect)
@@ -169,6 +176,47 @@
 		}
 	}
 
+	function getInfoFormateurByID($connect, $idForm)
+	{
+		$formateur = getFormateurByID($connect,$idForm);
+
+		$sql="SELECT *
+			from coordonnees
+			WHERE IDCoordonnee = ".$formateur['IDCoordonnee'];
+		$cursor = $connect->query($sql);
+		$result = $cursor->fetch();
+		
+		$info = array(
+			"id" => $formateur['IDFormateur'],
+			"nom" => $formateur['Nom_du_formateur'],
+			"prenom" => $formateur['Prenom_du_Formateur'],
+			"adr1" => $result['Adresse1'],
+			"adr2" => $result['Adresse2'],
+			"postal" => $result['Code_Postale'],
+			"ville" => $result['Ville'],
+			"phone" => $result['Telephone'],
+			"mail" => $result['Mail']
+		);
+
+		return $info;
+	}
+
+	function updateInfoFormateur($connection) : bool
+	{
+		try
+		{
+			$sql="CALL prc_UPD_Formateur(:idform,:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail)";
+			$result = $connection->prepare($sql);
+        	$result->execute(array(':idform'=>$_POST['idForm'],':nom'=>$_POST['Nom'],':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
+							   	':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostal'],':ville'=>$_POST['Ville'],
+							   ':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
+			return true;
+		}
+		catch (Exception $e)
+		{
+			echo 'Erreur SQL';
+		}
+	}
 
 	/**
 	 * Get the list of Session Formation which are active at the current date
@@ -182,21 +230,20 @@
 			$cursor = $connect->query($sql);
             $result = $cursor->fetchAll();
 			$message=   "<option selected>Sélectionner une session</option><br>";
-		// Traitement 
-		foreach($result as $line)
-		{	$id=$line['IDSessionFormation'];
-			$intitule=$line['Intitule_de_formation'];
-			// Put the results of request in a select list
-			$message.="<option value=".$id." name=". $id." >".$intitule.$id
-			."</option><br/>";
+			// Traitement 
+			foreach($result as $line)
+			{	$id=$line['IDSessionFormation'];
+				$intitule=$line['Intitule_de_formation'];
+				// Put the results of request in a select list
+				$message.="<option value=".$id." name=". $id." >".$intitule.$id
+				."</option><br/>";
 
-							
-			
+								
+				
+			}
+			// Return the select list
+			return $message;
 		}
-		// Return the select list
-		return $message;	
-
-	}
 	/**
 	 * add a Session of an examen.
 	 * @param $connect / connection with a DB 
