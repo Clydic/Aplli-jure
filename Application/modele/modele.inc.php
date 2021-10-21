@@ -148,7 +148,7 @@
 		return $message;
 	}
 
-	function addFormateur($connect, $POST)
+	function addFormateur($connect)
 	{
 		$sql="SELECT *
 			from Formateur";
@@ -156,23 +156,30 @@
 		$result = $cursor->fetchAll();
 		foreach($result as $line)
 		{
-			if($line['Nom_du_formateur'] == $POST['Nom'] && $line["Prenom_du_Formateur"] == $POST['Prenom'])
+			if(strtoupper($line['Nom_du_formateur']) == strtoupper($_POST['Nom']) && $line["Prenom_du_Formateur"] == $_POST['Prenom'])
 			{
-				return false;
+				return "Doublon";
 			}
 		}
 		try
 		{
-			$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
-			$result = $connect->prepare($sql);
-        	$result->execute(array(':nom'=>$POST['Nom'],':prenom'=>$POST['Prenom'],':adr1'=>$POST['Adresse1'],
-							   	':adr2'=>$POST['Adresse2'],':postal'=>$POST['CodePostale'],':ville'=>$POST['Ville'],
-							   ':phone'=>$POST['Telephone'],':mail'=>$POST['Mail']));
-			return true;
+			if(is_numeric($_POST['CodePostal']) && strlen($_POST['CodePostal']) == 5)
+			{
+				$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
+				$result = $connect->prepare($sql);
+				$result->execute(array(':nom'=>strtoupper($_POST['Nom']),':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
+									':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostale'],':ville'=>$_POST['Ville'],
+								':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
+				return "Reussi";
+			}
+			else
+			{
+				return "Postal";
+			}
 		}
 		catch(Exception $e)
 		{
-			return 'Erreur de Requete SQL';
+			echo 'Erreur de Requete SQL';
 		}
 	}
 
@@ -201,16 +208,36 @@
 		return $info;
 	}
 
-	function updateInfoFormateur($connection) : bool
+	function updateInfoFormateur($connection) : string
 	{
 		try
 		{
-			$sql="CALL prc_UPD_Formateur(:idform,:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail)";
-			$result = $connection->prepare($sql);
-        	$result->execute(array(':idform'=>$_POST['idForm'],':nom'=>$_POST['Nom'],':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
-							   	':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostal'],':ville'=>$_POST['Ville'],
-							   ':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
-			return true;
+			$sql="SELECT *
+			from Formateur";
+			$cursor = $connection->query($sql);
+			$result = $cursor->fetchAll();
+			foreach($result as $line)
+			{
+				if(strtoupper($line['Nom_du_formateur']) == strtoupper($_POST['Nom']) && $line["Prenom_du_Formateur"] == $_POST['Prenom'] && $line["IDFormateur"] != $_POST['idForm'])
+				{
+					return "Doublon";
+				}
+			}
+
+			if(is_numeric($_POST['CodePostal']) && strlen($_POST['CodePostal']) == 5)
+			{
+				$sql="CALL prc_UPD_Formateur(:idform,:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail)";
+				$result = $connection->prepare($sql);
+				$result->execute(array(':idform'=>$_POST['idForm'],':nom'=>strtoupper($_POST['Nom']),':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
+									   ':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostal'],':ville'=>$_POST['Ville'],
+								   ':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
+				return "Reussi";
+			}
+			else
+			{
+				return "Postal";
+			}
+			
 		}
 		catch (Exception $e)
 		{

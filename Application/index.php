@@ -10,6 +10,7 @@
 	$logo="source/index.png";
 	print_r($action);
 	echo " Get : "; print_r($_GET);
+	echo " \nPOST : "; print_r($_POST);
 
 	if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -112,22 +113,36 @@
 			
 			break;
 		case 'FctAjoutFormateur':
-			if(addFormateur($connection, $_POST))
-			{
-				$tabTitle="Ajout Formateur";
-				$h1Title="Gestion Formateur";
-				$href = "index.php?action=CRUDFormateur";
-				$textLink ="Retour à la liste de formateur";
-				$message = "Ajout Réussis!";
-				require("vues/view_header.php");		
-				require("vues/view_AjoutReussi.php");			
-				require("vues/view_footer.php");
-			}
-			else
-			{
-				header('Location: index.php?action=AjoutFormateur&msg=doublon');
-			}
-			break;
+			$reponseAjout = "";
+			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+				{
+					$reponseAjout = addFormateur($connection);
+					
+					if($reponseAjout == "Reussi")
+					{
+						$tabTitle="Gestion Formateur";
+						$h1Title="Gestion Formateur";
+						$message = 'Ajout Reussi !';
+						$textLink = "Retour a la liste de formateur";
+						$href = 'index.php?action=CRUDFormateur';
+						require("vues/view_header.php");		
+						require("vues/view_Reussi.php");			
+						require("vues/view_footer.php");
+					}
+					elseif ($reponseAjout == "Doublon")
+					{
+						header('Location: index.php?action=AjoutFormateur&msg=Doublon');
+					}
+					elseif ($reponseAjout == "Postal")
+					{
+						header('Location: index.php?action=AjoutFormateur&msg=ErreurPostal');
+					}
+				}
+				else
+				{
+					header('Location: index.php');
+				}
+				break;
 
 		case 'AjoutFormateur':
 			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
@@ -139,10 +154,14 @@
 				require("vues/view_header.php");		
 				require("vues/view_AjoutFormateur.php");			
 				require("vues/view_footer.php");
-				if(isset($_GET['msg']) && $_GET['msg'] == "doublon")
-				{
-					echo "<script>alert(\"Formateur en doublon...\");</script>";
-				}
+				if(isset($_GET['msg']) && $_GET['msg'] == "ErreurPostal")
+					{
+						echo "<script>alert(\"Echec d'ajout : Le code postal est invalide\");</script>";
+					}
+					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
+					{
+						echo "<script>alert(\"Echec d'ajout : Le formateur est en doublon\");</script>";
+					}
 			}
 			else
 			{
@@ -172,7 +191,7 @@
 			break;
 
 		case 'FctDELFormateur':
-			$reponseDelete = false;
+			$reponseDelete = "";
 			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
 				{
 					$reponseDelete = delFormateur($connection, $_GET['idForm']);
@@ -181,8 +200,11 @@
 					{
 						$tabTitle="Gestion Formateur";
 						$h1Title="Gestion Formateur";
+						$message = 'Suppression Reussi !';
+						$textLink = "Retour a la liste de formateur";
+						$href = 'index.php?action=CRUDFormateur';
 						require("vues/view_header.php");		
-						require("vues/view_DeleteReussi.php");			
+						require("vues/view_Reussi.php");			
 						require("vues/view_footer.php");
 					}
 					else
@@ -223,9 +245,13 @@
 					require("vues/view_header.php");		
 					require("vues/view_ModifierFormateur.php");			
 					require("vues/view_footer.php");
-					if(isset($_GET['msg']) && $_GET['msg'] == "Erreur")
+					if(isset($_GET['msg']) && $_GET['msg'] == "ErreurPostal")
 					{
-						echo "<script>alert(\"Echec de modification\");</script>";
+						echo "<script>alert(\"Echec de modification : Le code postal est invalide\");</script>";
+					}
+					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
+					{
+						echo "<script>alert(\"Echec de modification : Le formateur est en doublon\");</script>";
 					}
 				}
 				else
@@ -235,22 +261,30 @@
 				break;
 
 			case 'FctModifierFormateur':
-				$reponseUpdate = false;
+				$reponseUpdate = "";
 				if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
 				{
 					$reponseUpdate = updateInfoFormateur($connection);
+					var_dump($reponseUpdate);
 					
-					if($reponseUpdate)
+					if($reponseUpdate == "Reussi")
 					{
 						$tabTitle="Gestion Formateur";
 						$h1Title="Gestion Formateur";
+						$message = 'Update Reussi !';
+						$textLink = "Retour a la liste de formateur";
+						$href = 'index.php?action=CRUDFormateur';
 						require("vues/view_header.php");		
-						require("vues/view_UpdateReussi.php");			
+						require("vues/view_Reussi.php");			
 						require("vues/view_footer.php");
 					}
-					else
+					elseif ($reponseUpdate == "Doublon")
 					{
-						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=Erreur');
+						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=Doublon');
+					}
+					elseif ($reponseUpdate == "Postal")
+					{
+						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=ErreurPostal');
 					}
 				}
 				else
