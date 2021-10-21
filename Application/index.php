@@ -129,9 +129,13 @@
 						require("vues/view_Reussi.php");			
 						require("vues/view_footer.php");
 					}
-					elseif ($reponseAjout == "Doublon")
+					elseif ($reponseAjout == "DoublonMail")
 					{
-						header('Location: index.php?action=AjoutFormateur&msg=Doublon');
+						header('Location: index.php?action=AjoutFormateur&msg=DoublonMail');
+					}
+					elseif ($reponseAjout == "DoublonPhone")
+					{
+						header('Location: index.php?action=AjoutFormateur&msg=DoublonPhone');
 					}
 					elseif ($reponseAjout == "Postal")
 					{
@@ -155,13 +159,17 @@
 				require("vues/view_AjoutFormateur.php");			
 				require("vues/view_footer.php");
 				if(isset($_GET['msg']) && $_GET['msg'] == "ErreurPostal")
-					{
-						echo "<script>alert(\"Echec d'ajout : Le code postal est invalide\");</script>";
-					}
-					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
-					{
-						echo "<script>alert(\"Echec d'ajout : Le formateur est en doublon\");</script>";
-					}
+				{
+					echo "<script>alert(\"Echec de modification : Le code postal est invalide\");</script>";
+				}
+				elseif(isset($_GET['msg']) && $_GET['msg'] == "DoublonMail")
+				{
+					echo "<script>alert(\"Echec de modification : Le Mail est en doublon\");</script>";
+				}
+				elseif(isset($_GET['msg']) && $_GET['msg'] == "DoublonPhone")
+				{
+					echo "<script>alert(\"Echec de modification : Le Numéro de Téléphone est en doublon\");</script>";
+				}
 			}
 			else
 			{
@@ -249,9 +257,13 @@
 					{
 						echo "<script>alert(\"Echec de modification : Le code postal est invalide\");</script>";
 					}
-					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
+					if(isset($_GET['msg']) && $_GET['msg'] == "DoublonMail")
 					{
-						echo "<script>alert(\"Echec de modification : Le formateur est en doublon\");</script>";
+						echo "<script>alert(\"Echec de modification : Le Mail est en doublon\");</script>";
+					}
+					if(isset($_GET['msg']) && $_GET['msg'] == "DoublonPhone")
+					{
+						echo "<script>alert(\"Echec de modification : Le Numéro de Téléphone est en doublon\");</script>";
 					}
 				}
 				else
@@ -278,9 +290,13 @@
 						require("vues/view_Reussi.php");			
 						require("vues/view_footer.php");
 					}
-					elseif ($reponseUpdate == "Doublon")
+					elseif ($reponseUpdate == "DoublonMail")
 					{
-						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=Doublon');
+						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=DoublonMail');
+					}
+					elseif ($reponseUpdate == "DoublonPhone")
+					{
+						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=DoublonPhone');
 					}
 					elseif ($reponseUpdate == "Postal")
 					{
