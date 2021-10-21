@@ -6,6 +6,7 @@
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
 	$connect = NULL;
+	
 	$logo="source/index.png";
 	print_r($action);
 	echo " Get : "; print_r($_GET);
@@ -157,6 +158,10 @@
 				require("vues/view_header.php");		
 				require("vues/view_DELFormateur.php");			
 				require("vues/view_footer.php");
+				if(isset($_GET['msg']) && $_GET['msg'] == "Erreur")
+				{
+					echo "<script>alert(\"Echec de suppression\");</script>";
+				}
 			}
 			else
 			{
@@ -165,25 +170,92 @@
 			break;
 
 		case 'FctDELFormateur':
-			delFormateur($connection, $_GET['idForm']);
-			header('Location: index.php?action=DELFormateurReussi');
-			break;
-
-		case 'DELFormateurReussi':
+			$reponseDelete = false;
 			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
-			{
+				{
+					$reponseDelete = delFormateur($connection, $_GET['idForm']);
 					
-				$tabTitle="Gestion Formateur";
-				$h1Title="Gestion Formateur";
-				require("vues/view_header.php");		
-				require("vues/view_DeleteReussi.php");			
-				require("vues/view_footer.php");
-			}
-			else
-			{
-				header('Location: index.php');
-			}
-			break;
+					if($reponseDelete)
+					{
+						$tabTitle="Gestion Formateur";
+						$h1Title="Gestion Formateur";
+						require("vues/view_header.php");		
+						require("vues/view_DeleteReussi.php");			
+						require("vues/view_footer.php");
+					}
+					else
+					{
+						header('Location: index.php?action=DELFormateur&idForm='.$_POST['idForm'].'&msg=Erreur');
+					}
+				}
+				else
+				{
+					header('Location: index.php');
+				}
+				break;
+
+			case 'InfoFormateur':
+				if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+				{
+						
+					$tabTitle="Gestion Formateur";
+					$h1Title="Gestion Formateur";
+					$info = getInfoFormateurByID($connection, $_GET['id']);
+					require("vues/view_header.php");		
+					require("vues/view_InfoFormateur.php");			
+					require("vues/view_footer.php");
+				}
+				else
+				{
+					header('Location: index.php');
+				}
+				break;
+
+			case 'ModifierFormateur':
+				if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+				{
+						
+					$tabTitle="Gestion Formateur";
+					$h1Title="Gestion Formateur";
+					$info = getInfoFormateurByID($connection, $_GET['idForm']);
+					require("vues/view_header.php");		
+					require("vues/view_ModifierFormateur.php");			
+					require("vues/view_footer.php");
+					if(isset($_GET['msg']) && $_GET['msg'] == "Erreur")
+					{
+						echo "<script>alert(\"Echec de modification\");</script>";
+					}
+				}
+				else
+				{
+					header('Location: index.php');
+				}
+				break;
+
+			case 'FctModifierFormateur':
+				$reponseUpdate = false;
+				if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
+				{
+					$reponseUpdate = updateInfoFormateur($connection);
+					
+					if($reponseUpdate)
+					{
+						$tabTitle="Gestion Formateur";
+						$h1Title="Gestion Formateur";
+						require("vues/view_header.php");		
+						require("vues/view_UpdateReussi.php");			
+						require("vues/view_footer.php");
+					}
+					else
+					{
+						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=Erreur');
+					}
+				}
+				else
+				{
+					header('Location: index.php');
+				}
+				break;
 
 		case 'accueilForm':
 			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
