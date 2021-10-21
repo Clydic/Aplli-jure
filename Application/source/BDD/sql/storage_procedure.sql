@@ -1,8 +1,9 @@
--------------------------------------------------------------------------------------------------
-------------------------------------------PROCEDURE----------------------------------------------
--------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------
+-- ----------------------------------------PROCEDURE----------------------------------------------
+-- -----------------------------------------------------------------------------------------------
 
 -- ---------------------------- Procedure of List Session-Examen --------------------------------
+DROP PROCEDURE IF EXISTS `prc_LST_examen`;
 DELIMITER $$
 
 -- We create a procedure which list the examen which arrive
@@ -14,17 +15,18 @@ BEGIN
 			e.DateSessionExam 
 			from Formation f
 			JOIN Session_Formation s on s.IDFormation = f.IDFormation
-			JOIN SessionExamen e on e.IDSessionExam = s.IDSessionExam
+			JOIN SessionExamen e on e.IDSessionFormation = s.IDSessionFormation
 			WHERE e.DateSessionExam >= CURRENT_DATE()
 			ORDER BY e.DateSessionExam;
 END$$
 DELIMITER ;
 
 -- ---------------------------- Procedure of add session examen--------------------------------
+DROP PROCEDURE IF EXISTS `prc_ADD_examen`;
 DELIMITER $$
 
 -- We create a procedure which add session-examen
-CREATE PROCEDURE prc_ADD_examen(IN id_of_session_formation INT(2), IN date_to_add CHAR(10))
+CREATE PROCEDURE `prc_ADD_examen`(IN id_of_session_formation INT(2), IN date_to_add CHAR(10))
 BEGIN
     DECLARE DateEndFormation DATE;
     DECLARE DateBeginFormation DATE;
@@ -35,11 +37,11 @@ BEGIN
     WHERE IdSessionFormation = id_of_session_formation;
     
     SELECT DateFinFormation 
-    into DateEndFormation         
+    INTO DateEndFormation         
     FROM session_formation 
     WHERE IdSessionFormation = id_of_session_formation;
     
-    IF ((id_of_session_formation,date_to_add) INTO (SELECT IdSessionExamen,DateSessionExamen FROM SessionExamen)) THEN 
+    IF ((id_of_session_formation,date_to_add) IN (SELECT IdSessionExamen,DateSessionExamen FROM SessionExamen)) THEN 
         SIGNAL SQLSTATE '45002' 
         SET MESSAGE_TEXT = "Il ne peut y avoir deux examens le même jour pour une même formation" ;
     END IF;
@@ -52,10 +54,11 @@ BEGIN
         SET MESSAGE_TEXT = "La date demandée ne correspond pas à la période de la session de formation" ;
     END IF; 
 END $$ -- call prc_ADD_examen(12,'2003-02-13');
+DELIMITER ;
 
 
 -- ---------------------------- Procedure of Ajout of Formateur --------------------------------
-DROP PROCEDURE IF EXISTS prc_ADD_examen;
+DROP PROCEDURE IF EXISTS `prc_ADD_Formateur`;
 DELIMITER $$
 -- We create a procedure which add Formateur and Coordonnees
 CREATE PROCEDURE `prc_ADD_Formateur`(nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal VARCHAR(50), ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
@@ -69,6 +72,7 @@ END$$
 DELIMITER ;
 
 -- ---------------------------- Procedure of Delete Formateur --------------------------------
+DROP PROCEDURE IF EXISTS `prc_DEL_Formateur`;
 DELIMITER $$
 
 -- We create a procedure which delete Formateur and Coordonnees
@@ -79,6 +83,7 @@ END$$
 DELIMITER ;
 
 -- ---------------------------- Procedure of Update Formateur --------------------------------
+DROP PROCEDURE IF EXISTS `prc_UPD_Formateur`;
 DELIMITER $$
 
 -- We create a procedure which update Formateur and Coordonnees
@@ -94,12 +99,13 @@ DELIMITER ;
 
 
 
--------------------------------------------------------------------------------------------------
--------------------------------------------TRIGGER-----------------------------------------------
--------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------
+-- -----------------------------------------TRIGGER-----------------------------------------------
+-- -----------------------------------------------------------------------------------------------
 
 
 -- ---------------------------- Trigger of AFTER DELETE Formateur --------------------------------
+DROP TRIGGER IF EXISTS `trig_DEL_FORMATEUR`;
 DELIMITER $$
 -- We create a trigger which delete Coordonnee after delete Formateur
 CREATE TRIGGER `trig_DEL_FORMATEUR`
@@ -111,6 +117,7 @@ END &&
 DELIMITER ;
 
 -- ---------------------------- Trigger of BEFORE INSERT Formation --------------------------------
+DROP TRIGGER IF EXISTS `trigVerifExamen`;
 DELIMITER $$
 -- We create a trigger which check DATE before insert into Formation
 CREATE TRIGGER `trigVerifExamen` BEFORE INSERT ON `sessionexamen`
