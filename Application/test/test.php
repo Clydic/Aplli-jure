@@ -11,6 +11,9 @@
 	$list= getListSessionFormation($connection);
 	// var_dump($list);
 	// addExamen($connection,  11, '23/07/2022');
-	addExamen($connection,  12, '2023-02-13');
+	$ajout = addExamen($connection,  1, '2023-02-13');
+	$ajout1 = addExamen($connection,  1, '2022-02-16');
+	echo $ajout;
+	echo $ajout1;
 	
 ?>

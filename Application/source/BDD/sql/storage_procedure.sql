@@ -49,23 +49,13 @@ BEGIN
 		VALUES (date_to_add, id_of_session_formation);
     ELSE 
         SIGNAL SQLSTATE '45001' 
-        SET MESSAGE_TEXT = "La date demandée ne correspond pas à la période de la session de foramtion" ;
+        SET MESSAGE_TEXT = "La date demandée ne correspond pas à la période de la session de formation" ;
     END IF; 
-END $$
+END $$ -- call prc_ADD_examen(12,'2003-02-13');
 
--- ---------------------------- Procedure of add session examen--------------------------------
-DELIMITER $$ 
 
--- We create a procedure which list the examen which arrive
-create PROCEDURE `prc_ADD_examen`(date_to_add VARCHAR(10), id_of_session_formation INT(2))
-
-BEGIN
-	INSERT INTO `SessionExamen`( `DateSessionExam`, `IDSessionFormation`) 
-	VALUES (date_to_add, id_of_session_formation)
-END 
-DELIMITER ; -- call prc_ADD_examen(12,'2003-02-13');
-
--- ---------------------------- Procedure of Add Formateur --------------------------------
+-- ---------------------------- Procedure of Ajout of Formateur --------------------------------
+DROP PROCEDURE IF EXISTS prc_ADD_examen;
 DELIMITER $$
 -- We create a procedure which add Formateur and Coordonnees
 CREATE PROCEDURE `prc_ADD_Formateur`(nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal VARCHAR(50), ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
@@ -117,7 +107,7 @@ CREATE TRIGGER `trig_DEL_FORMATEUR`
 	FOR EACH ROW
 BEGIN
 	DELETE FROM `coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
-END $$
+END &&
 DELIMITER ;
 
 -- ---------------------------- Trigger of BEFORE INSERT Formation --------------------------------

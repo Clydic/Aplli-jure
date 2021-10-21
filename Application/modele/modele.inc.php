@@ -302,7 +302,19 @@
 				
 			}catch(Exception $e) // Display a message if there is an error.
 			{
-				$message ="Il y eu un soucis : ".$e->getMessage()."\n<br/>"; 
+				$message =$e->getMessage()."\n<br/>"; 
+				$reg = "/^SQLSTATE\[45001].*/";
+				if (preg_match( "/^SQLSTATE\[45001].*/",$message)==1)
+				{
+					$message =  "La date demandée ne correspond pas à la période de la session de formation";
+				}
+				else if (preg_match( "/^SQLSTATE\[45002].*/",$message)==1)
+				{
+					$message =  "Il ne peut y avoir deux examens le même jour pour une même formation";
+				}
+				else{
+					$message= "La base de donnée n'est pas disponible";
+				}
 				return $message;
 			}
 		}
