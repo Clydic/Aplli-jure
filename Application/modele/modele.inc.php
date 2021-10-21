@@ -8,7 +8,7 @@
 	 * @param $connect
 	 * @return string $message
 	 */
-	function getListExam($connect)
+	function getListExam($connect) : string
 	{
 		// Get the list Examen from the MgrsessionExamen
 		$array_of_result = MgrSessionExamen::getListExam($connect);
@@ -34,6 +34,13 @@
 		return $message;	
 	}
 
+	/**
+	 * Verifie que l'utlisateur est bien un admin
+	 * @param PDO Connexion a la BDD
+	 * @param string Utilisateur
+	 * @param string Mot de passe
+	 * @return bool Si connecté
+	 */
 	function getConnectAdmin($connect,$user,$pass) : bool
 	{	
 		$sql="SELECT identifiant, Mot_de_passe FROM utilisateur WHERE TypeUtilisateur = \"Administrateur\"";
@@ -51,6 +58,13 @@
 		return false;
 	}
 
+	/**
+	 * Verifie que l'utlisateur est bien un Formateur
+	 * @param PDO Connexion a la BDD
+	 * @param string Utilisateur
+	 * @param string Mot de passe
+	 * @return bool Si connecté
+	 */
 	function getConnectForm($connect,$user,$pass) : bool
 	{	
 		$sql="SELECT identifiant, Mot_de_passe FROM utilisateur WHERE TypeUtilisateur = \"Formateur\"";
@@ -68,7 +82,12 @@
 		return false;
 	}
 
-	function getListFormateur($connect)
+	/**
+	 * Recupere la liste des formateurs
+	 * @param PDO Connexion a la BDD
+	 * @return string La liste de formateur
+	 */
+	function getListFormateur($connect) : string
 	{	
 		$sql="SELECT *
 			from Formateur";
@@ -101,7 +120,13 @@
 		return $message;
 	}
 
-	function getFormateurByID($connection, $id)
+	/**
+	 * Recupere le Formateur correspondant a l'ID
+	 * @param PDO Connexion a la BDD
+	 * @param int ID du formateur
+	 * @return array Formateur
+	 */
+	function getFormateurByID($connection, $id) : array
 	{	
 		$sql="SELECT *
 			from Formateur
@@ -112,7 +137,14 @@
 		return $result;
 	}
 
-	function delFormateur($connection, $id)
+	/**
+	 * Appelle la procedure de suppression de Formateur correspondant
+	 * @param PDO Connexion a la BDD
+	 * @param int ID du formateur
+	 * @return bool Si supprimer
+	 */
+
+	function delFormateur($connection, $id) : bool
 	{
 		try
 		{
@@ -126,7 +158,12 @@
 		}
 	}
 
-	function getListFormation($connect)
+	/**
+	 * Recupere la liste de formation
+	 * @param PDO Connexion a la BDD
+	 * @return string La liste de formation
+	 */
+	function getListFormation($connect) : string
 	{	
 		$sql="SELECT *
 			from Formation";
@@ -148,7 +185,14 @@
 		return $message;
 	}
 
-	function addFormateur($connect)
+	/**
+	 * Appelle la procedure d'ajout de Formateur correspondant
+	 * @param PDO Connexion a la BDD
+	 * @param int ID du formateur
+	 * @return bool Si Ajout réussi
+	 */
+
+	function addFormateur($connect) : bool
 	{
 		$sql="SELECT *
 			from coordonnees";
@@ -187,7 +231,14 @@
 		}
 	}
 
-	function getInfoFormateurByID($connect, $idForm)
+
+	/**
+	 * Recupere les informations du formateur correspondant
+	 * @param PDO Connexion a la base
+	 * @param int ID du formateur correspondant
+	 * @return array Info du formateur
+	 */
+	function getInfoFormateurByID($connect, $idForm) : array
 	{
 		$formateur = getFormateurByID($connect,$idForm);
 
@@ -211,6 +262,12 @@
 
 		return $info;
 	}
+
+	/**
+	 * Met a jour les informations du formateur
+	 * @param PDO Connexion a la base
+	 * @return string Erreur ou Reussi
+	 */
 
 	function updateInfoFormateur($connection) : string
 	{
@@ -264,7 +321,7 @@
 	 * @param $connect
 	 * @return $message
 	 */
-        function getListSessionFormation($connect)
+        function getListSessionFormation($connect) : string
         {
 			//Intialisation
 			$sql="CALL prc_LST_listeSessionFormation();";
@@ -290,8 +347,9 @@
 	 * @param $connect / connection with a DB 
 	 * @param $idSessionFormation
 	 * @param $dateSessionFormation
+	 * @return string message de retour
 	 */
-        function addExamen($connect, $idSessionFormation, $dateSessionFormation)
+        function addExamen($connect, $idSessionFormation, $dateSessionFormation) : string
 		{
 			// We check if there is no error.
 			try{
