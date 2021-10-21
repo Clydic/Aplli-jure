@@ -6,7 +6,9 @@
 	$connection= CRMJures::getConnection();
 	$action="accueil";//"accueil";
 	$connect = NULL;
-	
+	$message = ""; // Varibales des messages d'inforamtion de crud
+	$href=""; // Variable pour modifier certain lien hypertexte
+	$textLink=""; // Le text des liens hyper texte	
 	$logo="source/index.png";
 	print_r($action);
 	echo " Get : "; print_r($_GET);
@@ -129,13 +131,9 @@
 						require("vues/view_Reussi.php");			
 						require("vues/view_footer.php");
 					}
-					elseif ($reponseAjout == "DoublonMail")
+					elseif ($reponseAjout == "Doublon")
 					{
-						header('Location: index.php?action=AjoutFormateur&msg=DoublonMail');
-					}
-					elseif ($reponseAjout == "DoublonPhone")
-					{
-						header('Location: index.php?action=AjoutFormateur&msg=DoublonPhone');
+						header('Location: index.php?action=AjoutFormateur&msg=Doublon');
 					}
 					elseif ($reponseAjout == "Postal")
 					{
@@ -159,17 +157,13 @@
 				require("vues/view_AjoutFormateur.php");			
 				require("vues/view_footer.php");
 				if(isset($_GET['msg']) && $_GET['msg'] == "ErreurPostal")
-				{
-					echo "<script>alert(\"Echec de modification : Le code postal est invalide\");</script>";
-				}
-				elseif(isset($_GET['msg']) && $_GET['msg'] == "DoublonMail")
-				{
-					echo "<script>alert(\"Echec de modification : Le Mail est en doublon\");</script>";
-				}
-				elseif(isset($_GET['msg']) && $_GET['msg'] == "DoublonPhone")
-				{
-					echo "<script>alert(\"Echec de modification : Le Numéro de Téléphone est en doublon\");</script>";
-				}
+					{
+						echo "<script>alert(\"Echec d'ajout : Le code postal est invalide\");</script>";
+					}
+					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
+					{
+						echo "<script>alert(\"Echec d'ajout : Le formateur est en doublon\");</script>";
+					}
 			}
 			else
 			{
@@ -257,13 +251,9 @@
 					{
 						echo "<script>alert(\"Echec de modification : Le code postal est invalide\");</script>";
 					}
-					if(isset($_GET['msg']) && $_GET['msg'] == "DoublonMail")
+					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
 					{
-						echo "<script>alert(\"Echec de modification : Le Mail est en doublon\");</script>";
-					}
-					if(isset($_GET['msg']) && $_GET['msg'] == "DoublonPhone")
-					{
-						echo "<script>alert(\"Echec de modification : Le Numéro de Téléphone est en doublon\");</script>";
+						echo "<script>alert(\"Echec de modification : Le formateur est en doublon\");</script>";
 					}
 				}
 				else
@@ -290,13 +280,9 @@
 						require("vues/view_Reussi.php");			
 						require("vues/view_footer.php");
 					}
-					elseif ($reponseUpdate == "DoublonMail")
+					elseif ($reponseUpdate == "Doublon")
 					{
-						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=DoublonMail');
-					}
-					elseif ($reponseUpdate == "DoublonPhone")
-					{
-						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=DoublonPhone');
+						header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=Doublon');
 					}
 					elseif ($reponseUpdate == "Postal")
 					{
