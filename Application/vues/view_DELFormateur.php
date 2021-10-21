@@ -6,6 +6,6 @@
         <input type="hidden" name="action" value="FctDELFormateur">
         <input type="hidden" name="idForm" value="<?php echo $FormSupp[0];?>">
         <a href="index.php?action=CRUDFormateur"><input type="button" value="Retour"></a>
-        <input type="submit" value="Validez">
+        <input type="submit" value="Valider">
     </form>
 </main>
