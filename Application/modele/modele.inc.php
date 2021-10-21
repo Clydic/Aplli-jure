@@ -20,14 +20,37 @@
 			$message.="<tr><td>".$line["Intitule_de_formation"].
 				$line["IDSessionFormation"]."</td>";
 			$message.="<td>".$line["DateSessionExam"]."</td>".
-				"<td>
+				'<td>
 					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
 				</td>
 				<td>
-					<a href=\"\"><i class=\"fas fa-minus-circle bg-danger\">
-					</i></a>
-				
-				</td>";
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="'.$line->getIDExamen().'">
+					<i class=\"fas fa-minus-circle bg-danger\"></i>
+
+
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="'.$line->getIDExamen().'"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+						Etes vous sûr.e de vouloir supprimer
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Save changes</button>
+						</div>
+						</div>
+					</div>
+					</div>
+
+													
+								</td>';
 			
 		}
 		// return the table with reults	
@@ -318,4 +341,25 @@
 				return $message;
 			}
 		}
+
+
+
+        function delExamen($connect, $idSessionExamen )
+		{
+			// We check if there is no error.
+			try{
+				// We call the class method of MgrSessionExamen class
+				MgrSessionExamen::delExamen($connect, $idSessionExamen);
+				$message = "La supression a bien eu lieu\n<br/>";
+				return $message;
+				
+			}catch(Exception $e) // Display a message if there is an error.
+			{
+					$message= "La session d'examen que vous tentez de supprimer n'existe pas";
+				
+				return $message;
+			}
+		}
+
+		
 ?>
