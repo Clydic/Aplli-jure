@@ -8,7 +8,7 @@
             <label for="Adresse2">Adresse 2 : </label> <input type="text" name="Adresse2" id="address2"><br><br>
         </div>
         <div class="col-12 col-md-6">
-            <label for="CodePostale">Code Postal* : </label> <input type="text" name="CodePostale" id="postalCode" required><br><br>
+            <label for="CodePostale">Code Postal* : </label> <input type="text" name="CodePostal" id="postalCode" required><br><br>
             <label for="Ville">Ville* : </label> <input type="text" name="Ville" id="city" required><br><br>
             <label for="Telephone">Téléphone* : </label> <input type="text" name="Telephone" id="phone" required><br><br>
             <label for="Mail">E-Mail* : </label> <input type="text" name="Mail" id="mail" required><br><br>
