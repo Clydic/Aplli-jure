@@ -151,14 +151,18 @@
 	function addFormateur($connect)
 	{
 		$sql="SELECT *
-			from Formateur";
+			from coordonnees";
 		$cursor = $connect->query($sql);
 		$result = $cursor->fetchAll();
 		foreach($result as $line)
 		{
-			if(strtoupper($line['Nom_du_formateur']) == strtoupper($_POST['Nom']) && $line["Prenom_du_Formateur"] == $_POST['Prenom'])
+			if($line['Telephone'] == $_POST['Telephone'])
 			{
-				return "Doublon";
+				return "DoublonPhone";
+			}
+			if($line['Mail'] == $_POST['Mail'])
+			{
+				return "DoublonMail";
 			}
 		}
 		try
@@ -168,8 +172,8 @@
 				$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
 				$result = $connect->prepare($sql);
 				$result->execute(array(':nom'=>strtoupper($_POST['Nom']),':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
-									':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostale'],':ville'=>$_POST['Ville'],
-								':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
+									':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostal'],':ville'=>$_POST['Ville'],
+									':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
 				return "Reussi";
 			}
 			else
@@ -212,16 +216,26 @@
 	{
 		try
 		{
-			$sql="SELECT *
-			from Formateur";
+			$sql="SELECT IDCoordonnee
+			from formateur
+			WHERE IDFormateur = ".$_POST['idForm'];
 			$cursor = $connection->query($sql);
-			$result = $cursor->fetchAll();
-			foreach($result as $line)
+			$result = $cursor->fetch();
+
+			$sql="SELECT *
+			from coordonnees";
+			$cursor = $connection->query($sql);
+			$result2 = $cursor->fetchAll();
+			foreach($result2 as $line)
 			{
-				if(strtoupper($line['Nom_du_formateur']) == strtoupper($_POST['Nom']) && $line["Prenom_du_Formateur"] == $_POST['Prenom'] && $line["IDFormateur"] != $_POST['idForm'])
+				if($line['Telephone'] == $_POST['Telephone'] && $line['IDCoordonnee'] != $result['IDCoordonnee'])
 				{
-					return "Doublon";
+					return "DoublonPhone";
 				}
+				if($line['Mail'] == $_POST['Mail'] && $line['IDCoordonnee'] != $result['IDCoordonnee'])
+				{
+					return "DoublonMail";
+				}	
 			}
 
 			if(is_numeric($_POST['CodePostal']) && strlen($_POST['CodePostal']) == 5)
