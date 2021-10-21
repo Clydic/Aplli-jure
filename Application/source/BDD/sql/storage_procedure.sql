@@ -59,18 +59,30 @@ BEGIN
 END$$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE `prc_UPD_Formateur`(idForm INT, nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal INT, ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
+BEGIN
+	DECLARE idCoor INTEGER DEFAULT 0;
+	UPDATE `formateur` SET `Nom_du_formateur`= nom,`Prenom_du_Formateur`= prenom WHERE IDFormateur = idForm;
+
+	SELECT IDCoordonnee INTO idCoor FROM Formateur WHERE IDFormateur = idForm;
+	UPDATE `coordonnees` SET `Adresse1`= adr1,`Adresse2`= adr2 ,`Code_Postale`= postal ,`Ville`= ville ,`Telephone`= phone ,`Mail`= mail WHERE IDCoordonnee = idCoor;
+END$$
+DELIMITER ;
+
+
 
 -------------------------------------------------------------------------------------------------
 -------------------------------------------TRIGGER-----------------------------------------------
 -------------------------------------------------------------------------------------------------
 
 DELIMITER $$
-CREATE TRIGGER trig_DEL_FORMATEUR
+CREATE TRIGGER `trig_DEL_FORMATEUR`
 	AFTER DELETE on formateur
 	FOR EACH ROW
 BEGIN
 	DELETE FROM `coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
-END &&
+END $$
 DELIMITER ;
 
 DELIMITER $$
