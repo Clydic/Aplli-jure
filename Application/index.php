@@ -369,7 +369,7 @@
 				$textLink ="Retour à la liste des examens";
 				
 				require("vues/view_header.php");		
-				require("vues/view_AjoutReussi.php");			
+				require("vues/view_Reussi.php");			
 				require("vues/view_footer.php");
 	}
 
