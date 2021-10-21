@@ -2,10 +2,10 @@
 ------------------------------------------PROCEDURE----------------------------------------------
 -------------------------------------------------------------------------------------------------
 
-
--- ---------------------------- Procedure of Session of Examen --------------------------------
+-- ---------------------------- Procedure of List Session-Examen --------------------------------
 DELIMITER $$
--- We create de procedure which list the examen which arrive
+
+-- We create a procedure which list the examen which arrive
 CREATE PROCEDURE `prc_LST_examen`()
 
 BEGIN
@@ -20,25 +20,21 @@ BEGIN
 END$$
 DELIMITER ;
 
-
- 
 -- ---------------------------- Procedure of add session examen--------------------------------
 DELIMITER $$ 
 
--- We create de procedure which list the examen which arrive
+-- We create a procedure which list the examen which arrive
 create PROCEDURE `prc_ADD_examen`(date_to_add VARCHAR(10), id_of_session_formation INT(2))
 
 BEGIN
 	INSERT INTO `SessionExamen`( `DateSessionExam`, `IDSessionFormation`) 
 	VALUES (date_to_add, id_of_session_formation)
 END 
-DELIMITER ; 
+DELIMITER ; -- call prc_ADD_examen(12,'2003-02-13');
 
-
-
--- ---------------------------- Procedure of Ajout of Formateur --------------------------------
+-- ---------------------------- Procedure of Add of Formateur --------------------------------
 DELIMITER $$
--- We create de procedure which add Formateur and Coordonnees
+-- We create a procedure which add Formateur and Coordonnees
 CREATE PROCEDURE `prc_ADD_Formateur`(nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal VARCHAR(50), ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
 
 BEGIN
@@ -49,17 +45,20 @@ BEGIN
 END$$
 DELIMITER ;
 
--- call prc_ADD_examen(12,'2003-02-13');
-
-
+-- ---------------------------- Procedure of Delete Formateur --------------------------------
 DELIMITER $$
+
+-- We create a procedure which delete Formateur and Coordonnees
 CREATE PROCEDURE `prc_DEL_Formateur`(id INT)
 BEGIN
 	DELETE FROM `formateur` WHERE IDFormateur = id;
 END$$
 DELIMITER ;
 
+-- ---------------------------- Procedure of Update Formateur --------------------------------
 DELIMITER $$
+
+-- We create a procedure which update Formateur and Coordonnees
 CREATE PROCEDURE `prc_UPD_Formateur`(idForm INT, nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal INT, ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
 BEGIN
 	DECLARE idCoor INTEGER DEFAULT 0;
@@ -76,7 +75,10 @@ DELIMITER ;
 -------------------------------------------TRIGGER-----------------------------------------------
 -------------------------------------------------------------------------------------------------
 
+
+-- ---------------------------- Trigger of AFTER DELETE Formateur --------------------------------
 DELIMITER $$
+-- We create a trigger which delete Coordonnee after delete Formateur
 CREATE TRIGGER `trig_DEL_FORMATEUR`
 	AFTER DELETE on formateur
 	FOR EACH ROW
@@ -85,7 +87,9 @@ BEGIN
 END $$
 DELIMITER ;
 
+-- ---------------------------- Trigger of BEFORE INSERT Formation --------------------------------
 DELIMITER $$
+-- We create a trigger which check DATE before insert into Formation
 CREATE TRIGGER `trigVerifExamen` BEFORE INSERT ON `sessionexamen`
  FOR EACH ROW BEGIN
 	DECLARE doublonExam CONDITION FOR SQLSTATE '45000';
