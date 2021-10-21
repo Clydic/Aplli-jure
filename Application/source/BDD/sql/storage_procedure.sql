@@ -6,7 +6,7 @@
 DROP PROCEDURE IF EXISTS `prc_LST_examen`;
 DELIMITER $$
 
--- We create a procedure which list the examen which arrive
+-- We create a procedure which list the examen with date near of current date 
 CREATE PROCEDURE `prc_LST_examen`()
 
 BEGIN
@@ -26,7 +26,7 @@ DROP PROCEDURE IF EXISTS `prc_ADD_examen`;
 DELIMITER $$
 
 -- We create a procedure which add session-examen
-CREATE PROCEDURE `prc_ADD_examen`(IN id_of_session_formation INT(2), IN date_to_add CHAR(10))
+CREATE PROCEDURE `prc_ADD_examen`(IN `id_of_session_formation` INT(2), IN `date_to_add` CHAR(10))
 BEGIN
     DECLARE DateEndFormation DATE;
     DECLARE DateBeginFormation DATE;
@@ -57,6 +57,20 @@ END $$ -- call prc_ADD_examen(12,'2003-02-13');
 DELIMITER ;
 
 
+-- ---------------------------- Procedure of deleletion of session examen--------------------------------
+
+DROP PROCEDURE IF EXISTS prc_DEL_examen;
+DELIMITER $$ 
+CREATE PROCEDURE prc_DEL_examen(id_of_examen_to_delete);
+BEGIN
+	IF (id_of_examen_to_delete IN (SELECT IdSessionExam FROM SessionExamen)) THEN 
+		DELETE FROM `sessionexamen` WHERE IdSessionExam = id_of_examen_to_delete;
+	ELSE
+		SIGNAL SQLSTATE '45003' 
+        SET MESSAGE_TEXT = "La session d'examen que vous essayez d'effacer n'existe pas" ;
+	END IF;
+END;
+DELIMITER;
 -- ---------------------------- Procedure of Ajout of Formateur --------------------------------
 DROP PROCEDURE IF EXISTS `prc_ADD_Formateur`;
 DELIMITER $$
