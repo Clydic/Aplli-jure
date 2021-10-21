@@ -150,6 +150,7 @@
 				
 				$tabTitle="Gestion Formateur";
 				$h1Title="Gestion Formateur";
+
 				require("vues/view_header.php");		
 				require("vues/view_AjoutFormateur.php");			
 				require("vues/view_footer.php");
@@ -345,11 +346,12 @@
 			// }
 		
 			case 'ajoutExamenEffectue':
-				$examenAdded = addExamen($connection,$_GET['IdSessionFormation'] ,$_GET['date']);
+				$message = addExamen($connection,$_GET['IdSessionFormation'] ,$_GET['date']);
 				$tabTitle="Ajout Session examen";
 				$h1Title="Gestion Session Examen";
 				$href = "index.php?action=listExam";
 				$textLink ="Retour à la liste des examens";
+				
 				require("vues/view_header.php");		
 				require("vues/view_AjoutReussi.php");			
 				require("vues/view_footer.php");

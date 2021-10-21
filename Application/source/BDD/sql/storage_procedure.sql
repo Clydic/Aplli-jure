@@ -23,20 +23,45 @@ DELIMITER ;
 
  
 -- ---------------------------- Procedure of add session examen--------------------------------
-DELIMITER $$ 
-
--- We create de procedure which list the examen which arrive
-create PROCEDURE `prc_ADD_examen`(date_to_add VARCHAR(10), id_of_session_formation INT(2))
-
 BEGIN
-	INSERT INTO `SessionExamen`( `DateSessionExam`, `IDSessionFormation`) 
-	VALUES (date_to_add, id_of_session_formation)
-END 
-DELIMITER ; 
-
-
+	DECLARE DateEndFormation DATE;
+   	DECLARE DateBeginFormation DATE;
+    SELECT DateDebutFormation 
+    into DateBeginFormation					 
+    FROM session_formation 
+    WHERE IdSessionFormation = id_of_session_formation;
+    
+    SELECT DateFinFormation 
+    into DateEndFormation 		
+    FROM session_formation 
+    WHERE IdSessionFormation = id_of_session_formation;
+    
+    IF ( (id_of_session_formation,date_to_add)
+		 INTO (SELECT IdSessionExamen,DateSessionExamen 								 
+             FROM SessionExamen))
+        THEN 
+        SIGNAL SQLSTATE '45002' 
+        SET MESSAGE_TEXT = "Il ne peut y avoir deux examens le même jour pour une même formation" ;
+    END IF;
+	IF ((date_to_add<DateEndFormation)
+    &&
+ 	(date_to_add>DateBeginFormation)) THEN
+    	INSERT INTO `SessionExamen`( 			`DateSessionExam`, `IDSessionFormation`) 
+	VALUES (date_to_add, id_of_session_formation);
+    
+    
+    ELSE 
+    	SIGNAL SQLSTATE '45001' 
+        SET MESSAGE_TEXT = "La date demandée ne correspond pas à la période de la session de foramtion" ;
+	END IF; 
+    
+        
+	
+END
+-- call prc_ADD_examen(12,'2003-02-13');
 
 -- ---------------------------- Procedure of Ajout of Formateur --------------------------------
+DROP PROCEDURE IF EXISTS prc_ADD_examen;
 DELIMITER $$
 -- We create de procedure which add Formateur and Coordonnees
 CREATE PROCEDURE `prc_ADD_Formateur`(nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal VARCHAR(50), ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
@@ -49,7 +74,6 @@ BEGIN
 END$$
 DELIMITER ;
 
--- call prc_ADD_examen(12,'2003-02-13');
 
 
 DELIMITER $$
@@ -59,30 +83,18 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE `prc_UPD_Formateur`(idForm INT, nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal INT, ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
-BEGIN
-	DECLARE idCoor INTEGER DEFAULT 0;
-	UPDATE `formateur` SET `Nom_du_formateur`= nom,`Prenom_du_Formateur`= prenom WHERE IDFormateur = idForm;
-
-	SELECT IDCoordonnee INTO idCoor FROM Formateur WHERE IDFormateur = idForm;
-	UPDATE `coordonnees` SET `Adresse1`= adr1,`Adresse2`= adr2 ,`Code_Postale`= postal ,`Ville`= ville ,`Telephone`= phone ,`Mail`= mail WHERE IDCoordonnee = idCoor;
-END$$
-DELIMITER ;
-
-
 
 -------------------------------------------------------------------------------------------------
 -------------------------------------------TRIGGER-----------------------------------------------
 -------------------------------------------------------------------------------------------------
 
 DELIMITER $$
-CREATE TRIGGER `trig_DEL_FORMATEUR`
+CREATE TRIGGER trig_DEL_FORMATEUR
 	AFTER DELETE on formateur
 	FOR EACH ROW
 BEGIN
 	DELETE FROM `coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
-END $$
+END &&
 DELIMITER ;
 
 DELIMITER $$
