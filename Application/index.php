@@ -66,21 +66,36 @@
 			break;		
 
 		case 'accueilAdmin':
-			if(getConnectAdmin($connection,$_GET['user'],$_GET['password']) == true)
+			if(isset($_POST['user']) && isset($_POST['password']))
 			{
-				$tabTitle="Accueil Administrateur";
-				$h1Title="Accueil";
-				$logoCRUDFormateur="source/CRUD_Formateur.png";
-				$logoCRUDFormation="source/CRUD_Formation.png";
-				require("vues/view_header.php");
-				require("vues/view_navbarAdmin.php");				
-				require("vues/view_accueilAdmin.php");			
-				require("vues/view_footer.php");
+				$_SESSION["user"] = $_POST['user'];
+				$_SESSION["password"] = $_POST['password'];
+				unset($_POST['user']);
+				unset($_POST['password']);
+				if(isset($_SESSION["user"]) && isset($_SESSION["password"]))
+				{
+					header('Location: index.php?action=accueilAdmin');
+				}
 			}
 			else
 			{
-				header('Location: index.php?action=connectAdmin&isConnect=NON');
+				if(getConnectAdmin($connection,$_SESSION['user'],$_SESSION['password']) == true)
+				{
+					$tabTitle="Accueil Administrateur";
+					$h1Title="Accueil";
+					$logoCRUDFormateur="source/CRUD_Formateur.png";
+					$logoCRUDFormation="source/CRUD_Formation.png";
+					require("vues/view_header.php");
+					require("vues/view_navbarAdmin.php");				
+					require("vues/view_accueilAdmin.php");			
+					require("vues/view_footer.php");
+				}
+				else
+				{
+					header('Location: index.php?action=connectAdmin&isConnect=NON');
+				}
 			}
+			
 			break;
 		
 		case 'CRUDFormation':
@@ -130,13 +145,17 @@
 				require("vues/view_AjoutFormateur.php");			
 				require("vues/view_footer.php");
 				if(isset($_GET['msg']) && $_GET['msg'] == "ErreurPostal")
-					{
-						echo "<script>alert(\"Echec d'ajout : Le code postal est invalide\");</script>";
-					}
-					if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
-					{
-						echo "<script>alert(\"Echec d'ajout : Le formateur est en doublon\");</script>";
-					}
+				{
+					echo "<script>alert(\"Echec d'ajout : Le code postal est invalide\");</script>";
+				}
+				if(isset($_GET['msg']) && $_GET['msg'] == "DoublonMail")
+				{
+					echo "<script>alert(\"Echec d'ajout : Le mail est en doublon\");</script>";
+				}
+				if(isset($_GET['msg']) && $_GET['msg'] == "DoublonPhone")
+				{
+					echo "<script>alert(\"Echec d'ajout : Le téléphone est en doublon\");</script>";
+				}
 			}
 			else
 			{
@@ -161,14 +180,18 @@
 					require("vues/view_Reussi.php");			
 					require("vues/view_footer.php");
 				}
-				elseif ($reponseAjout == "Doublon")
+				elseif($reponseAjout == "DoublonMail")
 				{
-					header('Location: index.php?action=AjoutFormateur&msg=Doublon');
+					header('Location: index.php?action=AjoutFormateur&msg=DoublonMail');
 				}
-				elseif ($reponseAjout == "Postal")
+				elseif($reponseAjout == "Postal")
 				{
 					header('Location: index.php?action=AjoutFormateur&msg=ErreurPostal');
 				}
+				elseif($reponseAjout == "DoublonPhone")
+				{
+					header('Location: index.php?action=AjoutFormateur&msg=DoublonPhone');
+				}	
 			}
 			else
 			{
@@ -256,9 +279,13 @@
 				{
 					echo "<script>alert(\"Echec de modification : Le code postal est invalide\");</script>";
 				}
-				if(isset($_GET['msg']) && $_GET['msg'] == "Doublon")
+				if(isset($_GET['msg']) && $_GET['msg'] == "DoublonMail")
 				{
-					echo "<script>alert(\"Echec de modification : Le formateur est en doublon\");</script>";
+					echo "<script>alert(\"Echec de modification : Le mail est en doublon\");</script>";
+				}
+				if(isset($_GET['msg']) && $_GET['msg'] == "DoublonPhone")
+				{
+					echo "<script>alert(\"Echec de modification : Le téléphone est en doublon\");</script>";
 				}
 			}
 			else
@@ -272,7 +299,6 @@
 			if(isset($_SESSION["role"]) && $_SESSION["role"] == "Admin")
 			{
 				$reponseUpdate = updateInfoFormateur($connection);
-				var_dump($reponseUpdate);
 				
 				if($reponseUpdate == "Reussi")
 				{
@@ -285,13 +311,17 @@
 					require("vues/view_Reussi.php");			
 					require("vues/view_footer.php");
 				}
-				elseif ($reponseUpdate == "Doublon")
+				elseif($reponseUpdate == "DoublonMail")
 				{
-					header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=Doublon');
+					header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=DoublonMail');
 				}
-				elseif ($reponseUpdate == "Postal")
+				elseif($reponseUpdate == "Postal")
 				{
 					header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=ErreurPostal');
+				}
+				elseif($reponseUpdate == "DoublonPhone")
+				{
+					header('Location: index.php?action=ModifierFormateur&idForm='.$_POST['idForm'].'&msg=DoublonPhone');
 				}
 			}
 			else
@@ -301,19 +331,33 @@
 			break;
 
 		case 'accueilForm':
-			if(getConnectForm($connection,$_GET['user'],$_GET['password']) == true)
-			{	
-				$tabTitle="Accueil Formateur";
-				$h1Title="Accueil";
-				echo "Je suis dans le case accueilForm";
-				require("vues/view_header.php");
-				require("vues/view_navbar.php");				
-				require("vues/view_accueilForm.php");			
-				require("vues/view_footer.php");
+			if(isset($_POST['user']) && isset($_POST['password']))
+			{
+				$_SESSION["user"] = $_POST['user'];
+				$_SESSION["password"] = $_POST['password'];
+				unset($_POST['user']);
+				unset($_POST['password']);
+				if(isset($_SESSION["user"]) && isset($_SESSION["password"]))
+				{
+					header('Location: index.php?action=accueilForm');
+				}
 			}
 			else
 			{
-				header('Location: index.php?action=connectForm&isConnect=NON');
+				if(getConnectForm($connection,$_SESSION['user'],$_SESSION['password']) == true)
+				{	
+					$tabTitle="Accueil Formateur";
+					$h1Title="Accueil";
+					echo "Je suis dans le case accueilForm";
+					require("vues/view_header.php");
+					require("vues/view_navbar.php");				
+					require("vues/view_accueilForm.php");			
+					require("vues/view_footer.php");
+				}
+				else
+				{
+					header('Location: index.php?action=connectForm&isConnect=NON');
+				}
 			}
 			break;
 			

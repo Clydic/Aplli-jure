@@ -237,25 +237,19 @@
 				return "DoublonMail";
 			}
 		}
-		try
+
+		if(is_numeric($_POST['CodePostal']) && strlen($_POST['CodePostal']) == 5)
 		{
-			if(is_numeric($_POST['CodePostal']) && strlen($_POST['CodePostal']) == 5)
-			{
-				$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
-				$result = $connect->prepare($sql);
-				$result->execute(array(':nom'=>strtoupper($_POST['Nom']),':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
-									':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostal'],':ville'=>$_POST['Ville'],
-									':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
-				return "Reussi";
-			}
-			else
-			{
-				return "Postal";
-			}
+			$sql="CALL prc_ADD_FORMATEUR(:nom,:prenom,:adr1,:adr2,:postal,:ville,:phone,:mail);";
+			$result = $connect->prepare($sql);
+			$result->execute(array(':nom'=>strtoupper($_POST['Nom']),':prenom'=>$_POST['Prenom'],':adr1'=>$_POST['Adresse1'],
+								':adr2'=>$_POST['Adresse2'],':postal'=>$_POST['CodePostal'],':ville'=>$_POST['Ville'],
+								':phone'=>$_POST['Telephone'],':mail'=>$_POST['Mail']));
+			return "Reussi";
 		}
-		catch(Exception $e)
+		else
 		{
-			echo 'Erreur de Requete SQL';
+			return "Postal";
 		}
 	}
 
