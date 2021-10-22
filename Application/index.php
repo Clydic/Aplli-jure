@@ -361,9 +361,21 @@
 				require("vues/view_header.php");		
 				require("vues/view_Reussi.php");			
 				require("vues/view_footer.php");
+				break;
+			case 'confirmationSuppressionExamen':
+				$tabTitle="Suppression d'une Session examen";
+				$h1Title="Gestion Session Examen";
+				
+				require("vues/view_header.php");		
+				require("vues/view_comfirmation_suppression_examen.php");			
+				require("vues/view_footer.php");
+
+				break;
+
+
 
 			case 'suppressionExamenEffectue':
-				$message = delExamen($connection,$_GET['IdSessionExam'] ,$_GET['date']);
+				$message = delExamen($connection,$_GET['IDSessionExam']);
 				$tabTitle="Ajout Session examen";
 				$h1Title="Gestion Session Examen";
 				$href = "index.php?action=listExam";
@@ -372,6 +384,7 @@
 				require("vues/view_header.php");		
 				require("vues/view_Reussi.php");			
 				require("vues/view_footer.php");
+				break;
 	}
 	
 
