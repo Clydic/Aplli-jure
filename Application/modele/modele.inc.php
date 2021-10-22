@@ -14,46 +14,51 @@
 		$array_of_result = MgrSessionExamen::getListExam($connect);
 		$message="";
 		// Begin the foreach loop on $array_of_result
-		foreach($array_of_result as $line)
-		{
+		foreach($array_of_result as $line):
+		
 			// Put the result in a html table
-			$message.="<tr><td>".$line["Intitule_de_formation"].
-				$line["IDSessionFormation"]."</td>";
-			$message.="<td>".$line["DateSessionExam"]."</td>".
+			$idSessionFormation=$line->getIdFormation();
+			$idSessionExamen=$line->getIdExamen();
+			$dateFormation=$line->getDateExamen();
+			$intituleFormation=$line->getIntituleFormation();
+			$message.= "<tr><td>".$intituleFormation .
+			 $idSessionFormation	."</td>";
+			$message.="<td>".$dateFormation.
 				'<td>
-					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
+					<a href=""><i class="fas fa-info-circle"></i></a>
 				</td>
+				
 				<td>
-					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="'.$line->getIDExamen().'">
-					<i class=\"fas fa-minus-circle bg-danger\"></i>
+					<a href="index.php?action=confirmationSuppressionExamen&IDSessionExam='.
+					$idSessionExamen.'&date='.$dateFormation.' ">
+					<i class="fas fa-minus-circle bg-danger"></i>
+				</a>
+				</td>
+				
+				
+				
+				<td>
 
-
-					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="'.$line->getIDExamen().'"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-						Etes vous sûr.e de vouloir supprimer
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
-						</div>
-						</div>
-					</div>
 					</div>
 
 													
 								</td>';
-			
-		}
+
+
+
+?>
+
+
+
+
+
+
+
+
+	<?php
+		endforeach;
 		// return the table with reults	
+		var_dump($array_of_result);
 		return $message;	
 	}
 
@@ -344,27 +349,29 @@
 	 * @param $connect
 	 * @return $message
 	 */
-        function getListSessionFormation($connect) : string
-        {
-			//Intialisation
-			$sql="CALL prc_LST_listeSessionFormation();";
-			$cursor = $connect->query($sql);
-            $result = $cursor->fetchAll();
-			$message=   "<option selected>Sélectionner une session</option><br>";
-			// Traitement 
-			foreach($result as $line)
-			{	$id=$line['IDSessionFormation'];
-				$intitule=$line['Intitule_de_formation'];
-				// Put the results of request in a select list
-				$message.="<option value=".$id." name=". $id." >".$intitule.$id
-				."</option><br/>";
+	function getListSessionFormation($connect) : string
+	{
+	//Intialisation
+	$sql="CALL prc_LST_listeSessionFormation();";
+	$cursor = $connect->query($sql);
+	$result = $cursor->fetchAll();
+	$message=   "<option selected>Sélectionner une session</option><br>";
+	// Traitement 
+		foreach($result as $line)
+		{	$id=$line['IDSessionFormation'];
+			$intitule=$line['Intitule_de_formation'];
+			// Put the results of request in a select list
+			$message.="<option value=".$id." name=". $id." >".$intitule.$id
+			."</option><br/>";
 
-								
-				
-			}
+									
+					
+		}
 			// Return the select list
 			return $message;
-		}
+	}
+
+		
 	/**
 	 * add a Session of an examen.
 	 * @param $connect / connection with a DB 
@@ -372,52 +379,52 @@
 	 * @param $dateSessionFormation
 	 * @return string message de retour
 	 */
-        function addExamen($connect, $idSessionFormation, $dateSessionFormation) : string
+	function addExamen($connect, $idSessionFormation, $dateSessionFormation) : string
+	{
+		// We check if there is no error.
+		try{
+			// We call the class method of MgrSessionExamen class
+			MgrSessionExamen::addExamen($connect, $idSessionFormation,$dateSessionFormation);
+			$message = "L'ajout est réussis \n<br/>";
+			return $message;
+			
+		}catch(Exception $e) // Display a message if there is an error.
 		{
-			// We check if there is no error.
-			try{
-				// We call the class method of MgrSessionExamen class
-				MgrSessionExamen::addExamen($connect, $idSessionFormation,$dateSessionFormation);
-				$message = "L'ajout est réussis \n<br/>";
-				return $message;
-				
-			}catch(Exception $e) // Display a message if there is an error.
+			$message =$e->getMessage()."\n<br/>"; 
+			$reg = "/^SQLSTATE\[45001].*/";
+			if (preg_match( "/^SQLSTATE\[45001].*/",$message)==1)
 			{
-				$message =$e->getMessage()."\n<br/>"; 
-				$reg = "/^SQLSTATE\[45001].*/";
-				if (preg_match( "/^SQLSTATE\[45001].*/",$message)==1)
-				{
-					$message =  "La date demandée ne correspond pas à la période de la session de formation";
-				}
-				else if (preg_match( "/^SQLSTATE\[45002].*/",$message)==1)
-				{
-					$message =  "Il ne peut y avoir deux examens le même jour pour une même formation";
-				}
-				else{
-					$message= "La base de donnée n'est pas disponible";
-				}
-				return $message;
+				$message =  "La date demandée ne correspond pas à la période de la session de formation";
 			}
+			else if (preg_match( "/^SQLSTATE\[45002].*/",$message)==1)
+			{
+				$message =  "Il ne peut y avoir deux examens le même jour pour une même formation";
+			}
+			else{
+				$message= "La base de donnée n'est pas disponible";
+			}
+			return $message;
 		}
+	}
 
 
 
-        function delExamen($connect, $idSessionExamen )
+	function delExamen($connect, $idSessionExamen )
+	{
+		// We check if there is no error.
+		try{
+			// We call the class method of MgrSessionExamen class
+			MgrSessionExamen::delExamen($connect, $idSessionExamen);
+			$message = "La supression a bien eu lieu\n<br/>";
+			return $message;
+			
+		}catch(Exception $e) // Display a message if there is an error.
 		{
-			// We check if there is no error.
-			try{
-				// We call the class method of MgrSessionExamen class
-				MgrSessionExamen::delExamen($connect, $idSessionExamen);
-				$message = "La supression a bien eu lieu\n<br/>";
-				return $message;
-				
-			}catch(Exception $e) // Display a message if there is an error.
-			{
-					$message= "La session d'examen que vous tentez de supprimer n'existe pas";
-				
-				return $message;
-			}
+				$message= "La session d'examen que vous tentez de supprimer n'existe pas";
+			
+			return $message;
 		}
+	}
 
 		
 ?>

@@ -79,7 +79,7 @@
 		 *Set the IDSessionFormation of SessionExamen it is private
 		 *@param int $IDSessionFormationToSet
 		 * */
-		private function setIdExamen( $IDSessionExamenToSet)
+		public function setIdExamen( $IDSessionExamenToSet)
 		{
 			$this->IDSessionExamen=$IDSessionExamenToSet;
 		}
