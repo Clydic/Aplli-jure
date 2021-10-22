@@ -10,9 +10,6 @@
 	$href=""; // Variable pour modifier certain lien hypertexte
 	$textLink=""; // Le text des liens hyper texte	
 	$logo="source/index.png";
-	print_r($action);
-	echo " Get : "; print_r($_GET);
-	echo " \nPOST : "; print_r($_POST);
 
 	if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -26,9 +23,6 @@
         $isConnect = $_GET['isConnect'];
     }
 
-	if (isset($_SESSION["role"])) {
-        var_dump($_SESSION["role"]);
-    }
 
 	switch($action)
 	{
