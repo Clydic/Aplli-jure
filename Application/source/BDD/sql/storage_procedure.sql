@@ -16,6 +16,7 @@ BEGIN
 END$$
 DELIMITER ;
 -- ---------------------------- Procedure of add session examen--------------------------------
+nmap <Leader>gc :G commit <Enter>
 DROP PROCEDURE IF EXISTS `prc_ADD_examen`;
 DELIMITER $$
 
