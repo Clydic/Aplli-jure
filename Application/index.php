@@ -13,6 +13,7 @@
 	print_r($action);
 	echo " Get : "; print_r($_GET);
 	echo " \nPOST : "; print_r($_POST);
+	echo " \nSession : "; print_r($_SESSION);
 
 	if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -27,7 +28,7 @@
     }
 
 	if (isset($_SESSION["role"])) {
-        var_dump($_SESSION["role"]);
+        print_r( "role : ");var_dump($_SESSION["role"]);
     }
 
 	switch($action)
@@ -335,7 +336,7 @@
 			}
 
 		case'ajoutExamen':
-			if(isset($_session["role"])&&$_session["role"]=="Formateur")
+			if(isset($_session["role"]) && $_session["role"]=="Formateur")
 			{
 				$tabTitle="Gestion des sessions d'examen";
 				$h1Title="Ajouter une session d'examen";
