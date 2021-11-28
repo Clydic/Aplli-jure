@@ -3,24 +3,18 @@
 -- -----------------------------------------------------------------------------------------------
 
 -- ---------------------------- Procedure of List Session-Examen --------------------------------
-DROP PROCEDURE IF EXISTS `prc_LST_examen`;
 DELIMITER $$
-
--- We create a procedure which list the examen with date near of current date 
-CREATE PROCEDURE `prc_LST_examen`()
-
 BEGIN
 		SELECT f.Intitule_de_formation,
 		    s.IDSessionFormation, 
 			e.DateSessionExam 
 			from Formation f
 			JOIN Session_Formation s on s.IDFormation = f.IDFormation
-			JOIN SessionExamen e on e.IDSessionFormation = s.IDSessionFormation
+			JOIN SessionExamen e on s.IDSessionFormation = e.IDSessionFormation
 			WHERE e.DateSessionExam >= CURRENT_DATE()
 			ORDER BY e.DateSessionExam;
 END$$
 DELIMITER ;
-
 -- ---------------------------- Procedure of add session examen--------------------------------
 DROP PROCEDURE IF EXISTS `prc_ADD_examen`;
 DELIMITER $$
