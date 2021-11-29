@@ -175,6 +175,7 @@ function addFormateur($connect): bool
 			));
 			return "Reussi";
 		} else {
+
 			return "Postal";
 		}
 	} catch (Exception $e) {
