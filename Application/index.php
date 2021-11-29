@@ -10,13 +10,6 @@ $message = ""; // Varibales des messages d'inforamtion de crud
 $href = ""; // Variable pour modifier certain lien hypertexte
 $textLink = ""; // Le text des liens hyper texte	
 $logo = "source/index.png";
-print_r($action);
-echo " Get : ";
-print_r($_GET);
-echo " \nPOST : ";
-print_r($_POST);
-echo " \nSession : ";
-print_r($_SESSION);
 
 if (isset($_GET['action'])) {
 	$action = $_GET['action'];
