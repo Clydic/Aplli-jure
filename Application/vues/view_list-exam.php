@@ -27,7 +27,9 @@
 				</td>-->
 
 					<td>
-						<a href="index.php?action=confirmationSuppressionExamen&IDSessionExam='<?php echo $idSessionExamen ?>'&date=' <?php echo $dateFormation  ?>' ">
+						<a href="index.php?action=confirmationSuppressionExamen.
+						&IDSessionExam='<?php echo $idSessionExamen ?>'.
+						&date=' <?php echo $dateFormation  ?>' ">
 
 							<i class="fas fa-minus-circle bg-danger"></i>
 						</a>
