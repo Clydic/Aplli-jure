@@ -23,10 +23,6 @@ if (isset($_GET['isConnect'])) {
 	$isConnect = $_GET['isConnect'];
 }
 
-if (isset($_SESSION["role"])) {
-	print_r("role : ");
-	var_dump($_SESSION["role"]);
-}
 
 switch ($action) {
 	case 'accueil':
@@ -49,6 +45,40 @@ switch ($action) {
 		require("vues/view_footer.php");
 		break;
 
+	case 'connectForm':
+		$tabTitle = "Connexion Formateur";
+		$h1Title = "Connexion";
+		if ($isConnect == "NON") {
+			echo "<script>alert(\"Utilisateur ou Mot de passe incorrect\");</script>";
+		}
+		require("vues/view_header.php");
+		require("vues/view_connexionForm.php");
+		require("vues/view_footer.php");
+		break;
+
+	case 'accueilAdmin':
+		if (isset($_POST['user']) && isset($_POST['password'])) {
+			$_SESSION["user"] = $_POST['user'];
+			$_SESSION["password"] = $_POST['password'];
+			unset($_POST['user']);
+			unset($_POST['password']);
+			if (isset($_SESSION["user"]) && isset($_SESSION["password"])) {
+				header('Location: index.php?action=accueilAdmin');
+			}
+		} else {
+			if (getConnectAdmin($connection, $_SESSION['user'], $_SESSION['password']) == true) {
+				$tabTitle = "Accueil Administrateur";
+				$h1Title = "Accueil";
+				$logoCRUDFormateur = "source/CRUD_Formateur.png";
+				$logoCRUDFormation = "source/CRUD_Formation.png";
+				require("vues/view_header.php");
+				require("vues/view_navbarAdmin.php");
+				require("vues/view_accueilAdmin.php");
+				require("vues/view_footer.php");
+			} else {
+				header('Location: index.php?action=connectAdmin&isConnect=NON');
+			}
+		}
 
 		break;
 
@@ -79,62 +109,14 @@ switch ($action) {
 		} else {
 			header('Location: index.php');
 		}
-		break;
-
-	case 'accueilAdmin':
-		if (isset($_POST['user']) && isset($_POST['password'])) {
-			$_SESSION["user"] = $_POST['user'];
-			$_SESSION["password"] = $_POST['password'];
-			unset($_POST['user']);
-			unset($_POST['password']);
-			if (isset($_SESSION["user"]) && isset($_SESSION["password"])) {
-				header('Location: index.php?action=accueilAdmin');
-			}
-		} else {
-			if (getConnectAdmin($connection, $_SESSION['user'], $_SESSION['password']) == true) {
-				$tabTitle = "Accueil Administrateur";
-				$h1Title = "Accueil";
-				$logoCRUDFormateur = "source/CRUD_Formateur.png";
-				$logoCRUDFormation = "source/CRUD_Formation.png";
-				require("vues/view_header.php");
-				require("vues/view_navbarAdmin.php");
-				require("vues/view_accueilAdmin.php");
-				require("vues/view_footer.php");
-			} else {
-				header('Location: index.php?action=connectAdmin&isConnect=NON');
-			}
-		}
 
 		break;
 
-
-	case 'FctAjoutFormateur':
-		$reponseAjout = "";
-		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Admin") {
-			$reponseAjout = addFormateur($connection);
-
-			if ($reponseAjout == "Reussi") {
-				$tabTitle = "Gestion Formateur";
-				$h1Title = "Gestion Formateur";
-				$message = 'Ajout Reussi !';
-				$textLink = "Retour a la liste de formateur";
-				$href = 'index.php?action=CRUDFormateur';
-				require("vues/view_header.php");
-				require("vues/view_Reussi.php");
-				require("vues/view_footer.php");
-			} elseif ($reponseAjout == "Doublon") {
-				header('Location: index.php?action=AjoutFormateur&msg=Doublon');
-			} elseif ($reponseAjout == "Postal") {
-				header('Location: index.php?action=AjoutFormateur&msg=ErreurPostal');
-			}
-		} else {
-			header('Location: index.php');
-		}
-		break;
-
-	case 'DELFormateur':
+	case 'AjoutFormateur':
 		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Admin") {
 
+			$tabTitle = "Gestion Formateur";
+			$h1Title = "Gestion Formateur";
 
 			require("vues/view_header.php");
 			require("vues/view_AjoutFormateur.php");
@@ -153,19 +135,68 @@ switch ($action) {
 		}
 		break;
 
+	case 'FctAjoutFormateur':
+		$reponseAjout = "";
+		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Admin") {
+			$reponseAjout = addFormateur($connection);
 
+			if ($reponseAjout == "Reussi") {
+				$tabTitle = "Gestion Formateur";
+				$h1Title = "Gestion Formateur";
+				$message = 'Ajout Reussi !';
+				$textLink = "Retour a la liste de formateur";
+				$href = 'index.php?action=CRUDFormateur';
+				require("vues/view_header.php");
+				require("vues/view_Reussi.php");
+				require("vues/view_footer.php");
+			} elseif ($reponseAjout == "DoublonMail") {
+				header('Location: index.php?action=AjoutFormateur&msg=DoublonMail');
+			} elseif ($reponseAjout == "Postal") {
+				header('Location: index.php?action=AjoutFormateur&msg=ErreurPostal');
+			} elseif ($reponseAjout == "DoublonPhone") {
+				header('Location: index.php?action=AjoutFormateur&msg=DoublonPhone');
+			}
+		} else {
+			header('Location: index.php');
+		}
+		break;
 
-		if ($reponseDelete) {
+	case 'DELFormateur':
+		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Admin") {
+
 			$tabTitle = "Gestion Formateur";
 			$h1Title = "Gestion Formateur";
-			$message = 'Suppression Reussi !';
-			$textLink = "Retour a la liste de formateur";
-			$href = 'index.php?action=CRUDFormateur';
+			$FormSupp = getFormateurByID($connection, $_GET['id']);
 			require("vues/view_header.php");
-			require("vues/view_Reussi.php");
+			require("vues/view_DELFormateur.php");
 			require("vues/view_footer.php");
+			if (isset($_GET['msg']) && $_GET['msg'] == "Erreur") {
+				echo "<script>alert(\"Echec de suppression\");</script>";
+			}
 		} else {
-			header('Location: index.php?action=DELFormateur&idForm=' . $_POST['idForm'] . '&msg=Erreur');
+			header('Location: index.php');
+		}
+		break;
+
+	case 'FctDELFormateur':
+		$reponseDelete = "";
+		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Admin") {
+			$reponseDelete = delFormateur($connection, $_GET['idForm']);
+
+			if ($reponseDelete) {
+				$tabTitle = "Gestion Formateur";
+				$h1Title = "Gestion Formateur";
+				$message = 'Suppression Reussi !';
+				$textLink = "Retour a la liste de formateur";
+				$href = 'index.php?action=CRUDFormateur';
+				require("vues/view_header.php");
+				require("vues/view_Reussi.php");
+				require("vues/view_footer.php");
+			} else {
+				header('Location: index.php?action=DELFormateur&idForm=' . $_POST['idForm'] . '&msg=Erreur');
+			}
+		} else {
+			header('Location: index.php');
 		}
 		break;
 
@@ -182,7 +213,6 @@ switch ($action) {
 			header('Location: index.php');
 		}
 		break;
-
 
 	case 'ModifierFormateur':
 		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Admin") {
@@ -228,29 +258,34 @@ switch ($action) {
 			} elseif ($reponseUpdate == "DoublonPhone") {
 				header('Location: index.php?action=ModifierFormateur&idForm=' . $_POST['idForm'] . '&msg=DoublonPhone');
 			}
-		}
-		if (isset($_GET['msg']) && $_GET['msg'] == "Doublon") {
-			echo "<script>alert(\"Echec de modification : Le formateur est en doublon\");</script>";
 		} else {
 			header('Location: index.php');
 		}
 		break;
 
-
 	case 'accueilForm':
-		if (getConnectForm($connection, $_GET['user'], $_GET['password']) == true) {
-			$tabTitle = "Accueil Formateur";
-			$h1Title = "Accueil";
-			echo "Je suis dans le case accueilForm";
-			require("vues/view_header.php");
-			require("vues/view_navbar.php");
-			require("vues/view_accueilForm.php");
-			require("vues/view_footer.php");
+		if (isset($_POST['user']) && isset($_POST['password'])) {
+			$_SESSION["user"] = $_POST['user'];
+			$_SESSION["password"] = $_POST['password'];
+			unset($_POST['user']);
+			unset($_POST['password']);
+			if (isset($_SESSION["user"]) && isset($_SESSION["password"])) {
+				header('Location: index.php?action=accueilForm');
+			}
 		} else {
-			header('Location: index.php?action=connectForm&isConnect=NON');
+			if (getConnectForm($connection, $_SESSION['user'], $_SESSION['password']) == true) {
+				$tabTitle = "Accueil Formateur";
+				$h1Title = "Accueil";
+				echo "Je suis dans le case accueilForm";
+				require("vues/view_header.php");
+				require("vues/view_navbar.php");
+				require("vues/view_accueilForm.php");
+				require("vues/view_footer.php");
+			} else {
+				header('Location: index.php?action=connectForm&isConnect=NON');
+			}
 		}
 		break;
-
 	case 'listExam':
 		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Formateur") {
 			$tabTitle = "Gestion des sessions d'examen";
