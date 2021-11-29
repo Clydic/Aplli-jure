@@ -66,6 +66,41 @@ BEGIN
 	END IF;
 END;
 DELIMITER;
+
+
+-- ---------------------------- Procedure of list of formation session--------------------------------
+DELIMITER $$
+CREATE DEFINER=`batman`@`localhost` PROCEDURE `prc_LST_listeSessionFormation`()
+    NO SQL
+BEGIN
+	SELECT formation.Intitule_de_formation , 
+			Session_Formation.IDSessionFormation,
+			Session_Formation.datedebutformation, 
+			Session_Formation.DateFinFormation 
+	FROM formation 
+	JOIN session_formation 
+	ON Session_Formation.IDFormation=Formation.IDFormation 
+	WHERE Session_Formation.DateFinFormation >= CURRENT_DATE();
+END$$
+DELIMITER ;
+
+-- ---------------------------- Procedure of list of formation session--------------------------------
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_info_SessionExamen`(IN `IdSessionFormation` INT(3))
+    NO SQL
+BEGIN
+	SELECT  formation.Intitule_de_formation, session_formation.IDSessionFormation,
+	session_formation.DateDebutFormation,
+	session_formation.DateFinFormation,
+	formateur.Nom_du_formateur
+	FROM session_formation
+	JOIN formation on formation.IDFormation=session_formation.IDFormation
+	JOIN formateur on formateur.IDFormateur=formation.IDFormateur
+	WHERE session_formation.IDSessionFormation = IdSessionFormation;
+END$$
+DELIMITER ;
+
+
 -- ---------------------------- Procedure of Ajout of Formateur --------------------------------
 DROP PROCEDURE IF EXISTS `prc_ADD_Formateur`;
 DELIMITER $$
