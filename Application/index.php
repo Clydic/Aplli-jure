@@ -283,18 +283,18 @@ switch ($action) {
 		}
 
 	case 'ajoutExamen':
-		// if (isset($_session["role"]) && $_session["role"] == "Formateur") {
-		$tabTitle = "Gestion des sessions d'examen";
-		$h1Title = "Ajouter une session d'examen";
-		$list_formation = getListSessionFormation($connection);
-		require("vues/view_header.php");
-		require("vues/view_navbar.php");
-		require("vues/view_ajout_session_examen.php");
-		require("vues/view_footer.php");
-		break;
-		// } else {
-		// header('Location: index.php');
-		// }
+		if (isset($_SESSION["role"]) && $_SESSION["role"] == "Formateur") {
+			$tabTitle = "Gestion des sessions d'examen";
+			$h1Title = "Ajouter une session d'examen";
+			$list_formation = getListSessionFormation($connection);
+			require("vues/view_header.php");
+			require("vues/view_navbar.php");
+			require("vues/view_ajout_session_examen.php");
+			require("vues/view_footer.php");
+			break;
+		} else {
+			header('Location: index.php');
+		}
 
 	case 'ajoutExamenEffectue':
 		$message = addExamen($connection, $_GET['IdSessionFormation'], $_GET['date']);
