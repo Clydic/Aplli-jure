@@ -1,9 +1,9 @@
 <!--vues/view_list-exam.php-->
 <main class=" bg-light  pb-5 mt-3">
 	<h2 class=" text-center">Liste des sessions d'examen à venir</h2>
-	<div class="overflow-auto h-50 p-3">
+	<div class="container overflow-auto h-25 p-3">
 
-		<table class=" container col-12  mt-5  
+		<table class=" container col-12  mt-5 my-3  
 			fs-4 table table-striped table-dark mb-3">
 			<thead>
 				<tr>

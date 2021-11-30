@@ -10,18 +10,26 @@
 		<div class="collapse navbar-collapse " id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link " aria-curent="page" href="#">
+					<a class="nav-link " aria-curent="page" href="index.php?action=accueilForm">
+						Accueil du formateur
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " aria-curent="page" href="index.php?action=page_indisponible">
 						Session de formation
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Archives</a>
+					<a class="nav-link" href="index.php?action=page_indisponible">Archives</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Liste des jurés</a>
+					<a class="nav-link" href="index.php?action=page_indisponible">Liste des jurés</a>
 				</li>
 				<li class="nav-item ">
 					<a class="nav-link" href="index.php?action=listExam">Gestion des sessions d'examen</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="index.php">Déconnexion</a>
 				</li>
 			</ul>
 		</div>
