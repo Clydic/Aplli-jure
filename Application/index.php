@@ -6,7 +6,7 @@ session_start();
 $connection = CRMJures::getConnection();
 $action = "accueil"; //"accueil";
 $isConnect = NULL; // Variable pour savoir si l'utilisateur est connecté 
-$message = ""; // Varibales des messages d'inforamtion de crud
+$message = ""; // Variables des messages d'information de crud
 $href = ""; // Variable pour modifier certain lien hypertexte
 $textLink = ""; // Le text des liens hyper texte	
 $logo = "source/index.png";
@@ -348,4 +348,13 @@ switch ($action) {
 		require("vues/view_Reussi.php");
 		require("vues/view_footer.php");
 		break;
+
+	case 'page_indisponible':
+
+		$tabTitle = "Page indisponible";
+		$h1Title = "Page indisponible";
+		$message = "Cette page est actuellement en construction et sera disponible ultérieurement nous vous remercions de votre patience";
+		require("vues/view_header.php");
+		require("vues/view_redirected.php");
+		require("vues/view_footer.php");
 }
