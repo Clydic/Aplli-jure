@@ -92,5 +92,16 @@ class  MgrSessionExamen
         $id = $connect->query("SELECT `fn_id_examen($idOfSessionFormation, $dateOfSessionExamen) as id");
         return $id;
     }
+    public static function updateExamen($connect, $dateToUpdate, $idSessionExamen)
+    {
+        try {
+            $connect->query("CALL prc_UPD_examen
+        ($dateToUpdate, $idSessionExamen)
+        ");
+            return "L'examen a bien été modifié";
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
 ?>

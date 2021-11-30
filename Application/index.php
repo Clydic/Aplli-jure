@@ -349,6 +349,17 @@ switch ($action) {
 		require("vues/view_footer.php");
 		break;
 
+	case 'formulaireUpdateExamen':
+		$message = MgrSessionExamen::updateExamen($connection, $GET_['DateSessionExamen'], $_GET['IDSessionExam']);
+		$tabTitle = "Modifier Session examen";
+		$h1Title = "Gestion Session Examen";
+		$href = "index.php?action=listExam";
+		$textLink = "Retour à la liste des examens";
+
+		require("vues/view_header.php");
+		require("vues/view_Reussi.php");
+		require("vues/view_footer.php");
+
 	case 'page_indisponible':
 
 		$tabTitle = "Page indisponible";
