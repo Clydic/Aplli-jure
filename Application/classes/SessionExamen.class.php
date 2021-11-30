@@ -28,8 +28,6 @@ class SessionExamen
 		$this->setIdExamen($IDSessionExamen);
 		$this->setDateExamen($DateSession);
 		$this->setIntiTuleFormation($Intitule_de_formation);
-
-		echo "L'examen est bien créé\n";
 	}
 
 	// --------------------------------------------------------------------------

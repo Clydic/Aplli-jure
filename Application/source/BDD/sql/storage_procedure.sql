@@ -3,60 +3,68 @@
 -- -----------------------------------------------------------------------------------------------
 
 -- ---------------------------- Procedure of List Session-Examen --------------------------------
+DROP PROCEDURE IF EXISTS `prc_LST_examen`;
 DELIMITER $$
+CREATE PROCEDURE `prc_LST_examen`()
 BEGIN
 		SELECT f.Intitule_de_formation,
+        	e.IDSessionExam,
 		    s.IDSessionFormation, 
 			e.DateSessionExam 
 			from Formation f
 			JOIN Session_Formation s on s.IDFormation = f.IDFormation
-			JOIN SessionExamen e on s.IDSessionFormation = e.IDSessionFormation
+			JOIN SessionExamen e on e.IDSessionFormation = s.IDSessionFormation
 			WHERE e.DateSessionExam >= CURRENT_DATE()
 			ORDER BY e.DateSessionExam;
 END$$
 DELIMITER ;
 -- ---------------------------- Procedure of add session examen--------------------------------
-nmap <Leader>gc :G commit <Enter>
+
 DROP PROCEDURE IF EXISTS `prc_ADD_examen`;
 DELIMITER $$
 
 -- We create a procedure which add session-examen
 CREATE PROCEDURE `prc_ADD_examen`(IN `id_of_session_formation` INT(2), IN `date_to_add` CHAR(10))
 BEGIN
-    DECLARE DateEndFormation DATE;
-    DECLARE DateBeginFormation DATE;
-
+DECLARE DateEndFormation DATE;
+   	DECLARE DateBeginFormation DATE;
     SELECT DateDebutFormation 
-    into DateBeginFormation                     
+    into DateBeginFormation					 
     FROM session_formation 
     WHERE IdSessionFormation = id_of_session_formation;
     
     SELECT DateFinFormation 
-    INTO DateEndFormation         
+    into DateEndFormation 		
     FROM session_formation 
     WHERE IdSessionFormation = id_of_session_formation;
     
-    IF ((id_of_session_formation,date_to_add) IN (SELECT IdSessionExamen,DateSessionExamen FROM SessionExamen)) THEN 
+        IF ((id_of_session_formation,date_to_add)
+        IN (SELECT IdSessionFormation, 								DateSessionExam 
+             FROM SessionExamen))
+        THEN 
         SIGNAL SQLSTATE '45002' 
-        SET MESSAGE_TEXT = "Il ne peut y avoir deux examens le même jour pour une même formation" ;
+        SET MESSAGE_TEXT = "Il ne peut y avoir deux 		examen le même jour pour une même 				formation" ;
     END IF;
-
-    IF ((date_to_add<DateEndFormation) && (date_to_add>DateBeginFormation)) THEN
-        INSERT INTO SessionExamen(DateSessionExam, IDSessionFormation) 
-		VALUES (date_to_add, id_of_session_formation);
+    
+	IF ((date_to_add<DateEndFormation)
+    &&
+ 	(date_to_add>DateBeginFormation)) THEN
+    	INSERT INTO `SessionExamen`( 			`DateSessionExam`, `IDSessionFormation`) 
+	VALUES (date_to_add, id_of_session_formation);
+    
+    
     ELSE 
-        SIGNAL SQLSTATE '45001' 
-        SET MESSAGE_TEXT = "La date demandée ne correspond pas à la période de la session de formation" ;
-    END IF; 
+    	SIGNAL SQLSTATE '45001' 
+        SET MESSAGE_TEXT = "La date demandée ne 			correspond pas à la période de la 				session de foramtion" ;
+	END IF;
 END $$ -- call prc_ADD_examen(12,'2003-02-13');
 DELIMITER ;
 
 
 -- ---------------------------- Procedure of deleletion of session examen--------------------------------
-
-DROP PROCEDURE IF EXISTS prc_DEL_examen;
-DELIMITER $$ 
-CREATE PROCEDURE prc_DEL_examen(id_of_examen_to_delete);
+DROP PROCEDURE IF EXISTS `prc_DEL_examen` ;
+DELIMITER $$
+CREATE PROCEDURE `prc_DEL_examen`(id_of_examen_to_delete INT(3))
 BEGIN
 	IF (id_of_examen_to_delete IN (SELECT IdSessionExam FROM SessionExamen)) THEN 
 		DELETE FROM `sessionexamen` WHERE IdSessionExam = id_of_examen_to_delete;
@@ -64,43 +72,8 @@ BEGIN
 		SIGNAL SQLSTATE '45003' 
         SET MESSAGE_TEXT = "La session d'examen que vous essayez d'effacer n'existe pas" ;
 	END IF;
-END;
-DELIMITER;
-
-
--- ---------------------------- Procedure of list of formation session--------------------------------
-DELIMITER $$
-CREATE DEFINER=`batman`@`localhost` PROCEDURE `prc_LST_listeSessionFormation`()
-    NO SQL
-BEGIN
-	SELECT formation.Intitule_de_formation , 
-			Session_Formation.IDSessionFormation,
-			Session_Formation.datedebutformation, 
-			Session_Formation.DateFinFormation 
-	FROM formation 
-	JOIN session_formation 
-	ON Session_Formation.IDFormation=Formation.IDFormation 
-	WHERE Session_Formation.DateFinFormation >= CURRENT_DATE();
 END$$
 DELIMITER ;
-
--- ---------------------------- Procedure of list of formation session--------------------------------
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_info_SessionExamen`(IN `IdSessionFormation` INT(3))
-    NO SQL
-BEGIN
-	SELECT  formation.Intitule_de_formation, session_formation.IDSessionFormation,
-	session_formation.DateDebutFormation,
-	session_formation.DateFinFormation,
-	formateur.Nom_du_formateur
-	FROM session_formation
-	JOIN formation on formation.IDFormation=session_formation.IDFormation
-	JOIN formateur on formateur.IDFormateur=formation.IDFormateur
-	WHERE session_formation.IDSessionFormation = IdSessionFormation;
-END$$
-DELIMITER ;
-
-
 -- ---------------------------- Procedure of Ajout of Formateur --------------------------------
 DROP PROCEDURE IF EXISTS `prc_ADD_Formateur`;
 DELIMITER $$
@@ -110,8 +83,8 @@ CREATE PROCEDURE `prc_ADD_Formateur`(nom VARCHAR(50), prenom VARCHAR(50), adr1 V
 BEGIN
 		DECLARE idCoor INTEGER DEFAULT 0;
 		INSERT INTO `coordonnees`(`Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (adr1,adr2,postal,ville,phone,mail);
-		SELECT MAX(IDCoordonnee) INTO idCoor FROM coordonnees;
-		INSERT INTO `formateur`(`Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (upper(nom),prenom,idCoor);
+		SELECT MAX(IDCoordonnee) INTO idCoor FROM Coordonnees;
+		INSERT INTO `Formateur`(`Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (upper(nom),prenom,idCoor);
 END$$
 DELIMITER ;
 
@@ -122,7 +95,7 @@ DELIMITER $$
 -- We create a procedure which delete Formateur and Coordonnees
 CREATE PROCEDURE `prc_DEL_Formateur`(id INT)
 BEGIN
-	DELETE FROM `formateur` WHERE IDFormateur = id;
+	DELETE FROM `Formateur` WHERE IDFormateur = id;
 END$$
 DELIMITER ;
 
@@ -134,15 +107,26 @@ DELIMITER $$
 CREATE PROCEDURE `prc_UPD_Formateur`(idForm INT, nom VARCHAR(50), prenom VARCHAR(50), adr1 VARCHAR(50), adr2 VARCHAR(50), postal INT, ville VARCHAR(50), phone VARCHAR(50), mail VARCHAR(50))
 BEGIN
 	DECLARE idCoor INTEGER DEFAULT 0;
-	UPDATE `formateur` SET `Nom_du_formateur`= nom,`Prenom_du_Formateur`= prenom WHERE IDFormateur = idForm;
+	UPDATE `Formateur` SET `Nom_du_formateur`= nom,`Prenom_du_Formateur`= prenom WHERE IDFormateur = idForm;
 
 	SELECT IDCoordonnee INTO idCoor FROM Formateur WHERE IDFormateur = idForm;
-	UPDATE `coordonnees` SET `Adresse1`= adr1,`Adresse2`= adr2 ,`Code_Postale`= postal ,`Ville`= ville ,`Telephone`= phone ,`Mail`= mail WHERE IDCoordonnee = idCoor;
+	UPDATE `Coordonnees` SET `Adresse1`= adr1,`Adresse2`= adr2 ,`Code_Postale`= postal ,`Ville`= ville ,`Telephone`= phone ,`Mail`= mail WHERE IDCoordonnee = idCoor;
 END$$
 DELIMITER ;
 
+-- ---------------------------- Procedure of Liste of Session Formation--------------------------------
 
-
+DROP PROCEDURE IF EXISTS `prc_LST_listeSessionFormation`;
+DELIMITER $$
+CREATE PROCEDURE `prc_LST_listeSessionFormation`()
+BEGIN
+SELECT f.Intitule_de_formation , sf.IDSessionFormation, sf.DateDebutFormation, sf.DateFinFormation 
+FROM formation f 
+JOIN session_formation sf 
+ON sf.IDFormation=f.IDFormation 
+WHERE sf.DateFinFormation >= CURRENT_DATE();
+END$$
+DELIMITER ;
 -- -----------------------------------------------------------------------------------------------
 -- -----------------------------------------TRIGGER-----------------------------------------------
 -- -----------------------------------------------------------------------------------------------
