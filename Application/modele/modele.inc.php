@@ -132,13 +132,7 @@ function getListFormation($connect): string
 
 	$message = "";
 	foreach ($result as $line) {
-		$message .= "<tr><td>" . $line["Intitule_de_formation"] . "</td>" .
-			"<td>
-					<a href=\"\"><i class=\"fas fa-info-circle\"></i></a>
-				</td>
-				<td>
-					<a href=\"\"><i class=\"fas fa-minus-circle bg-danger\"></i></a>
-				</td>";
+		$message .= "<tr><td>" . $line["Intitule_de_formation"] . "</td></tr>";
 	}
 	return $message;
 }
@@ -332,4 +326,23 @@ function delExamen($connect, $idSessionExamen)
 
 		return $message;
 	}
+}
+/**
+ * Recupere la liste de formation
+ * @param PDO Connexion a la BDD
+ * @return string La liste de formation
+ */
+function showListSessionFormation($connect): string
+{
+
+	$sql = "CALL prc_LST_listeSessionFormation();";
+	$cursor = $connect->query($sql);
+	$result = $cursor->fetchAll();
+	$message = "";
+	foreach ($result as $line) {
+		$message .= "<tr><td>" . $line["Intitule_de_formation"] . $line["IDSessioFormation"] . "</td>.
+		
+		</tr>";
+	}
+	return $message;
 }
