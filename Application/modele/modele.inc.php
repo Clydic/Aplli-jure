@@ -13,7 +13,7 @@
  */
 function getConnectAdmin($connect, $user, $pass): bool
 {
-	$sql = "SELECT identifiant, Mot_de_passe FROM utilisateur WHERE TypeUtilisateur = \"Administrateur\"";
+	$sql = "SELECT identifiant, Mot_de_passe FROM Utilisateur WHERE TypeUtilisateur = \"Administrateur\"";
 	$cursor = $connect->query($sql);
 	$result = $cursor->fetchAll();
 
@@ -35,7 +35,7 @@ function getConnectAdmin($connect, $user, $pass): bool
  */
 function getConnectForm($connect, $user, $pass): bool
 {
-	$sql = "SELECT identifiant, Mot_de_passe FROM utilisateur WHERE TypeUtilisateur = \"Formateur\"";
+	$sql = "SELECT identifiant, Mot_de_passe FROM Utilisateur WHERE TypeUtilisateur = \"Formateur\"";
 	$cursor = $connect->query($sql);
 	$result = $cursor->fetchAll();
 
