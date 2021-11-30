@@ -309,7 +309,8 @@ function addExamen($connect, $idSessionFormation, $dateSessionFormation): string
 		} else if (preg_match("/^SQLSTATE\[45002].*/", $message) == 1) {
 			$message =  "Il ne peut y avoir deux examens le même jour pour une même formation";
 		} else {
-			$message = "La base de donnée n'est pas disponible";
+			// $message = "La base de donnée n'est pas disponible";
+			$message = $e->getMessage();
 		}
 		return $message;
 	}
