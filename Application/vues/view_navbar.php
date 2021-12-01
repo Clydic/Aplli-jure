@@ -15,7 +15,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link " aria-curent="page" href="index.php?action=page_indisponible">
+					<a class="nav-link " aria-curent="page" href="index.php?action=listSessionFormation">
 						Session de formation
 					</a>
 				</li>

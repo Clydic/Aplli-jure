@@ -43,13 +43,7 @@
 								<i class="fas fa-minus-circle bg-danger"></i>
 							</a>
 						</td>
-
-
-
 						<td>
-
-
-
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -58,7 +52,6 @@
 		</table>
 	</div>
 	<div class="d-flex justify-content-center mt-1">
-
-		<a class="btn btn-info m-auto mt-3" href="index.php?action=ajoutExamen">Ajouter</a>
+		<a class="btn btn-primary m-auto mt-3" href="index.php?action=ajoutExamen">Ajouter</a>
 	</div>
 </main>

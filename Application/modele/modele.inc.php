@@ -332,17 +332,15 @@ function delExamen($connect, $idSessionExamen)
  * @param PDO Connexion a la BDD
  * @return string La liste de formation
  */
-function showListSessionFormation($connect): string
+function showListSessionFormation($connect)
 {
 
 	$sql = "CALL prc_LST_listeSessionFormation();";
 	$cursor = $connect->query($sql);
 	$result = $cursor->fetchAll();
-	$message = "";
+	$aResult = [];
 	foreach ($result as $line) {
-		$message .= "<tr><td>" . $line["Intitule_de_formation"] . $line["IDSessioFormation"] . "</td>.
-		
-		</tr>";
+		$aResult[] = $line;
 	}
-	return $message;
+	return $aResult;
 }
