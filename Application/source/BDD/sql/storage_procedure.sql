@@ -26,37 +26,38 @@ DELIMITER $$
 -- We create a procedure which add session-examen
 CREATE PROCEDURE `prc_ADD_examen`(IN `id_of_session_formation` INT(2), IN `date_to_add` CHAR(10))
 BEGIN
-DECLARE DateEndFormation DATE;
-   	DECLARE DateBeginFormation DATE;
-    SELECT DateDebutFormation 
-    into DateBeginFormation					 
-    FROM session_formation 
-    WHERE IdSessionFormation = id_of_session_formation;
-    
-    SELECT DateFinFormation 
-    into DateEndFormation 		
-    FROM session_formation 
-    WHERE IdSessionFormation = id_of_session_formation;
-    
-        IF ((id_of_session_formation,date_to_add)
-        IN (SELECT IdSessionFormation, 								DateSessionExam 
-             FROM SessionExamen))
-        THEN 
-        SIGNAL SQLSTATE '45002' 
-        SET MESSAGE_TEXT = "Il ne peut y avoir deux 		examen le même jour pour une même 				formation" ;
-    END IF;
-    
-	IF ((date_to_add<DateEndFormation)
-    &&
- 	(date_to_add>DateBeginFormation)) THEN
-    	INSERT INTO `SessionExamen`( 			`DateSessionExam`, `IDSessionFormation`) 
+
+		DECLARE DateEndFormation DATE;
+		DECLARE DateBeginFormation DATE;
+	    SELECT DateDebutFormation 
+	    into DateBeginFormation					 
+	    FROM `Session_Formation`
+	    WHERE IdSessionFormation = id_of_session_formation;
+	    
+	    SELECT DateFinFormation 
+	    into DateEndFormation 		
+	    FROM `Session_Formation` 
+	    WHERE IdSessionFormation = id_of_session_formation;
+	    
+		IF ((id_of_session_formation,date_to_add)
+		IN (SELECT IdSessionFormation, 								DateSessionExam 
+		     FROM `SessionExamen` ))
+		THEN 
+		SIGNAL SQLSTATE '45002' 
+		SET MESSAGE_TEXT = "Il ne peut y avoir deux 		examen le même jour pour une même 				formation" ;
+	    END IF;
+	    
+		IF ((date_to_add<DateEndFormation)
+	    &&
+		(date_to_add>DateBeginFormation)) THEN
+    	INSERT INTO `SessionExamen`( 			DateSessionExam, IDSessionFormation) 
 	VALUES (date_to_add, id_of_session_formation);
     
     
     ELSE 
     	SIGNAL SQLSTATE '45001' 
         SET MESSAGE_TEXT = "La date demandée ne 			correspond pas à la période de la 				session de foramtion" ;
-	END IF;
+	END IF; 
 END $$ -- call prc_ADD_examen(12,'2003-02-13');
 DELIMITER ;
 
@@ -64,16 +65,18 @@ DELIMITER ;
 -- ---------------------------- Procedure of deleletion of session examen--------------------------------
 DROP PROCEDURE IF EXISTS `prc_DEL_examen` ;
 DELIMITER $$
-CREATE PROCEDURE `prc_DEL_examen`(id_of_examen_to_delete INT(3))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_DEL_examen`(IN `id_of_examen_to_delete` INT(3))
 BEGIN
 	IF (id_of_examen_to_delete IN (SELECT IdSessionExam FROM SessionExamen)) THEN 
-		DELETE FROM `sessionexamen` WHERE IdSessionExam = id_of_examen_to_delete;
+		DELETE FROM `SessionExamen` WHERE IdSessionExam = id_of_examen_to_delete;
 	ELSE
 		SIGNAL SQLSTATE '45003' 
         SET MESSAGE_TEXT = "La session d'examen que vous essayez d'effacer n'existe pas" ;
 	END IF;
 END$$
 DELIMITER ;
+
+
 -- ---------------------------- Procedure of Ajout of Formateur --------------------------------
 DROP PROCEDURE IF EXISTS `prc_ADD_Formateur`;
 DELIMITER $$
@@ -82,7 +85,7 @@ CREATE PROCEDURE `prc_ADD_Formateur`(nom VARCHAR(50), prenom VARCHAR(50), adr1 V
 
 BEGIN
 		DECLARE idCoor INTEGER DEFAULT 0;
-		INSERT INTO `coordonnees`(`Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (adr1,adr2,postal,ville,phone,mail);
+		INSERT INTO `Coordonnees`(`Adresse1`, `Adresse2`, `Code_Postale`, `Ville`, `Telephone`, `Mail`) VALUES (adr1,adr2,postal,ville,phone,mail);
 		SELECT MAX(IDCoordonnee) INTO idCoor FROM Coordonnees;
 		INSERT INTO `Formateur`(`Nom_du_formateur`, `Prenom_du_Formateur`, `IDCoordonnee`) VALUES (upper(nom),prenom,idCoor);
 END$$
@@ -121,8 +124,8 @@ DELIMITER $$
 CREATE PROCEDURE `prc_LST_listeSessionFormation`()
 BEGIN
 SELECT f.Intitule_de_formation , sf.IDSessionFormation, sf.DateDebutFormation, sf.DateFinFormation 
-FROM formation f 
-JOIN session_formation sf 
+FROM `Formation` f 
+JOIN `Session_formation` sf 
 ON sf.IDFormation=f.IDFormation 
 WHERE sf.DateFinFormation >= CURRENT_DATE();
 END$$
@@ -137,10 +140,10 @@ DROP TRIGGER IF EXISTS `trig_DEL_FORMATEUR`;
 DELIMITER $$
 -- We create a trigger which delete Coordonnee after delete Formateur
 CREATE TRIGGER `trig_DEL_FORMATEUR`
-	AFTER DELETE on formateur
+	AFTER DELETE on Formateur
 	FOR EACH ROW
 BEGIN
-	DELETE FROM `coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
+	DELETE FROM `Coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
 END &&
 DELIMITER ;
 
