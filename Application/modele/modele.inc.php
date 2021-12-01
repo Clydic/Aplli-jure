@@ -147,10 +147,10 @@ function getListFormation($connect): string
  * Appelle la procedure d'ajout de Formateur correspondant
  * @param PDO Connexion a la BDD
  * @param int ID du formateur
- * @return bool Si Ajout réussi
+ * @return string
  */
 
-function addFormateur($connect): bool
+function addFormateur($connect): string
 {
 	$sql = "SELECT *
 			from coordonnees";
@@ -159,8 +159,7 @@ function addFormateur($connect): bool
 	foreach ($result as $line) {
 		if ($line['Telephone'] == $_POST['Telephone']) {
 			return "DoublonPhone";
-		}
-		if ($line['Mail'] == $_POST['Mail']) {
+		} else if ($line['Mail'] == $_POST['Mail']) {
 			return "DoublonMail";
 		}
 	}
