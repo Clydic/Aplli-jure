@@ -11,9 +11,9 @@ BEGIN
         	e.IDSessionExam,
 		    s.IDSessionFormation, 
 			e.DateSessionExam 
-			from Formation f
-			JOIN Session_Formation s on s.IDFormation = f.IDFormation
-			JOIN SessionExamen e on e.IDSessionFormation = s.IDSessionFormation
+			from `Formation` f
+			JOIN  `Session_Formation` s on s.IDFormation = f.IDFormation
+			JOIN `SessionExamen` e on e.IDSessionFormation = s.IDSessionFormation
 			WHERE e.DateSessionExam >= CURRENT_DATE()
 			ORDER BY e.DateSessionExam;
 END$$
@@ -62,7 +62,7 @@ END $$ -- call prc_ADD_examen(12,'2003-02-13');
 DELIMITER ;
 
 
--- ---------------------------- Procedure of deleletion of session examen--------------------------------
+-- ---------------------------- Procedure of deletion of session examen--------------------------------
 DROP PROCEDURE IF EXISTS `prc_DEL_examen` ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_DEL_examen`(IN `id_of_examen_to_delete` INT(3))
@@ -145,24 +145,4 @@ CREATE TRIGGER `trig_DEL_FORMATEUR`
 BEGIN
 	DELETE FROM `Coordonnees` WHERE IDCoordonnee = old.IDCoordonnee;
 END &&
-DELIMITER ;
-
--- ---------------------------- Trigger of BEFORE INSERT Formation --------------------------------
-DROP TRIGGER IF EXISTS `trigVerifExamen`;
-DELIMITER $$
--- We create a trigger which check DATE before insert into Formation
-CREATE TRIGGER `trigVerifExamen` BEFORE INSERT ON `sessionexamen`
- FOR EACH ROW BEGIN
-	DECLARE doublonExam CONDITION FOR SQLSTATE '45000';
-
-    IF (NEW.IdSessionFormation,NEW.DateSessionExam) 
-		IN (SELECT DateSessionExam ,IdSessionFormation 
-			from sessionexamen ) 
-			THEN 
-        SIGNAL doublonExam
-            SET MESSAGE_TEXT = 'Il ne peut y avoir 2 examens pour une mêm session le même jour', 
-			    MYSQL_ERRNO = 2001;
-    END IF;
-
-END$$
 DELIMITER ;
