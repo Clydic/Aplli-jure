@@ -13,19 +13,9 @@ class  MgrSessionExamen
     public static function getListExam($connect)
     {
 
-        // $sql="CALL prc_LST_examen();";
         // Initialisation
         //Get the results of the procedure called prc_LST_examen
         $cursor = $connect->query("CALL prc_LST_examen();");
-        // Change the fetch mode
-        // $cursor->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,
-        // 'SessionExamen',
-        // array(
-        //     'intituleFormation',
-        //     'caca',
-        //     'idFormation',
-        //     'date'));
-        //     // Get results of the request
         $result = $cursor->fetchall();
         $arrayOfResult = [];
         foreach ($result as $line) :

@@ -1,4 +1,8 @@
 <?php // index.php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require("modele/modele.inc.php");
 require("classes/MgrSessionExamen.class.php");
 require("classes/CRMJures.class.php");
@@ -6,7 +10,7 @@ session_start();
 $connection = CRMJures::getConnection();
 $action = "accueil"; //"accueil";
 $isConnect = NULL; // Variable pour savoir si l'utilisateur est connecté 
-$message = ""; // Varibales des messages d'inforamtion de crud
+$message = ""; // Variables des messages d'information de crud
 $href = ""; // Variable pour modifier certain lien hypertexte
 $textLink = ""; // Le text des liens hyper texte	
 $logo = "source/index.png";
@@ -276,7 +280,6 @@ switch ($action) {
 			if (getConnectForm($connection, $_SESSION['user'], $_SESSION['password']) == true) {
 				$tabTitle = "Accueil Formateur";
 				$h1Title = "Accueil";
-				echo "Je suis dans le case accueilForm";
 				require("vues/view_header.php");
 				require("vues/view_navbar.php");
 				require("vues/view_accueilForm.php");
@@ -346,6 +349,32 @@ switch ($action) {
 
 		require("vues/view_header.php");
 		require("vues/view_Reussi.php");
+		require("vues/view_footer.php");
+		break;
+
+	case 'page_indisponible':
+
+		$tabTitle = "Page indisponible";
+		$h1Title = "Page indisponible";
+		$message = "Cette page est actuellement en construction et sera disponible ultérieurement nous vous remercions de votre patience";
+		require("vues/view_header.php");
+		require("vues/view_redirected.php");
+		require("vues/view_footer.php");
+		break;
+
+	case "listSessionFormation":
+		$tabTitle = "Session de Formation";
+		$h1Title = "Session de Formation";
+		$h2Title = "Liste des sessions d'examen à venir";
+		$listTd = [
+			"Session de formation",
+			"Date Début Formation",
+			"Date Fin Formation"
+		];
+		$listSessionFormation = showListSessionFormation($connection);
+		require("vues/view_header.php");
+		require("vues/view_navbar.php");
+		require("vues/view_list-formation.php");
 		require("vues/view_footer.php");
 		break;
 }
