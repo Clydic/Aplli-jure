@@ -29,7 +29,7 @@
 					<a class="nav-link" href="index.php?action=listExam">Gestion des sessions d'examen</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php">Déconnexion</a>
+					<a class="nav-link" href="index.php?action=accueil">Déconnexion</a>
 				</li>
 			</ul>
 		</div>
