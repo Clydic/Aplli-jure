@@ -1,7 +1,7 @@
 <?php // index.php 
-ini_set('display_errors', 1); 
-ini_set('display_startup_errors', 1); 
-error_reporting(E_ALL); 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require("modele/modele.inc.php");
 require("classes/MgrSessionExamen.class.php");
@@ -280,7 +280,6 @@ switch ($action) {
 			if (getConnectForm($connection, $_SESSION['user'], $_SESSION['password']) == true) {
 				$tabTitle = "Accueil Formateur";
 				$h1Title = "Accueil";
-				echo "Je suis dans le case accueilForm";
 				require("vues/view_header.php");
 				require("vues/view_navbar.php");
 				require("vues/view_accueilForm.php");
@@ -361,4 +360,21 @@ switch ($action) {
 		require("vues/view_header.php");
 		require("vues/view_redirected.php");
 		require("vues/view_footer.php");
+		break;
+
+	case "listSessionFormation":
+		$tabTitle = "Session de Formation";
+		$h1Title = "Session de Formation";
+		$h2Title = "Liste des sessions d'examen à venir";
+		$listTd = [
+			"Session de formation",
+			"Date Début Formation",
+			"Date Fin Formation"
+		];
+		$listSessionFormation = showListSessionFormation($connection);
+		require("vues/view_header.php");
+		require("vues/view_navbar.php");
+		require("vues/view_list-formation.php");
+		require("vues/view_footer.php");
+		break;
 }
