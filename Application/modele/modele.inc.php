@@ -256,6 +256,7 @@ function updateInfoFormateur($connection): string
 
 /**
  * Get the list of Session Formation which are active at the current date
+ * and put them in option
  * @param $connect
  * @return $message
  */
